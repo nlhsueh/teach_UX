@@ -7,13 +7,14 @@
 <!-- id: ux-ch01-ccq1 -->
 ### 🙋 **概念核對問答 (CCQ 1)**
 
-
 **問題**
 
 對於使用者而言，UX 決定了系統是否「好用」，而 UI 則決定了系統是否「好看」。兩者相輔相成，缺一不可，共同構築了最終的使用者體驗。請判斷上述說法是否正確？
 
 A) 正確 (True)
 B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -28,8 +29,6 @@ B) 錯誤 (False)
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1)
-
 ## 1.2 ISO 9241-11可用性標準與效能體驗
 
 依據 ISO 9241-11 對可用性的定義，可用性包含有效性 (Effectiveness)、效率 (Efficiency) 與滿意度 (Satisfaction)。系統效能缺陷會直接影響使用者的等待心理與操作效率。
@@ -37,13 +36,14 @@ B) 錯誤 (False)
 <!-- id: ux-ch01-ccq2 -->
 ### 🙋 **概念核對問答 (CCQ 2)**
 
-
 **問題**
 
 登入系統的時間過長，是屬於系統架構和效能的問題，與 UX 無關。請參考 ISO 9241-11 對 UX 的定義，判斷上述說法是否正確？
 
 A) 正確 (True)
 B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -58,15 +58,12 @@ B) 錯誤 (False)
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2)
-
 ## 1.3 UX 標準核心流程
 
 標準的 UX 設計流程涵蓋了解需求痛點、市場分析、原型設計、可用性測試等以人為本的活動。
 
 <!-- id: ux-ch01-ccq3 -->
 ### 🙋 **概念核對問答 (CCQ 3)**
-
 
 **問題**
 
@@ -77,6 +74,8 @@ B) 進行畫面的設計與確認
 C) 進行市場的分析與調查
 D) 開發一個雛形進行試用
 E) 對系統進行壓力測試
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -90,16 +89,11 @@ E) 對系統進行壓力測試
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3)
-
 <!-- id: ux-ch01-qa1 -->
 ### 🙋 **問答討論 (QA 1)：分享你的糟糕 UX 體驗**
-
 
 > * **討論任務**：請回想並描述一個你在日常生活中遇過 **UX 最糟糕的系統** （如學校系統、政府網站、點餐 App、售票系統等）：
 >   1. **系統名稱與使用情境**
 >   2. **操作時遇到的最大障礙或崩潰瞬間**
 >   3. **這帶給你什麼心理感受？（困惑、生氣、無助）**
 >   4. **如果你是設計師，你第一步想如何改善它？**
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-qa1)

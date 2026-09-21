@@ -577,7 +577,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 </div>
 <div class="card-img">
 
-<img src="../../img/ch01/ux-ch01-ccq1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1" target="_blank"><img src="../../img/ch01/ux-ch01-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -604,7 +604,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 </div>
 <div class="card-img">
 
-<img src="../../img/ch01/ux-ch01-ccq2.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2" target="_blank"><img src="../../img/ch01/ux-ch01-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -633,7 +633,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 </div>
 <div class="card-img">
 
-<img src="../../img/ch01/ux-ch01-ccq3.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3" target="_blank"><img src="../../img/ch01/ux-ch01-ccq3.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -661,7 +661,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 </div>
 <div class="card-img">
 
-<img src="../../img/ch01/ux-ch01-qa1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-qa1" target="_blank"><img src="../../img/ch01/ux-ch01-qa1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1199,7 +1199,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch02/ux-ch02-ccq1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1" target="_blank"><img src="../../img/ch02/ux-ch02-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1224,7 +1224,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch02/ux-ch02-ccq2.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2" target="_blank"><img src="../../img/ch02/ux-ch02-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1252,7 +1252,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch02/ux-ch02-ccq3.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3" target="_blank"><img src="../../img/ch02/ux-ch02-ccq3.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1280,7 +1280,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch02/ux-ch02-ccq4.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4" target="_blank"><img src="../../img/ch02/ux-ch02-ccq4.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1598,7 +1598,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch03/ux-ch03-ccq1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq1" target="_blank"><img src="../../img/ch03/ux-ch03-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1626,7 +1626,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch03/ux-ch03-ccq2.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq2" target="_blank"><img src="../../img/ch03/ux-ch03-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -1653,7 +1653,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch03/ux-ch03-qa1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-qa1" target="_blank"><img src="../../img/ch03/ux-ch03-qa1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -2229,7 +2229,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch04/ux-ch04-ccq1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-ccq1" target="_blank"><img src="../../img/ch04/ux-ch04-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -2257,7 +2257,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch04/ux-ch04-ccq2.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-ccq2" target="_blank"><img src="../../img/ch04/ux-ch04-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>
@@ -2284,7 +2284,7 @@ Upload 100 files
 </div>
 <div class="card-img">
 
-<img src="../../img/ch04/ux-ch04-qa1.png" alt="QR Code" style="max-height: 280px;">
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-qa1" target="_blank"><img src="../../img/ch04/ux-ch04-qa1.png" alt="QR Code" style="max-height: 280px;"></a>
 
 </div>
 </div>

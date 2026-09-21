@@ -7,13 +7,14 @@
 <!-- id: ux-ch02-ccq1 -->
 ### 🙋 **概念核對問答 (CCQ 1)**
 
-
 **問題**
 
 為了徹底落實錯誤預防，系統在使用者執行「任何」可能修改資料的操作（包括編輯個人暱稱、切換深色模式）時，都強制彈出確認視窗要求點擊「確定修改」，這是兼顧安全性與可用性的最佳實踐？
 
 A) 正確 (True)
 B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -28,8 +29,6 @@ B) 錯誤 (False)
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1)
-
 ## 2.2 簡潔設計 (NS08) 與跨裝置識別性 (NS06)
 
 追求視覺極簡時，不可忽略跨裝置的可發現性與可用性限制。
@@ -37,13 +36,14 @@ B) 錯誤 (False)
 <!-- id: ux-ch02-ccq2 -->
 ### 🙋 **概念核對問答 (CCQ 2)**
 
-
 **問題**
 
 為了實現極致簡潔的視覺體驗，將資料表格中的操作按鈕（編輯/刪除/下載）全數隱藏，改為僅在使用者將滑鼠 Hover 懸停於該列時才浮現，這在所有裝置與情境下都是最推薦的做法？
 
 A) 正確 (True)
 B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -58,15 +58,12 @@ B) 錯誤 (False)
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2)
-
 ## 2.3 尼爾森原則綜合交叉應用案例
 
 在真實系統中，往往需要結合多個易用性原則來設計流暢且安全的使用者體驗。
 
 <!-- id: ux-ch02-ccq3 -->
 ### 🙋 **概念核對問答 (CCQ 3)**
-
 
 **問題**
 
@@ -76,6 +73,8 @@ A) NS05 (錯誤預防) 與 NS06 (易於識別而非記憶)
 B) NS03 (控制權) 與 NS07 (彈性與使用效率)
 C) NS04 (一致性) 與 NS09 (清楚的錯誤處理)
 D) NS08 (優雅簡潔的設計) 與 NS10 (適當的說明與文件)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -90,11 +89,8 @@ D) NS08 (優雅簡潔的設計) 與 NS10 (適當的說明與文件)
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3)
-
 <!-- id: ux-ch02-ccq4 -->
 ### 🙋 **概念核對問答 (CCQ 4)**
-
 
 **問題**
 
@@ -104,6 +100,8 @@ A) NS05 (錯誤預防) 與 NS03 (使用者控制與自由)
 B) NS01 (系統狀態能見度) 與 NS08 (優雅簡潔的設計)
 C) NS02 (與真實世界對應) 與 NS06 (易於識別而非記憶)
 D) NS04 (一致性與標準) 與 NS10 (適當的說明與文件)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -117,5 +115,3 @@ D) NS04 (一致性與標準) 與 NS10 (適當的說明與文件)
 </details>
 
 \n
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4)

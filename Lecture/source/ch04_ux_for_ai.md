@@ -7,13 +7,14 @@
 <!-- id: ux-ch04-ccq1 -->
 ### 🙋 **概念核對問答 (CCQ 1)**
 
-
 **問題**
 
 在 AI 輔助醫療診斷或智慧報稅系統中，為了建立使用者對 AI 的強大信任感，介面應一律以 100% 篤定的語氣呈現 AI 的分析結果，避免顯示「信心度 (Confidence Score: 68%)」或替代方案，以免引發使用者的懷疑與猶豫？
 
 A) 正確 (True)
 B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -28,15 +29,12 @@ B) 錯誤 (False)
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-ccq1)
-
 ## 4.2 長任務等待體驗與心智模型對齊
 
 面對耗時較長的大模型思考與運算任務，透過透明度與進度視覺化消除等待焦慮。
 
 <!-- id: ux-ch04-ccq2 -->
 ### 🙋 **概念核對問答 (CCQ 2)**
-
 
 **問題**
 
@@ -46,6 +44,8 @@ A) 顯示全螢幕單一旋轉 Spinner，註明「運算中請勿關閉」
 B) 採用動態思考進度（CoT），即時滾動顯示「正在搜尋 12 篇文獻 ➔ 萃取論點 ➔ 驗證數據」，並支援折疊
 C) 立即顯示空白頁，待全部完成後瞬間重新整理
 D) 將 Timeout 強制縮短為 3 秒，未完成直接中斷報錯
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -60,15 +60,10 @@ D) 將 Timeout 強制縮短為 3 秒，未完成直接中斷報錯
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-ccq2)
-
 <!-- id: ux-ch04-qa1 -->
 ### 🙋 **問答討論 (QA 1)：全面系統 UX 健檢**
-
 
 > * **任務說明**：請挑選一個你常用的系統進行全方位診斷與優化構想：
 >   1. **問題診斷**：找出系統中違反 **Nielsen 10 大原則** 的 3 個具體問題。
 >   2. **AI Prompt 實踐**：寫出一段具備工程師思維的 Prompt，要求 AI 生成符合該 UX 規範的前端組件。
 >   3. **AI 產品優化**：若將該系統升級為 AI 智慧助手，你將如何設計防呆反饋與錯誤復原機制？
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch04-qa1)
