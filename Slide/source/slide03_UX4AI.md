@@ -253,7 +253,7 @@ style: |
 ---
 
 <script>
-  // 支援由首頁 index.html 控制是否啟用換頁動畫
+  // 1. 支援由首頁 index.html 控制是否啟用換頁動畫
   const params = new URLSearchParams(window.location.search);
   const transitionPref = params.get('transition') ?? localStorage.getItem('marp-transition');
   if (transitionPref === 'false' || transitionPref === 'none') {
@@ -262,6 +262,66 @@ style: |
       el.removeAttribute('data-transition-back');
     });
   }
+
+  // 2. 支援鍵盤輸入「數字 + Enter」直接跳轉至指定頁碼
+  (function() {
+    let pageBuffer = '';
+    let bufferTimer = null;
+
+    function getOrCreateIndicator() {
+      let el = document.getElementById('marp-page-jump-indicator');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'marp-page-jump-indicator';
+        el.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: rgba(15, 23, 42, 0.9); color: white; padding: 8px 16px; border-radius: 8px; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.25); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); display: none; transition: all 0.15s ease;';
+        document.body.appendChild(el);
+      }
+      return el;
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
+
+      const indicator = getOrCreateIndicator();
+
+      if (e.key >= '0' && e.key <= '9') {
+        pageBuffer += e.key;
+        clearTimeout(bufferTimer);
+        indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
+        indicator.style.display = 'block';
+
+        bufferTimer = setTimeout(function() {
+          pageBuffer = '';
+          indicator.style.display = 'none';
+        }, 2500);
+      } else if (e.key === 'Enter' && pageBuffer.length > 0) {
+        e.preventDefault();
+        const target = parseInt(pageBuffer, 10);
+        pageBuffer = '';
+        indicator.style.display = 'none';
+        clearTimeout(bufferTimer);
+
+        if (!isNaN(target) && target > 0) {
+          const oldHash = window.location.hash;
+          const newHash = '#' + target;
+          if (oldHash === newHash) {
+            window.dispatchEvent(new HashChangeEvent('hashchange'));
+          } else {
+            window.location.hash = newHash;
+          }
+        }
+      } else if (e.key === 'Escape' || e.key === 'Backspace') {
+        if (e.key === 'Backspace' && pageBuffer.length > 1) {
+          pageBuffer = pageBuffer.slice(0, -1);
+          indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
+        } else {
+          pageBuffer = '';
+          indicator.style.display = 'none';
+          clearTimeout(bufferTimer);
+        }
+      }
+    });
+  })();
 </script>
 
 
