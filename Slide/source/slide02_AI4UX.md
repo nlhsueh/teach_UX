@@ -427,34 +427,6 @@ style: |
 
 ---
 
-### AI for UX 的核心目的
-
-<div class="three-columns">
-<div class="card">
-
-### 1. 跨越溝通鴻溝
-- 將抽象的 UX 規範（如「狀態反饋」、「容錯」）轉譯為具體的工程提示約束。
-- 讓設計師與工程師在「可運行的程式碼」上進行無障礙對話。
-
-</div>
-<div class="card">
-
-### 2. 杜絕「好看但難用」
-- AI 預設傾向產出外觀華麗、但缺乏狀態管理的脆弱程式碼。
-- 目的在於強制 AI 補齊 **極端狀態 (Edge Cases)** 與防呆機制。
-
-</div>
-<div class="card">
-
-### 3. 極速前期確認
-- 支援 **Early Validation** ，在投入昂貴後端開發前，即由使用者親自試用並提供回饋。
-- 降低軟體專案的需求變更風險。
-
-</div>
-</div>
-
----
-
 ### AI for UX 的三大實務效益
 
 <div class="two-columns">
@@ -483,54 +455,54 @@ style: |
 
 ---
 
-<!-- header: '使用 Prompt 的做法：UX 約束式提示架構' -->
+<!-- header: '使用 Prompt 的做法：從 RTF 到 RTCF' -->
 
-## 使用 Prompt 的做法：UX 約束式提示架構
+## 使用 Prompt 的做法：從 RTF 到 RTCF 架構
 
 > 避免模糊無效的提示詞：❌ *「請幫我寫一個登入頁面」*
-> 採用專業的 **UX 4 維度提示架構 (The 4-Pillar UX Prompt Framework)** ：
+> 採用軟體工程與體驗設計的 **RTCF 提示詞架構** （業界 RTF ＋ UX 約束）：
 
 <div class="two-columns">
 <div class="card">
 
-### 1. 角色設定 (Persona & Role)
+### 1. 角色 (Role - R)
 - 明確賦予資深 UI/UX 專家與軟體架構師視角。
-- 例如：*「你是一位具備 20 年經驗、專精於防呆設計的資深 UX 架構師。」*
+- 例：*「你是一位具備 20 年經驗、專精防呆設計的資深 UX 架構師。」*
 
-### 2. 任務情境 (Task & Context)
+### 2. 任務 (Task - T)
 - 清楚交代使用者目標、操作載具與業務流程。
-- 例如：*「設計一個行動端外送點餐結帳表單，需考量單手操作與網路不穩情境。」*
+- 例：*「設計外送點餐結帳表單，需考量單手操作與網路不穩情境。」*
 
 </div>
 <div class="card">
 
-### 3. UX 約束注入 (UX Constraints)
+### 3. UX 約束 (Constraints - C)
 - **主動帶入尼爾森原則作為非功能性需求** ：
   - 必須包含即時表單驗證 (NS05)
-  - 網路請求需有 Skeleton 骨架屏與進度反饋 (NS01)
+  - 需有 Skeleton 骨架屏與進度反饋 (NS01)
   - 支援 5 秒內 Toast 一鍵復原 (NS03)
 
-### 4. 輸出規範 (Output Requirements)
-- 要求以純語意組件撰寫，並在結尾條列標註應用了哪些原則。
+### 4. 輸出格式 (Format - F)
+- 規範組件技術棧（React/Tailwind），並要求條列標註應用的原則。
 
 </div>
 </div>
 
 ---
 
-### AI for UX：專家級 Master Prompt 範本
+### AI for UX：專家級 Master Prompt 範本 (符合 RTCF 架構)
 
 <div class="prompt-box" style="font-size: 18px;">
 
-**Role:** 你是一位具備 20 年經驗的資深 UI/UX 專家與資深軟體架構師。
-**Task:** 在設計系統架構、編寫 UI 程式碼或規劃 AI Agent 流程時，請嚴格執行 Nielsen's 10 Heuristics。
-**Execution Requirements:**
+**[R] Role (角色):** 你是一位具備 20 年經驗的資深 UI/UX 專家與資深軟體架構師。
+**[T] Task (任務):** 在設計系統架構、編寫 UI 程式碼或規劃 AI Agent 流程時，請嚴格執行 Nielsen's 10 Heuristics。
+**[C] Constraints (UX 約束與指引):**
 1. **系統狀態 (NS01):** 所有的非同步操作（API 請求、AI 運算）必須包含 Loading 狀態或進度百分比。
 2. **錯誤預防 (NS05):** 在執行破壞性操作（刪除、覆蓋）前，必須主動設計確認機制或預檢邏輯。
 3. **防呆與復原 (NS03 & NS09):** 提供明確的 Undo 機制；錯誤訊息必須是白話文並給予修復建議，嚴禁只噴錯誤碼。
 4. **極簡與效率 (NS07 & NS08):** 優先採用「約定大於配置」；UI 介面應過濾掉 80% 的低頻資訊，保持視覺清爽。
 5. **程式碼一致性 (NS04):** 產出的程式碼必須嚴格遵守專案既有的命名規範與 Design System 組件。
-**Output Format:** 在產出方案後，請簡短標註你應用了哪些尼爾森原則（例如：`[已加入 NS05 錯誤預防邏輯]`）。
+**[F] Format (輸出規範):** 在產出方案後，請簡短標註你應用了哪些尼爾森原則（例如：`[已加入 NS05 錯誤預防邏輯]`）。
 
 </div>
 
@@ -560,6 +532,8 @@ style: |
 
 </div>
 </div>
+
+> 🎯 **各原則微觀實踐模式** ：在接下來各原則的 AI 實作示範中，我們以 **ROA (Role, Objective, Avoid)** 快速聚焦於「核心防呆約束」，最後再統一整合成 Master Prompt。
 
 ---
 
