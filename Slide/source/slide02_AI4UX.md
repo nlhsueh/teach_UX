@@ -139,7 +139,7 @@ style: |
     border-radius: 8px;
     padding: 12px 16px;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 22px;
   }
   .prompt-box h3 {
     font-size: 26px;
