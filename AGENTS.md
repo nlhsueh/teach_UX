@@ -13,6 +13,20 @@ Welcome to the `gTeachUX` project! When modifying or editing files in this works
   * ❌ *Incorrect*: `在**合理的時間內**給予反饋`
   * ✅ *Correct*: `在 **合理的時間內** 給予反饋`
 
+### 表格全域置中規範 (Table Centering Rule)
+* **Problem**: Marp 的預設主題會將 Markdown 表格設定為 `display: block; width: max-content;`，導致表格無法透過 `margin: auto` 水平置中，排版會靠左偏斜且右側大片留白。
+* **Rule**: 投影片中所有表格（包括對照表、總結表等）必須一律維持水平置中。全域樣式必須強制指定 `display: table !important` 與 `align-self: center !important`：
+  ```css
+  table {
+    display: table !important;
+    width: 95%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin: 16px auto !important;
+    align-self: center !important;
+  }
+  ```
+
 ---
 
 ## 2. 互動題目 (CCQ) 生命週期與同步標準程序 (CCQ Lifecycle & Sync Workflow)
@@ -37,3 +51,16 @@ Welcome to the `gTeachUX` project! When modifying or editing files in this works
   * 同步完成後再執行 PDF 編譯：
     - 講義 PDF：`node scripts/generate_lecture_pdf.js Lecture/source/ch01_intro.md`
     - 投影片 PDF：`npx @marp-team/marp-cli Slide/source/UX_AI.md --pdf --allow-local-files --no-stdin -o Slide/UX_AI.pdf`
+
+---
+
+## 3. 繁體中文與軟體工程專業用語守則 (Terminology Consistency)
+
+* **程式碼用語規範**：
+  * ❌ *嚴禁使用*：`代碼`、`前端代碼`、`代碼塊`、`寫代碼`
+  * ✅ *必須使用*：`程式碼`、`前端程式碼`、`程式碼區塊`、`撰寫程式碼`
+* **錯誤碼／狀態碼用語**：
+  * ❌ *避免使用*：`錯誤代碼`、`系統代碼`
+  * ✅ *推薦使用*：`錯誤碼`、`錯誤代號`、`狀態碼`（如 HTTP 狀態碼）
+* **原則**：本教材為逢甲大學資工系之授課教材，全面遵循臺灣資訊科技教育之繁體中文標準軟體工程術語。
+
