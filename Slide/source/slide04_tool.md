@@ -124,6 +124,7 @@ style: |
     border-radius: 8px;
     padding: 12px 16px;
     margin-top: 10px;
+    font-size: 20px;
   }
   .lead {
     display: flex;
@@ -1007,7 +1008,7 @@ style: |
 
 ## 實戰範例：儀表板 (Dashboard) 雛形 Prompt
 
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ```text
 你是一位資深前端 UI/UX 工程師。請使用 React、Tailwind CSS 與 Lucide Icons

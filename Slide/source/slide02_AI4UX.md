@@ -139,6 +139,7 @@ style: |
     border-radius: 8px;
     padding: 12px 16px;
     margin-top: 10px;
+    font-size: 20px;
   }
   .prompt-box h3 {
     font-size: 26px;
@@ -492,7 +493,7 @@ style: |
 
 ### AI for UX：專家級 Master Prompt 範本 (符合 RTCF 架構)
 
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 **[R] Role (角色):** 你是一位具備 20 年經驗的資深 UI/UX 專家與資深軟體架構師。
 **[T] Task (任務):** 在設計系統架構、編寫 UI 程式碼或規劃 AI Agent 流程時，請嚴格執行 Nielsen's 10 Heuristics。
@@ -602,7 +603,7 @@ Upload 100 files
 ### AI for UX：NS01 系統狀態能見度 (Visibility of System Status)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 資深前端與 UX 專家。
@@ -610,7 +611,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免毫無說明的空白畫面、或無限旋轉但無進度說明的 Spinner。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一個資深前端工程師。在設計匯入大型 Excel 檔案的 UI 時，請確保提供一個即時進度條（Progress Bar），包含目前處理百分比（如 45%）、已處理筆數與剩餘預估秒數。禁止在背景默默運算而不給任何進度指示。
@@ -675,7 +676,7 @@ Upload 100 files
 ### AI for UX：NS02 系統與真實世界的對照 (Match Between System & Real World)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 產品經理與資深 UX Writer。
@@ -683,7 +684,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免拋出程式技術術語（如 `NullPointerException`）。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位專為電商平台撰寫文案的 UX Writer。當使用者付款失敗時，請寫出友好的提示。避免使用 "交易異常 403" 或 "Connection timeout" 等技術詞彙，應改用 "目前付款通道繁忙，我們無法完成扣款，請您稍候再試或更換信用卡。" 並提供直接的下一步建議。
@@ -751,7 +752,7 @@ Upload 100 files
 ### AI for UX：NS03 使用者控制與自由 (User Control & Freedom)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 互動設計師。
@@ -759,7 +760,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免強迫使用者走完流程、沒有退路、或危險動作沒有撤銷機會。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位網頁互動設計師。當使用者在行事曆上拖拉並移動會議時間後，請設計一個 Toast 提示框，包含 "已將會議移動至 10:00" 以及一個明顯的 "復原 (Undo)" 按鈕，讓使用者能在 5 秒內一鍵撤銷剛才的移動。避免讓使用者必須手動把會議拖拉回去。
@@ -817,7 +818,7 @@ Upload 100 files
 ### AI for UX：NS04 一致性與標準 (Consistency & Standards)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 設計系統 (Design System) 維護者。
@@ -825,7 +826,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免同一個動作在不同頁面有不同名稱（如有的叫「儲存」、有的叫「寫入」、有的叫「確定」）。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位 UI/UX 專家。請為我們的 SaaS 後台檢視所有的確認動作。請統一使用 "確定" 作為主按鈕文字，並套用綠色（#10b981）語意；取消動作一律使用 "取消" 灰色按鈕。避免在部分頁面使用 "送出"、"確認" 等混淆命名，確保全站一致性。
@@ -893,7 +894,7 @@ Upload 100 files
 ### AI for UX：NS05 錯誤預防 (Error Prevention)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 資深系統架構師與防呆專家。
@@ -901,7 +902,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免讓使用者輸入錯誤後才噴出警告，特別是破壞性操作（如刪除專案）不能在沒有防護的情況下直接執行。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位防呆專家。請設計一個 "刪除專案" 的安全機制。當使用者點擊刪除時，不要直接執行，而是彈出一個二次確認視窗，要求使用者手動輸入專案名稱（例如輸入 "MyProject"）才能啟用刪除按鈕。避免讓使用者因誤觸按鈕而導致資料遺失。
@@ -975,7 +976,7 @@ Upload 100 files
 ### AI for UX：NS06 辨識而非回憶 (Recognition Rather Than Recall)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 認知心理學與介面設計專家。
@@ -983,7 +984,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免讓使用者回想之前的輸入或去尋找隱藏的設定。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位搜尋介面設計師。當使用者點擊搜尋框時，請顯示一個浮動視窗，列出 "最近搜尋項目" 與 "熱門推薦標籤"，讓使用者可以直接點擊。避免讓使用者必須自己去回想上一次輸入的關鍵字。
@@ -1046,7 +1047,7 @@ Upload 100 files
 ### AI for UX：NS07 使用的彈性與效率 (Flexibility & Efficiency of Use)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 生產力工具 UX 專家。
@@ -1054,7 +1055,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免讓所有操作都必須一步步點擊，這會導致高頻使用者效率極低。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位負責報表管理系統的 UX 專家。請為資料列表設計 "批次操作"（如批次刪除、批次匯出）。使用者勾選多個項目後，上方應出現浮動操作列，並支援快捷鍵（如按 Delete 鍵觸發批次刪除確認）。避免讓使用者必須點進每一筆資料單獨刪除。
@@ -1120,7 +1121,7 @@ Upload 100 files
 ### AI for UX：NS08 極簡與美觀設計 (Aesthetic & Minimalist Design)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 視覺傳達與 UI 設計師。
@@ -1128,7 +1129,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免將所有資訊一次塞在同一個畫面中（造成視覺噪音過載）。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位追求極簡主義的 UI 設計師。請重新設計這個儀表板。請過濾掉 80% 的次要監控數據，僅保留最重要的 3 個指標，並使用大字體與大量的留白（White Space）。其餘次要數據應收納至 "詳細報告" 展開按鈕中。避免把所有圖表和數字擠在同一頁。
@@ -1193,7 +1194,7 @@ Upload 100 files
 ### AI for UX：NS09 協助使用者辨識、診斷並從錯誤中復原 (Help Users Recognize, Diagnose, & Recover from Errors)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 客服體驗與 UX 技術 Writer。
@@ -1201,7 +1202,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免只顯示模糊的錯誤碼（如 `Error 0x80070005`）而沒有任何修復建議。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位軟體易用性專家。請重寫上傳檔案失敗的錯誤提示。如果使用者上傳了不支援的格式（如 PDF，而系統只接受 PNG/JPG），請顯示："上傳失敗：不支援此檔案格式。我們只接受 PNG 或 JPG 格式（最大 5MB）。請將您的檔案轉檔後重新上傳，或點此 [查看支援格式說明] 連結。" 避免使用 "Format invalid" 這種無建設性的文字。
@@ -1264,7 +1265,7 @@ Upload 100 files
 ### AI for UX：NS10 說明文件與輔助說明 (Help & Documentation)
 
 <div class="two-columns">
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 技術寫作與引導設計專家。
@@ -1272,7 +1273,7 @@ Upload 100 files
 - **避免 (Avoid)**: 避免提供冗長無趣的整本操作手冊，或完全沒有任何操作說明。
 
 </div>
-<div class="prompt-box" style="font-size: 18px;">
+<div class="prompt-box">
 
 ### 📝 提示詞範本
 > 你是一位新手引導設計專家。請為我們的 [智慧報稅系統] 設計一個 Heuristic 10 (Help and Documentation) 的引導方案。當使用者首次進入『薪資申報』頁面時，設計一個輕量級的步驟引導 (Walkthrough Tooltip) 說明如何匯入扣繳憑單，並提供常見問答連結，避免拋出 20 頁的說明書讓使用者自己閱讀。
