@@ -5,6 +5,7 @@ paginate: true
 header: 'UX for AI: Human-Centered AI System Design'
 footer: '薛念林 教授 | 逢甲大學資訊工程學系'
 size: 16:9
+transition: fade
 style: |
   section {
     font-family: 'PingFang SC', 'PingFang TC', 'Noto Sans CJK TC', 'Microsoft JhengHei', sans-serif;
@@ -248,6 +249,19 @@ style: |
     box-shadow: none;
   }
 
+
+<script>
+  // 支援由首頁 index.html 控制是否啟用換頁動畫
+  const params = new URLSearchParams(window.location.search);
+  const transitionPref = params.get('transition') ?? localStorage.getItem('marp-transition');
+  if (transitionPref === 'false' || transitionPref === 'none') {
+    document.querySelectorAll('section[data-transition], section[data-transition-back]').forEach(el => {
+      el.removeAttribute('data-transition');
+      el.removeAttribute('data-transition-back');
+    });
+  }
+</script>
+
 ---
 
 <!-- _class: lead -->
@@ -267,17 +281,17 @@ style: |
 <div class="card">
 
 ### 🌐 AI 系統與現代互動挑戰
-* 什麼是深度封裝的 AI 系統 (AI Systems)
-* 知名應用案例：Copilot, Midjourney, Notion AI
-* AI 時代的 6 大體驗痛點 (延遲、空白框、黑盒等)
+- 什麼是深度封裝的 AI 系統 (AI Systems)
+- 知名應用案例：Copilot, Midjourney, Notion AI
+- AI 時代的 6 大體驗痛點 (延遲、空白框、黑盒等)
 
 </div>
 <div class="card">
 
 ### 🛠️ 10 大原則在 AI 系統的心法與 Prompt
-* NS01 ~ NS10 在 AI 時代的演進與心法
-* 具體設計實務與建議提示詞架構
-* 師生互動實踐 (CCQ & QA)
+- NS01 ~ NS10 在 AI 時代的演進與心法
+- 具體設計實務與建議提示詞架構
+- 師生互動實踐 (CCQ & QA)
 
 </div>
 </div>
@@ -294,16 +308,16 @@ style: |
 <div class="card">
 
 ### 💡 什麼是 AI 系統 (AI Systems)？
-* **非單純的大語言模型 (LLM)** ：它不是叫使用者去跟 ChatGPT/Claude 網頁版聊天，而是將 AI 能力深度封裝於工作流中的 **應用產品** 。
-* **以人為本的系統整合** ：AI 扮演背景運算、自動完成、智能建議或自主代理人 (Agent) 的角色，提供直覺且自然的互動介面。
+- **非單純的大語言模型 (LLM)** ：它不是叫使用者去跟 ChatGPT/Claude 網頁版聊天，而是將 AI 能力深度封裝於工作流中的 **應用產品** 。
+- **以人為本的系統整合** ：AI 扮演背景運算、自動完成、智能建議或自主代理人 (Agent) 的角色，提供直覺且自然的互動介面。
 
 </div>
 <div class="card">
 
 ### 🎯 AI 系統的關鍵應用範疇
-* **智慧輔助與自動完成 (Co-piloting)** ：在開發或創作中給予行內建議。
-* **上下文關聯操作 (Contextual Actions)** ：根據使用者目前選取的內容主動提供功能。
-* **多模態智慧轉換 (Multimodal)** ：將文字、圖像、語音、程式碼等多種媒介進行無縫轉譯。
+- **智慧輔助與自動完成 (Co-piloting)** ：在開發或創作中給予行內建議。
+- **上下文關聯操作 (Contextual Actions)** ：根據使用者目前選取的內容主動提供功能。
+- **多模態智慧轉換 (Multimodal)** ：將文字、圖像、語音、程式碼等多種媒介進行無縫轉譯。
 
 </div>
 </div>
@@ -315,16 +329,16 @@ style: |
 <div class="two-columns">
 <div class="card" style="font-size: 21px;">
 
-* 💻 **GitHub Copilot** ：整合於 IDE 的 AI 結對程式員。透過灰色預測字元 (Ghost Text) 在行內即時推薦程式碼，極大提升開發效率。
-* 🎨 **Midjourney / DALL-E 3** ：文字生成圖像系統。將複雜的藝術創作過程簡化為 Prompt 對話，從根本改變了創意設計流程。
-* 📝 **Notion AI** ：將 AI 融入文件編輯器的右鍵/斜線選單。提供選取文字一鍵潤飾、翻譯、總結或擴寫的情境功能。
+- 💻 **GitHub Copilot** ：整合於 IDE 的 AI 結對程式員。透過灰色預測字元 (Ghost Text) 在行內即時推薦程式碼，極大提升開發效率。
+- 🎨 **Midjourney / DALL-E 3** ：文字生成圖像系統。將複雜的藝術創作過程簡化為 Prompt 對話，從根本改變了創意設計流程。
+- 📝 **Notion AI** ：將 AI 融入文件編輯器的右鍵/斜線選單。提供選取文字一鍵潤飾、翻譯、總結或擴寫的情境功能。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
-* 🌐 **DeepL** ：基於神經網絡的 AI 機器翻譯系統。具備極強的上下文理解力，能生成自然流暢的商業與學術翻譯。
-* 🚗 **Tesla FSD (Full Self-Driving)** ：車載自動駕駛系統。採用純視覺神經網路，為車主提供端到端 (End-to-End) 的輔助駕駛體驗。
-* 🔬 **AlphaFold** ：蛋白質結構預測系統。為生物學家提供高精度預測，將傳統實驗需耗時數年的工作縮短至數秒。
+- 🌐 **DeepL** ：基於神經網絡的 AI 機器翻譯系統。具備極強的上下文理解力，能生成自然流暢的商業與學術翻譯。
+- 🚗 **Tesla FSD (Full Self-Driving)** ：車載自動駕駛系統。採用純視覺神經網路，為車主提供端到端 (End-to-End) 的輔助駕駛體驗。
+- 🔬 **AlphaFold** ：蛋白質結構預測系統。為生物學家提供高精度預測，將傳統實驗需耗時數年的工作縮短至數秒。
 
 </div>
 </div>
@@ -339,25 +353,25 @@ style: |
 <div class="card">
 
 ### 1. 緩解等待焦慮
-* 拒絕靜態 Loading
-* 打字機 Streaming 輸出
-* 展開式 Thinking Steps
+- 拒絕靜態 Loading
+- 打字機 Streaming 輸出
+- 展開式 Thinking Steps
 
 </div>
 <div class="card">
 
 ### 2. 消除空白框恐懼
-* 拒絕單一空白對話框
-* 提示詞晶片 (Prompt Chips)
-* 反白文字 AI 快捷懸浮球
+- 拒絕單一空白對話框
+- 提示詞晶片 (Prompt Chips)
+- 反白文字 AI 快捷懸浮球
 
 </div>
 <div class="card">
 
 ### 3. 對抗不確定性
-* 隨時中斷生成 (Stop)
-* 歷史版本輪播 (Carousel)
-* 幻覺防範與優雅降級
+- 隨時中斷生成 (Stop)
+- 歷史版本輪播 (Carousel)
+- 幻覺防範與優雅降級
 
 </div>
 </div>
@@ -372,18 +386,18 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **緩解 AI 的「思考延遲（Latency）」：** 
-  * 避免只用靜態的「Loading...」，改用 **打字機效果（Streaming）** 即時輸出內容。
-  * 引入 **展開式「思考步驟（Thinking Steps）」** （如 DeepSeek/O1 的 CoT 摺疊面板），讓使用者清楚 AI 正在進行「聯網搜尋」、「閱讀文件」或「執行程式碼」。
-* **多步驟 AI 工作流（Multi-Agent Workflows）：**
-  * 使用狀態節點圖（Node Graph）或微步進器，向使用者顯示目前 AI 助理正在進行 5 個步驟中的第 2 步（例如：生成草稿 → 翻譯 → 校對）。
+- **緩解 AI 的「思考延遲（Latency）」：** 
+  - 避免只用靜態的「Loading...」，改用 **打字機效果（Streaming）** 即時輸出內容。
+  - 引入 **展開式「思考步驟（Thinking Steps）」** （如 DeepSeek/O1 的 CoT 摺疊面板），讓使用者清楚 AI 正在進行「聯網搜尋」、「閱讀文件」或「執行程式碼」。
+- **多步驟 AI 工作流（Multi-Agent Workflows）：**
+  - 使用狀態節點圖（Node Graph）或微步進器，向使用者顯示目前 AI 助理正在進行 5 個步驟中的第 2 步（例如：生成草稿 → 翻譯 → 校對）。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **DeepSeek-R1 / OpenAI o1** 思考摺疊面板。
-* AI 進行推理時，介面會呈現一個名為 `Thought` 或 `Thinking` 的摺疊區塊，即時顯示其思考步驟（ **Chain of Thought, CoT** ）。使用者可展開查看詳細邏輯，以緩解等待焦慮。
+- **DeepSeek-R1 / OpenAI o1** 思考摺疊面板。
+- AI 進行推理時，介面會呈現一個名為 `Thought` 或 `Thinking` 的摺疊區塊，即時顯示其思考步驟（ **Chain of Thought, CoT** ）。使用者可展開查看詳細邏輯，以緩解等待焦慮。
 
 </div>
 </div>
@@ -416,18 +430,18 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **將「模型參數」具象化：**
-  * 避免在一般介面直接呈現 Temperature、Top_p、Token Limit 等大模型底層術語。
-  * 將技術參數轉化為直覺的「擬真滑桿」或「單選按鈕」（例如：將 Temperature 轉化為「💡 創意表現：保守 → 豐富想像力」）。
-* **擬真隱喻與控制：**
-  * 使用「副駕駛（Copilot）」或「助理（Assistant）」的擬人化視覺隱喻，讓使用者知道它可以對話，而非面對一個冰冷的 Command Line。
+- **將「模型參數」具象化：**
+  - 避免在一般介面直接呈現 Temperature、Top_p、Token Limit 等大模型底層術語。
+  - 將技術參數轉化為直覺的「擬真滑桿」或「單選按鈕」（例如：將 Temperature 轉化為「💡 創意表現：保守 → 豐富想像力」）。
+- **擬真隱喻與控制：**
+  - 使用「副駕駛（Copilot）」或「助理（Assistant）」的擬人化視覺隱喻，讓使用者知道它可以對話，而非面對一個冰冷的 Command Line。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Notion AI** 的「變更語氣」下拉選單。
-* 後台模型參數如 `Temperature` （溫度）對大眾而言過於技術化。 Notion AI 將其轉化為直覺的「語氣調整」（例如：專業、日常、幽默、友善），更貼近使用者的日常語音習慣。
+- **Notion AI** 的「變更語氣」下拉選單。
+- 後台模型參數如 `Temperature` （溫度）對大眾而言過於技術化。 Notion AI 將其轉化為直覺的「語氣調整」（例如：專業、日常、幽默、友善），更貼近使用者的日常語音習慣。
 
 </div>
 </div>
@@ -460,17 +474,17 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **對抗 AI 的不確定性：**
-  * 提供隨時 **「中斷生成（Stop Generating）」** 的按鈕，防止 AI 輸出過長或失控的內容。
-  * 引入 **「版本輪播（Version Carousel）」** ：在 AI 生成的結果旁，提供 1/3 的左右切換鍵，允許使用者對比並找回前幾次生成的滿意版本。
-  * **Prompt 局部編輯** ：使用者可以編輯對話歷史中的任何一則 Prompt，點擊後系統自動在該節點分支「重新生成」，不破壞原始對話。
+- **對抗 AI 的不確定性：**
+  - 提供隨時 **「中斷生成（Stop Generating）」** 的按鈕，防止 AI 輸出過長或失控的內容。
+  - 引入 **「版本輪播（Version Carousel）」** ：在 AI 生成的結果旁，提供 1/3 的左右切換鍵，允許使用者對比並找回前幾次生成的滿意版本。
+  - **Prompt 局部編輯** ：使用者可以編輯對話歷史中的任何一則 Prompt，點擊後系統自動在該節點分支「重新生成」，不破壞原始對話。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **ChatGPT / Claude** 的「中斷生成」與「歷史版本切換」。
-* 當 AI 輸出的內容偏離預期或陷入無限迴圈時，使用者可隨時點擊「■ 中斷生成 (Stop Generating)」按鈕；生成完成後，若對答案不滿意，可使用 `1/2` 左右按鈕切換並對比歷史生成的不同版本。
+- **ChatGPT / Claude** 的「中斷生成」與「歷史版本切換」。
+- 當 AI 輸出的內容偏離預期或陷入無限迴圈時，使用者可隨時點擊「■ 中斷生成 (Stop Generating)」按鈕；生成完成後，若對答案不滿意，可使用 `1/2` 左右按鈕切換並對比歷史生成的不同版本。
 
 </div>
 </div>
@@ -503,19 +517,19 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **建立 AI 互動的「新標準」：**
-  * 雖然 AI 介面日新月異，但已建立起業界標準（Standards），設計時必須遵循：
-    * `Cmd + K` 或 `Ctrl + K` 喚醒全域 AI 搜尋/指令面板。
-    * 輸入框按 `Enter` 為發送，`Shift + Enter` 為換行。
-    * 每一則 AI 回覆的底部必備「複製（Copy）」與「重新生成（Regenerate）」圖標。
-* **反饋機制的一致性：** 全站統一使用「👍 / 👎」或「星星評分」收集使用者對 AI 回覆的滿意度，不可隨意更換評分標準。
+- **建立 AI 互動的「新標準」：**
+  - 雖然 AI 介面日新月異，但已建立起業界標準（Standards），設計時必須遵循：
+    - `Cmd + K` 或 `Ctrl + K` 喚醒全域 AI 搜尋/指令面板。
+    - 輸入框按 `Enter` 為發送，`Shift + Enter` 為換行。
+    - 每一則 AI 回覆的底部必備「複製（Copy）」與「重新生成（Regenerate）」圖標。
+- **反饋機制的一致性：** 全站統一使用「👍 / 👎」或「星星評分」收集使用者對 AI 回覆的滿意度，不可隨意更換評分標準。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Cursor / ChatGPT** 的標準輸入框按鍵設計。
-* 全網 AI 助手已形成通用的操作標準：使用 `Enter` 鍵發送、 `Shift + Enter` 鍵進行換行；回覆內容底部一致使用「📋 複製」與「👍/👎 回饋評分」圖標。
+- **Cursor / ChatGPT** 的標準輸入框按鍵設計。
+- 全網 AI 助手已形成通用的操作標準：使用 `Enter` 鍵發送、 `Shift + Enter` 鍵進行換行；回覆內容底部一致使用「📋 複製」與「👍/👎 回饋評分」圖標。
 
 </div>
 </div>
@@ -548,17 +562,17 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **預防「糟糕輸入導致垃圾輸出（Garbage in, Garbage out）」：**
-  * 一般使用者極度不擅長寫 Prompt。提供 **「提示詞晶片（Prompt Chips/Suggestions）」** 或模板（Templates），點擊即代入標準提示。
-  * 輸入框中預設豐富的 **Placeholder 提示字** （例如：試試看輸入：『幫我把這段報告翻譯成日文...』），引導正確輸入。
-* **智慧 Prompt 預檢（Pre-flight Check）：** 當檢測到使用者上傳了不支援的檔案格式，或輸入的 Prompt 語意含混時，在發送前以「Inline Suggestion」主動提醒。
+- **預防「糟糕輸入導致垃圾輸出（Garbage in, Garbage out）」：**
+  - 一般使用者極度不擅長寫 Prompt。提供 **「提示詞晶片（Prompt Chips/Suggestions）」** 或模板（Templates），點擊即代入標準提示。
+  - 輸入框中預設豐富的 **Placeholder 提示字** （例如：試試看輸入：『幫我把這段報告翻譯成日文...』），引導正確輸入。
+- **智慧 Prompt 預檢（Pre-flight Check）：** 當檢測到使用者上傳了不支援的檔案格式，或輸入的 Prompt 語意含混時，在發送前以「Inline Suggestion」主動提醒。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **ChatGPT / Claude** 的「提示字晶片 (Prompt Chips)」與「預設預檢」。
-* 一般使用者不擅長撰寫 Prompt 。輸入框下方預設提供常用範本的晶片（例如「分析數據」、「撰寫郵件」），點擊即可套用；且當上傳不支援的檔案格式時，發送按鈕會轉為禁用狀態，防止無效點擊。
+- **ChatGPT / Claude** 的「提示字晶片 (Prompt Chips)」與「預設預檢」。
+- 一般使用者不擅長撰寫 Prompt 。輸入框下方預設提供常用範本的晶片（例如「分析數據」、「撰寫郵件」），點擊即可套用；且當上傳不支援的檔案格式時，發送按鈕會轉為禁用狀態，防止無效點擊。
 
 </div>
 </div>
@@ -591,18 +605,18 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **告別「萬惡的空白輸入框（Empty State Fear）」：**
-  * 不要只給使用者一個空無一物的對話框，這會帶來極高的認知摩擦（Cognitive Friction）。
-  * 畫面上應常駐 **「最近使用的 Agent 助理」** 、 **「常用 Prompt 歷史紀錄」** 、或一鍵調用最近編輯的檔案。
-* **情境選單（Contextual Actions）：**
-  * 當使用者在網頁上反白選取一段文字時，立刻在游標旁彈出「AI 快捷懸浮球」（如：翻譯、總結、潤飾），讓使用者「看得到就能點」，不需手動複製貼上。
+- **告別「萬惡的空白輸入框（Empty State Fear）」：**
+  - 不要只給使用者一個空無一物的對話框，這會帶來極高的認知摩擦（Cognitive Friction）。
+  - 畫面上應常駐 **「最近使用的 Agent 助理」** 、 **「常用 Prompt 歷史紀錄」** 、或一鍵調用最近編輯的檔案。
+- **情境選單（Contextual Actions）：**
+  - 當使用者在網頁上反白選取一段文字時，立刻在游標旁彈出「AI 快捷懸浮球」（如：翻譯、總結、潤飾），讓使用者「看得到就能點」，不需手動複製貼上。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Notion AI** 的「文字選取 AI 懸浮選單」。
-* 當使用者在頁面中反白選取任何文字時，系統會自動在游標旁彈出懸浮工具列，提供翻譯、摘要、重寫等 AI 情境按鈕。使用者「看見即可點選」，不需要回憶 `/` 指令或複製貼上。
+- **Notion AI** 的「文字選取 AI 懸浮選單」。
+- 當使用者在頁面中反白選取任何文字時，系統會自動在游標旁彈出懸浮工具列，提供翻譯、摘要、重寫等 AI 情境按鈕。使用者「看見即可點選」，不需要回憶 `/` 指令或複製貼上。
 
 </div>
 </div>
@@ -635,17 +649,17 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **專為高頻使用者設計的快捷路徑（Shortcuts）：**
-  * **斜線指令（Slash Commands）：** 輸入 `/` 即可快速喚起功能選單（如 Notion AI 或 Slack）。
-  * **@Mentions 跨領域調用：** 輸入 `@` 快速指派特定專長的 AI 代理人或引用外部知識庫（如 `@Designer`、`@CodingBot`）。
-  * **一鍵自訂（Prompt Presets）：** 允許使用者將自己調校好、最常用的長 Prompt 存檔，設定成自訂按鈕（如：『以專業金融顧問的口吻回覆』快捷鍵）。
+- **專為高頻使用者設計的快捷路徑（Shortcuts）：**
+  - **斜線指令（Slash Commands）：** 輸入 `/` 即可快速喚起功能選單（如 Notion AI 或 Slack）。
+  - **@Mentions 跨領域調用：** 輸入 `@` 快速指派特定專長的 AI 代理人或引用外部知識庫（如 `@Designer`、`@CodingBot`）。
+  - **一鍵自訂（Prompt Presets）：** 允許使用者將自己調校好、最常用的長 Prompt 存檔，設定成自訂按鈕（如：『以專業金融顧問的口吻回覆』快捷鍵）。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Cursor** 的 `@-mentions` 與 Notion AI 的 `/` 斜線指令。
-* 針對高頻專業使用者， Cursor 允許在輸入框輸入 `@` 快速調用檔案 ( `@Files` )、資料夾 ( `@Folders` ) 或網頁 ( `@Web` )； Notion AI 支援輸入 `/` 快速喚起 AI 寫作助手，極大提升專家的操作效率。
+- **Cursor** 的 `@-mentions` 與 Notion AI 的 `/` 斜線指令。
+- 針對高頻專業使用者， Cursor 允許在輸入框輸入 `@` 快速調用檔案 ( `@Files` )、資料夾 ( `@Folders` ) 或網頁 ( `@Web` )； Notion AI 支援輸入 `/` 快速喚起 AI 寫作助手，極大提升專家的操作效率。
 
 </div>
 </div>
@@ -678,17 +692,17 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **避免 AI「資訊轟炸（Information Overload）」：**
-  * AI 生成內容空間有限且往往極長。避免一次性將幾千字全部扔給使用者。
-  * **預設折疊與展開（Show More）：** 對於長篇文章、程式碼區塊或詳細的分析過程，預設僅顯示前 3 行與摘要，使用者有興趣再展開。
-  * **善用資訊層級：** 使用粗體、高亮、標籤晶片和適度的卡片區塊區隔資訊，保持版面的整潔與高度可讀性。
+- **避免 AI「資訊轟炸（Information Overload）」：**
+  - AI 生成內容空間有限且往往極長。避免一次性將幾千字全部扔給使用者。
+  - **預設折疊與展開（Show More）：** 對於長篇文章、程式碼區塊或詳細的分析過程，預設僅顯示前 3 行與摘要，使用者有興趣再展開。
+  - **善用資訊層級：** 使用粗體、高亮、標籤晶片和適度的卡片區塊區隔資訊，保持版面的整潔與高度可讀性。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Claude Artifacts** 獨立雙面板設計。
-* Claude 將生成的長篇程式碼、網頁或圖表等複雜內容，自動拆分至右側獨立的預覽面板（ **Artifacts** ）中，避免左側對話框被幾千行的程式碼淹沒，保持版面極簡與高度可讀性。
+- **Claude Artifacts** 獨立雙面板設計。
+- Claude 將生成的長篇程式碼、網頁或圖表等複雜內容，自動拆分至右側獨立的預覽面板（ **Artifacts** ）中，避免左側對話框被幾千行的程式碼淹沒，保持版面極簡與高度可讀性。
 
 </div>
 </div>
@@ -721,18 +735,18 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **優雅防範 AI「幻覺（Hallucination）」與「失效」：**
-  * 當 AI 的回答可能不準確或不符合事實時，介面應明確標記（如：「⚠️ 此回答由 AI 生成，關鍵資訊請交叉核對」），並提供快速重新生成。
-* **API 連線/超時報錯優雅降級（Graceful Degradation）：**
-  * 當 AI 服務過載（如 Token 耗盡、超時斷線），不要只拋出「HTTP 502 Bad Gateway」等狀態碼。
-  * 應白話告訴使用者：「目前 AI 連線人數眾多，您的 Prompt 檔已自動儲存，您可以[一鍵重試]。」
+- **優雅防範 AI「幻覺（Hallucination）」與「失效」：**
+  - 當 AI 的回答可能不準確或不符合事實時，介面應明確標記（如：「⚠️ 此回答由 AI 生成，關鍵資訊請交叉核對」），並提供快速重新生成。
+- **API 連線/超時報錯優雅降級（Graceful Degradation）：**
+  - 當 AI 服務過載（如 Token 耗盡、超時斷線），不要只拋出「HTTP 502 Bad Gateway」等狀態碼。
+  - 應白話告訴使用者：「目前 AI 連線人數眾多，您的 Prompt 檔已自動儲存，您可以[一鍵重試]。」
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Cursor** 的終端機錯誤「Fix with AI」按鈕。
-* 當編譯或執行出錯時， Cursor 在終端機輸出區直接提供「Fix with AI」一鍵修復按鈕。點擊後 AI 會讀取錯誤訊息並自動生成修正方案，協助使用者快速從錯誤中復原，而非僅僅拋出看不懂的錯誤碼。
+- **Cursor** 的終端機錯誤「Fix with AI」按鈕。
+- 當編譯或執行出錯時， Cursor 在終端機輸出區直接提供「Fix with AI」一鍵修復按鈕。點擊後 AI 會讀取錯誤訊息並自動生成修正方案，協助使用者快速從錯誤中復原，而非僅僅拋出看不懂的錯誤碼。
 
 </div>
 </div>
@@ -765,18 +779,18 @@ style: |
 <div class="card" style="font-size: 21px;">
 
 ### 💡 AI 產品設計心法 (UX for AI)
-* **「可解釋性 AI」（XAI, Explainable AI）即是最好的說明：**
-  * AI 產生的推薦或決策，往往像個黑盒子。
-  * 介面中必須在決策旁提供 **「解釋說明（Explain this recommendation）」** 的互動提示。例如：「為什麼我會看到這筆推薦？因為您在 3 天內曾瀏覽過 Python 與 UI 設計相關職缺。」這就是 AI 時代的「說明文件」。
-* **情境化動態引導（Context-sensitive Copilot）：**
-  * 揚棄傳統的大部頭 Help PDF。在輸入框旁設計輕量化的「互動式提示指南」，引導使用者逐步學會如何精準寫出「好 Prompt」。
+- **「可解釋性 AI」（XAI, Explainable AI）即是最好的說明：**
+  - AI 產生的推薦或決策，往往像個黑盒子。
+  - 介面中必須在決策旁提供 **「解釋說明（Explain this recommendation）」** 的互動提示。例如：「為什麼我會看到這筆推薦？因為您在 3 天內曾瀏覽過 Python 與 UI 設計相關職缺。」這就是 AI 時代的「說明文件」。
+- **情境化動態引導（Context-sensitive Copilot）：**
+  - 揚棄傳統的大部頭 Help PDF。在輸入框旁設計輕量化的「互動式提示指南」，引導使用者逐步學會如何精準寫出「好 Prompt」。
 
 </div>
 <div class="card" style="font-size: 21px;">
 
 ### 🔍 真實系統應用案例
-* **Perplexity AI / ChatGPT Search** 的數字引文腳註。
-* AI 生成的內容可能存在幻覺。介面在每個事實論點旁標記數字腳註（例如 `[1]` , `[2]` ），滑鼠懸停或點擊可顯示該資訊的原始新聞或網頁來源，作為可信度的即時輔助說明。
+- **Perplexity AI / ChatGPT Search** 的數字引文腳註。
+- AI 生成的內容可能存在幻覺。介面在每個事實論點旁標記數字腳註（例如 `[1]` , `[2]` ），滑鼠懸停或點擊可顯示該資訊的原始新聞或網頁來源，作為可信度的即時輔助說明。
 
 </div>
 </div>
@@ -807,23 +821,23 @@ style: |
 <div class="card">
 
 ### 1. 「Before & After」對比法
-* **不好的傳統 AI 介面** ：
-  * 空白對話框、缺少指引
-  * 毫無狀態提示、死等 30 秒
-  * 拋出 Raw Exception Log
-* **現代 UX for AI 介面** ：
-  * 打字機 Streaming + 思考步驟 CoT
-  * 豐富 Prompt 晶片與懸浮快捷選單
-  * 友善降級與可解釋性 (XAI)
+- **不好的傳統 AI 介面** ：
+  - 空白對話框、缺少指引
+  - 毫無狀態提示、死等 30 秒
+  - 拋出 Raw Exception Log
+- **現代 UX for AI 介面** ：
+  - 打字機 Streaming + 思考步驟 CoT
+  - 豐富 Prompt 晶片與懸浮快捷選單
+  - 友善降級與可解釋性 (XAI)
 
 </div>
 <div class="card">
 
 ### 2. 課堂即時測試與互動
-* 讓學生在課堂中拿出手機，打開主流 AI 工具（ChatGPT, Claude, Cursor, Notion AI）：
-  * 找出它們在 **NS01 - NS10** 中分別做對了哪些設計？
-  * 哪些地方仍有改進空間？
-* 以實務體驗連結學術理論，大幅提升課堂參與度！
+- 讓學生在課堂中拿出手機，打開主流 AI 工具（ChatGPT, Claude, Cursor, Notion AI）：
+  - 找出它們在 **NS01 - NS10** 中分別做對了哪些設計？
+  - 哪些地方仍有改進空間？
+- 以實務體驗連結學術理論，大幅提升課堂參與度！
 
 </div>
 </div>
