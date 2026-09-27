@@ -212,6 +212,8 @@ style: |
     box-shadow: none;
   }
 
+---
+
 <script>
   // 支援由首頁 index.html 控制是否啟用換頁動畫
   const params = new URLSearchParams(window.location.search);
@@ -224,7 +226,6 @@ style: |
   }
 </script>
 
----
 
 <!-- _class: lead -->
 # AI 驅動的系統雛形設計與前期體驗確認

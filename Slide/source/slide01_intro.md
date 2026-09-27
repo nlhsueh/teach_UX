@@ -250,6 +250,8 @@ style: |
   }
 
 
+---
+
 <script>
   // 支援由首頁 index.html 控制是否啟用換頁動畫
   const params = new URLSearchParams(window.location.search);
@@ -262,7 +264,6 @@ style: |
   }
 </script>
 
----
 
 <!-- _class: lead -->
 # Introduction to User Experience Design

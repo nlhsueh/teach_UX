@@ -275,6 +275,8 @@ style: |
   }
 
 
+---
+
 <script>
   // 支援由首頁 index.html 控制是否啟用換頁動畫
   const params = new URLSearchParams(window.location.search);
@@ -287,7 +289,6 @@ style: |
   }
 </script>
 
----
 
 <!-- _class: lead -->
 # AI for UX: 尼爾森 10 大可用性原則與提示工程
