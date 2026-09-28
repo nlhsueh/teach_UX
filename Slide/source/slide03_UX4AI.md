@@ -477,7 +477,7 @@ style: |
 ### 🛠️ 10 大原則在 AI 系統的心法與 Prompt
 - NS01 ~ NS10 在 AI 時代的演進與心法
 - 具體設計實務與建議提示詞架構
-- 師生互動實踐 (CCQ & QA)
+- 核心心法總結與課堂檢測 (CCQ & QA)
 
 </div>
 </div>
@@ -623,7 +623,7 @@ style: |
 
 > *“系統應說使用者的日常語言，而非工程師的技術術語，並遵循真實世界的邏輯習慣。”*
 
-<div class="two-columns-73">
+<div class="two-columns-64">
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
@@ -996,7 +996,7 @@ style: |
 
 > *“錯誤訊息應以清晰白話呈現，精確指出問題，並建設性地提供具體解決方案。”*
 
-<div class="two-columns-73">
+<div class="two-columns-64">
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
@@ -1098,31 +1098,31 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#34) 實用技巧與互動建議 [►](#38)' -->
+<!-- header: '[◄](#34) UX for AI 核心心法總結 [►](#38)' -->
 
-## 實用講義精進技巧 (師生互動建議)
+## UX for AI 核心心法與 10 大原則總結
+
+> *AI 系統充滿不確定性與黑盒子特性； UX for AI 的使命是用透明的狀態、直覺的隱喻、充分的控制權與情境化工具，確保人類始終掌控全局（Human-in-the-Loop）。*
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
 
-### 1. 「Before & After」對比法
-- **不好的傳統 AI 介面** ：
-  - 空白對話框、缺少指引
-  - 毫無狀態提示、死等 30 秒
-  - 拋出 Raw Exception Log
-- **現代 UX for AI 介面** ：
-  - 打字機 Streaming + 思考步驟 CoT
-  - 豐富 Prompt 晶片與懸浮快捷選單
-  - 友善降級與可解釋性 (XAI)
+### 🧭 透明與掌控 (NS01 ~ NS05)
+- **NS01 狀態能見度** ：Streaming 打字機即時輸出、CoT 思考步驟折疊面板。
+- **NS02 真實世界對應** ：底層模型參數轉化為直覺工程角色隱喻（Planning Mode）。
+- **NS03 控制與自由** ：隨時中斷生成 (Stop)、歷史版本輪播與 Diff 差異對照。
+- **NS04 一致性與標準** ：遵循 `Enter` 發送、`Cmd+I/K` 喚醒、統一評分圖標。
+- **NS05 錯誤預防** ：提供 Prompt 晶片引導與輸入前預檢，避免無效請求。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
 
-### 2. 課堂即時測試與互動
-- 讓學生在課堂中拿出筆電或手機，體驗主流 AI 工具（ChatGPT, Claude, Google Antigravity IDE, Perplexity）：
-  - 找出它們在 **NS01 - NS10** 中分別做對了哪些設計？
-  - 哪些地方仍有改進空間？
-- 以實務體驗連結學術理論，大幅提升課堂參與度！
+### ⚡ 效率與流暢 (NS06 ~ NS10)
+- **NS06 易於識別** ：反白浮動指令框 (`Cmd+I`)、程式碼鏡頭 (Code Lens)，看見即可點。
+- **NS07 彈性與效率** ：`@-mentions` 跨實體精準引用、`/` 斜線指令極速調度。
+- **NS08 美學與簡約** ：長篇產出與程式碼拆分至獨立 **Artifacts 預覽面板** ，避免資訊轟炸。
+- **NS09 錯誤復原** ：白話降級提示、Diagnostic Auto-Fix 一鍵修復，取代底層錯誤碼。
+- **NS10 說明與輔助** ：可解釋性 AI (XAI) 來源標註與數字引文腳註，即時解答疑惑。
 
 </div>
 </div>
@@ -1192,7 +1192,7 @@ style: |
 ### 全面系統 UX 健檢
 請挑選一個你常用的系統進行全方位診斷與優化構想：
 
-1. **問題診斷 ** ：找出系統中違反 **Nielsen 10 大原則** 的 3 個具體問題。
+1. **問題診斷** ：找出系統中違反 **Nielsen 10 大原則** 的 3 個具體問題。
 2. **AI Prompt 實踐** ：寫出一段具備工程師思維的 Prompt，要求 AI 生成符合該 UX 規範的前端組件。
 3. **AI 產品優化** ：若將該系統升級為 AI 智慧助手，你將如何設計防呆反饋與錯誤復原機制？
 
