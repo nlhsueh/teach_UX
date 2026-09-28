@@ -468,7 +468,7 @@ style: |
 
 ### 🌐 AI 系統與現代互動挑戰
 - 什麼是深度封裝的 AI 系統 (AI Systems)
-- 知名應用案例：Copilot, Midjourney, Notion AI
+- 知名應用案例：Copilot, Antigravity IDE, Midjourney
 - AI 時代的 6 大體驗痛點 (延遲、空白框、黑盒等)
 
 </div>
@@ -495,7 +495,7 @@ style: |
 <div class="card" data-marpit-fragment>
 
 ### 💡 什麼是 AI 系統 (AI Systems)？
-- **非單純的大語言模型 (LLM)** ：它不是叫使用者去跟 ChatGPT/Claude 網頁版聊天，而是將 AI 能力深度封裝於工作流中的 ** 應用產品** 。
+- **非單純的大語言模型 (LLM)** ：它不是叫使用者去跟 ChatGPT/Claude 網頁版聊天，而是將 AI 能力深度封裝於工作流中的 **應用產品** 。
 - **以人為本的系統整合** ：AI 扮演背景運算、自動完成、智能建議或自主代理人 (Agent) 的角色，提供直覺且自然的互動介面。
 
 </div>
@@ -518,7 +518,7 @@ style: |
 
 - 💻 **GitHub Copilot** ：整合於 IDE 的 AI 結對程式員。透過灰色預測字元 (Ghost Text) 在行內即時推薦程式碼，極大提升開發效率。
 - 🎨 **Midjourney / DALL-E 3** ：文字生成圖像系統。將複雜的藝術創作過程簡化為 Prompt 對話，從根本改變了創意設計流程。
-- 📝 **Notion AI** ：將 AI 融入文件編輯器的右鍵/斜線選單。提供選取文字一鍵潤飾、翻譯、總結或擴寫的情境功能。
+- 🚀 **Google Antigravity IDE** ：新一代 Agentic AI 整合開發環境。具備自主 Agent、工具調用（終端機、瀏覽器）、行內指令 (`Cmd+I`) 與計畫審查模式 (Planning Mode)，重塑軟體工程開發體驗。
 
 </div>
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
@@ -574,7 +574,7 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- **緩解 AI 的「思考延遲（Latency）」： **- 避免只用靜態的「Loading...」，改用 ** 打字機效果（Streaming)** 即時輸出內容。
+- **緩解 AI 的「思考延遲（Latency）」：**- 避免只用靜態的「Loading...」，改用打字機效果（Streaming) 即時輸出內容。
   - 引入 **展開式「思考步驟（Thinking Steps）」** （如 DeepSeek/O1 的 CoT 摺疊面板），讓使用者清楚 AI 正在進行「聯網搜尋」、「閱讀文件」或「執行程式碼」。
 - **多步驟 AI 工作流（Multi-Agent Workflows）：**
   - 使用狀態節點圖（Node Graph）或微步進器，向使用者顯示目前 AI 助理正在進行 5 個步驟中的第 2 步（例如：生成草稿 → 翻譯 → 校對）。
@@ -637,8 +637,8 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
-- **Notion AI** 的「變更語氣」下拉選單。
-- 後台模型參數如 `Temperature` （溫度）對大眾而言過於技術化。 Notion AI 將其轉化為直覺的「語氣調整」（例如：專業、日常、幽默、友善），更貼近使用者的日常語音習慣。
+- **Google Antigravity IDE** 的「工作模式」與「軟體工程隱喻」。
+- 後台模型參數如 `Temperature` （溫度）或推論次數對開發者而言難以量化。 Antigravity IDE 將底層參數轉化為真實世界的軟體工程角色隱喻： **Planning Mode（先出架構藍圖並待審查）** 與 **Agentic Fast Mode（即時結對執行與自動修復）**，用熟悉的工程思維取代冰冷演算法參數。
 
 </div>
 </div>
@@ -681,7 +681,7 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- 對抗 AI 的不確定性： - 提供隨時  「中斷生成（Stop Generating）」** 的按鈕，防止 AI 輸出過長或失控的內容。
+- **對抗 AI 的不確定性**： - 提供隨時  「中斷生成（Stop Generating）」的按鈕，防止 AI 輸出過長或失控的內容。
   - 引入 **「版本輪播（Version Carousel）」** ：在 AI 生成的結果旁，提供 1/3 的左右切換鍵，允許使用者對比並找回前幾次生成的滿意版本。
   - **Prompt 局部編輯** ：使用者可以編輯對話歷史中的任何一則 Prompt，點擊後系統自動在該節點分支「重新生成」，不破壞原始對話。
 
@@ -744,8 +744,8 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
-- **Cursor / ChatGPT** 的標準輸入框按鍵設計。
-- 全網 AI 助手已形成通用的操作標準：使用 `Enter` 鍵發送、 `Shift + Enter` 鍵進行換行；回覆內容底部一致使用「📋 複製」與「👍/👎 回饋評分」圖標。
+- **Google Antigravity IDE / ChatGPT** 的標準輸入與操作設計。
+- 全網 AI 助手已形成通用的操作標準：使用 `Enter` 鍵發送、 `Shift + Enter` 進行換行；編輯區支援 `Cmd + I` 快速調出即地指令框；回覆內容底部一致標配「📋 複製」與「👍/👎 回饋」，遵循統一互動規範。
 
 </div>
 </div>
@@ -772,7 +772,7 @@ style: |
 ### 📝 提示詞範本
 > 你是一位 AI Design System 架構師。 請為我們制定 一套跨業務系統適用的 AI 互動規範 (UI Style Guide) ：
 > 1. 規範通用快捷鍵：`Cmd/Ctrl + K` 喚醒面板、`Enter` 發送、`Shift + Enter` 換行。
-> 2. 統一代碼塊右上角的「複製」按鈕與回覆底部的「👍 / 👎 評分」與「重新生成」圖標樣式。 禁止 在不同頁面採用互相衝突的快捷鍵。
+> 2. 統一程式碼區塊右上角的「複製」按鈕與回覆底部的「👍 / 👎 評分」與「重新生成」圖標樣式。 禁止 在不同頁面採用互相衝突的快捷鍵。
 
 </div>
 </div>
@@ -822,7 +822,7 @@ style: |
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> **你是一位 **AI 防呆專家。針對 [AI 數據分析助理]， ** 請為我設計 ** 發送前的 **NS05 錯誤預防** 機制：
+> 你是一位 AI 防呆專家。針對 [AI 數據分析助理]，  請為我設計發送前的 **NS05 錯誤預防** 機制：
 > 1. 當使用者拖曳不支援的檔案格式（如 `.rar`）時，就地即時警示並將「發送」按鈕設為 Disabled。
 > 2. 在輸入框下方常駐 3~5 個「Prompt 範本晶片」，引導使用者直接點擊套用標準格式。 **禁止** 讓使用者面對毫無指引的空白框隨意輸入。
 
@@ -842,7 +842,7 @@ style: |
 ### 💡 AI 產品設計心法 (UX for AI)
 - **告別「萬惡的空白輸入框（Empty State Fear）」：**
   - 不要只給使用者一個空無一物的對話框，這會帶來極高的認知摩擦（Cognitive Friction）。
-  - 畫面上應常駐 **「最近使用的 Agent 助理」 ** 、 ** 「常用 Prompt 歷史紀錄」** 、或一鍵調用最近編輯的檔案。
+  - 畫面上應常駐「最近使用的 Agent 助理」、「常用 Prompt 歷史紀錄」、或一鍵調用最近編輯的檔案。
 - **情境選單（Contextual Actions）：**
   - 當使用者在網頁上反白選取一段文字時，立刻在游標旁彈出「AI 快捷懸浮球」（如：翻譯、總結、潤飾），讓使用者「看得到就能點」，不需手動複製貼上。
 
@@ -850,8 +850,8 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
-- **Notion AI** 的「文字選取 AI 懸浮選單」。
-- 當使用者在頁面中反白選取任何文字時，系統會自動在游標旁彈出懸浮工具列，提供翻譯、摘要、重寫等 AI 情境按鈕。使用者「看見即可點選」，不需要回憶 `/` 指令或複製貼上。
+- **Google Antigravity IDE** 的「行內指令（`Cmd + I`）與 Code Lens（程式碼鏡頭）」。
+- 當開發者選取程式碼時，可即地喚醒懸浮指令框；而在函式與類別上方常駐提供 **Code Lens**（如 `Explain`、`Refactor`、`Generate Tests`）。使用者「看見即可點擊觸發」，完全不必費心回憶 Prompt 語法或切換視窗手動複製貼上。
 
 </div>
 </div>
@@ -876,7 +876,7 @@ style: |
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> **你是一位 **AI 情境互動設計師。為了消除寫作助手的「空白框焦慮」， ** 請遵循 NS06 辨識而非記憶** 原則設計：
+> 你是一位AI 情境互動設計師。為了消除寫作助手的「空白框焦慮」， 請遵循 NS06 辨識而非記憶原則設計：
 > 1. 當使用者在編輯器反白選取文字時，游標旁即刻浮現「AI 快捷懸浮工具列」（提供摘要、翻譯、擴寫等選項）。
 > 2. 在首頁常駐「最近調用的 3 位 Agent 助理」卡片區。 **禁止** 強迫使用者自行背誦所有 `/` 斜線指令。
 
@@ -894,7 +894,8 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- **專為高頻使用者設計的快捷路徑（Shortcuts）： **-** 斜線指令（Slash Commands）：** 輸入 `/` 即可快速喚起功能選單（如 Notion AI 或 Slack）。
+- **專為高頻使用者設計的快捷路徑（Shortcuts）：**
+  - **斜線指令（Slash Commands）：** 輸入 `/` 即可快速喚起功能選單（如 Antigravity IDE 的 `/plan`、`/goal` 或 Slack）。
   - **@Mentions 跨領域調用：** 輸入 `@` 快速指派特定專長的 AI 代理人或引用外部知識庫（如 `@Designer`、`@CodingBot`）。
   - **一鍵自訂（Prompt Presets）：** 允許使用者將自己調校好、最常用的長 Prompt 存檔，設定成自訂按鈕（如：『以專業金融顧問的口吻回覆』快捷鍵）。
 
@@ -902,8 +903,8 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
-- **Cursor** 的 `@-mentions` 與 Notion AI 的 `/` 斜線指令。
-- 針對高頻專業使用者， Cursor 允許在輸入框輸入 `@` 快速調用檔案 ( `@Files` )、資料夾 ( `@Folders` ) 或網頁 ( `@Web` )； Notion AI 支援輸入 `/` 快速喚起 AI 寫作助手，極大提升專家的操作效率。
+- **Google Antigravity IDE** 的 `@-mentions` 與 `/` 斜線指令。
+- 針對高頻專業開發者， Antigravity 支援在輸入框鍵入 `@` 快速精準附加上下文（如 `@Files`、`@Folders`、`@Terminals`、`@Rules` 或 `@MCP` 工具）；同時支援 `/` 斜線指令（如 `/plan` 規劃、`/goal` 深入自主、`/schedule` 排程），讓專家雙手不離鍵盤即可極速調度 AI 工作流。
 
 </div>
 </div>
@@ -928,9 +929,9 @@ style: |
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> **你是一位 **AI 效率設計師。請為 [AI 合約審查系統] 同時設計 ** 新手與專家** 兩套互動路徑：
+> 你是一位 AI 效率設計師。請為 [AI 合約審查系統] 同時設計 新手與專家 兩套互動路徑：
 > 1. **新手路徑** ：步驟式點選審查精靈（Wizard），引導逐步上傳與點選檢查項。
-> 2. **專家路徑 ** ：鍵盤快捷控制台，支援 `/review` 快速審查與 `@compliance` 調用知識庫，並允許將常用 Prompt 設為一鍵巨集。 ** 禁止** 強制專家進行繁瑣的單步點擊。
+> 2. **專家路徑** ：鍵盤快捷控制台，支援 `/review` 快速審查與 `@compliance` 調用知識庫，並允許將常用 Prompt 設為一鍵巨集。 禁止 強制專家進行繁瑣的單步點擊。
 
 </div>
 </div>
@@ -981,9 +982,9 @@ style: |
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> **你是一位 **AI 資訊架構師。當 [AI 市場調研助理] 生成一份包含數據、長文與圖表的巨大報告時， ** 請基於 NS08 極簡設計** 重新排版：
+> 你是一位 AI 資訊架構師。當 [AI 市場調研助理] 生成一份包含數據、長文與圖表的巨大報告時， 請基於 NS08 極簡設計 重新排版：
 > 1. 將長篇程式碼與複雜圖表拆分至右側獨立的 **Artifacts 預覽面板** 。
-> 2. 左側對話區僅呈現前 3 行精簡摘要與 3 個核心 KPI 晶片，其餘細節提供「展開查看完整推演」按鈕。 **禁止** 將數千字未經收納直接瀑布流灌入。
+> 2. 左側對話區僅呈現前 3 行精簡摘要與 3 個核心 KPI 晶片，其餘細節提供「展開查看完整推演」按鈕。 禁止 將數千字未經收納直接瀑布流灌入。
 
 </div>
 </div>
@@ -1009,8 +1010,8 @@ style: |
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
-- **Cursor** 的終端機錯誤「Fix with AI」按鈕。
-- 當編譯或執行出錯時， Cursor 在終端機輸出區直接提供「Fix with AI」一鍵修復按鈕。點擊後 AI 會讀取錯誤訊息並自動生成修正方案，協助使用者快速從錯誤中復原，而非僅僅拋出看不懂的錯誤碼。
+- **Google Antigravity IDE** 的「Diagnostic Auto-Fix（診斷即時修復）」。
+- 當程式碼編譯出錯、Lint 報錯或終端機執行失敗時， Antigravity 在問題面板與終端機直接提供一鍵「Auto-Fix」按鈕。 Agent 會自主讀取錯誤堆疊追蹤 (Stack Trace)、定位受影響程式碼並自動提出 Diff 修改，協助工程師秒速從挫折中復原，而非拋出冰冷晦澀的錯誤碼。
 
 </div>
 </div>
@@ -1035,9 +1036,9 @@ style: |
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> **你是一位 **AI 微文案與容錯專家。當 [AI 翻譯器] 處理 50MB 大型文件因 Timeout 斷線時， ** 請基於 NS09** 設計錯誤對話框：
+> 你是一位 AI 微文案與容錯專家。當 [AI 翻譯器] 處理 50MB 大型文件因 Timeout 斷線時， 請基於 NS09 設計錯誤對話框：
 > 1. 以繁體中文白話告知：「連線超時。因文件較大，AI 處理時間超出預期，您的原檔已安全暫存。」
-> 2. 提供兩個具體動作按鈕：「[一鍵自動拆分為 3 個章節上傳]」與「[重新連線重試]」。 **禁止** 僅拋出 `HTTP 504 Gateway Timeout`。
+> 2. 提供兩個具體動作按鈕：「[一鍵自動拆分為 3 個章節上傳]」與「[重新連線重試]」。 禁止 僅拋出 `HTTP 504 Gateway Timeout`。
 
 </div>
 </div>
@@ -1089,9 +1090,9 @@ style: |
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> **你是一位 ** 可解釋性 AI (XAI) 設計師。 ** 請為 [AI 理財投資助理] 設計 NS10 輔助說明** 機制：
+> 你是一位 可解釋性 AI (XAI) 設計師。 請為 [AI 理財投資助理] 設計 NS10 輔助說明 機制：
 > 1. 在 AI 生成的每項數據與建議旁標記數字腳註（如 `[1]`），點擊或懸停即浮現原始市場數據來源與推理依據。
-> 2. 在輸入框旁設計互動式 Tooltip，教導新手如何輸入「投資預算、風險偏好、時間週期」三大關鍵要素。 **禁止** 提供難以檢索的靜態手冊。
+> 2. 在輸入框旁設計互動式 Tooltip，教導新手如何輸入「投資預算、風險偏好、時間週期」三大關鍵要素。 禁止提供難以檢索的靜態手冊。
 
 </div>
 </div>
@@ -1118,7 +1119,7 @@ style: |
 <div class="card" data-marpit-fragment>
 
 ### 2. 課堂即時測試與互動
-- 讓學生在課堂中拿出手機，打開主流 AI 工具（ChatGPT, Claude, Cursor, Notion AI）：
+- 讓學生在課堂中拿出筆電或手機，體驗主流 AI 工具（ChatGPT, Claude, Google Antigravity IDE, Perplexity）：
   - 找出它們在 **NS01 - NS10** 中分別做對了哪些設計？
   - 哪些地方仍有改進空間？
 - 以實務體驗連結學術理論，大幅提升課堂參與度！
