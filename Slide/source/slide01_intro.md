@@ -27,28 +27,172 @@ style: |
     font-size: 14px;
     color: #64748b;
     text-align: right;
-    display: flex;
+    z-index: 1000;
+  }
+  header a.header-nav-arrow {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #475569;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  header a.header-nav-arrow:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+  }
+  .header-nav-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  .header-nav-title {
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-end;
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #475569;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .header-nav-wrapper:hover .header-nav-title,
+  .header-nav-wrapper.is-open .header-nav-title {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+  .nav-caret {
+    font-size: 10px;
+    margin-left: 4px;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .header-nav-wrapper:hover .nav-caret,
+  .header-nav-wrapper.is-open .nav-caret {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+  .nav-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 4px;
+    width: 480px;
+    max-height: 480px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.18), 0 6px 12px -2px rgba(15, 23, 42, 0.08);
+    padding: 12px 14px;
+    text-align: left;
+    z-index: 99999;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  /* Invisible bridge connecting trigger to dropdown */
+  .nav-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: transparent;
+  }
+  .header-nav-wrapper:hover .nav-dropdown,
+  .header-nav-wrapper.is-open .nav-dropdown {
+    display: block;
+    animation: navFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes navFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .nav-dropdown-header {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-dropdown-grid {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 4px;
   }
-  header a {
-    color: #2563eb !important;
-    text-decoration: none !important;
-    font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 4px;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    font-size: 11px;
-    line-height: 1.4;
-    transition: all 0.15s ease;
+  .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #334155 !important;
+    font-size: 12.5px;
+    line-height: 1.3;
+    transition: all 0.12s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  header a:hover {
-    background: #2563eb !important;
-    color: #ffffff !important;
-    border-color: #2563eb !important;
-    text-decoration: none !important;
+  .nav-dropdown-item:hover {
+    background: #eff6ff !important;
+    color: #1d4ed8 !important;
+    font-weight: 600;
+    transform: translateX(2px);
+  }
+  .nav-dropdown-item.active {
+    background: #dbeafe !important;
+    color: #1e40af !important;
+    font-weight: 700;
+  }
+  .nav-dropdown-item .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 600;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+  .nav-dropdown-item:hover .badge {
+    background: #bfdbfe;
+    color: #1e40af;
+  }
+  .nav-dropdown-item.active .badge {
+    background: #3b82f6;
+    color: #ffffff;
+  }
+  .nav-dropdown-item .item-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media print {
+    .nav-dropdown, .nav-caret {
+      display: none !important;
+    }
+    header {
+      z-index: auto !important;
+    }
   }
   section.part-cover header, .part-cover header {
     color: #cbd5e1;
@@ -351,7 +495,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#2) 1. 日常體驗與設計反思 [►](#17)' -->
+<!-- header: '[◄](#2) 1. 日常體驗與設計反思 [►](#16)' -->
 
 ## 無所不在的使用體驗 (Everywhere UX)
 
@@ -597,7 +741,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#3) 2. UX 核心概念與實踐流程 [►](#24)' -->
+<!-- header: '[◄](#3) 2. UX 核心概念與實踐流程 [►](#23)' -->
 
 ## 什麼是使用者體驗 (User Experience, UX)？
 
@@ -709,7 +853,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#17) 3. 課堂檢測與討論 (CCQ & QA) [►](#28)' -->
+<!-- header: '[◄](#16) 3. 課堂檢測與討論 (CCQ & QA) [►](#27)' -->
 
 <!-- id: ux-ch01-ccq1 -->
 ## 🙋 概念核對問答 (CCQ1)
@@ -724,7 +868,7 @@ style: |
 
 請判斷上述說法是否正確，並簡述兩者的定義邊界。
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1)
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1)
 
 </div>
 <div class="card-img">
@@ -749,7 +893,7 @@ style: |
 
 請參考 ISO9241-11 對 UX 的定義，判斷上述說法是否正確。
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2)
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2)
 
 </div>
 <div class="card-img">
@@ -770,13 +914,13 @@ style: |
 ### UX process
 以下哪個活動 **不算** 在 UX 的標準流程中？
 
-* **(A)** 了解使用者的痛點
-* **(B)** 進行畫面的設計與確認
-* **(C)** 進行市場的分析與調查
-* **(D)** 開發一個雛形進行試用
-* **(E)** 對系統進行壓力測試
+- **(A)** 了解使用者的痛點
+- **(B)** 進行畫面的設計與確認
+- **(C)** 進行市場的分析與調查
+- **(D)** 開發一個雛形進行試用
+- **(E)** 對系統進行壓力測試
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3)
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3)
 
 </div>
 <div class="card-img">
@@ -802,7 +946,7 @@ style: |
 3. **這帶給你什麼心理感受？（困惑、生氣、無助）**
 4. **如果你是設計師，你第一步想如何改善它？**
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-qa1)
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-qa1)
 
 </div>
 <div class="card-img">
@@ -820,3 +964,141 @@ style: |
 ## 打造以人為本、流暢優雅的使用者體驗
 
 **Q & A / 交流討論**
+
+<script>
+(function() {
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    // 1. Scan unique section titles and their slide IDs
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      
+      seenTitles.add(title);
+      sections.push({
+        id: sec.id,
+        title: title
+      });
+    });
+
+    if (sections.length === 0) return;
+
+    // Helper to create the dropdown DOM
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = '點擊固定或懸停查看所有章節快速跳轉';
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) {
+          wrapper.classList.add('is-open');
+        }
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>📑 快速跳轉章節目錄</span><span style="font-size:11px;font-weight:normal;color:#64748b;">共 ' + sections.length + ' 個章節</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        
+        item.addEventListener('click', function(e) {
+          wrapper.classList.remove('is-open');
+          dropdown.style.display = 'none';
+          window.location.hash = '#' + s.id;
+          setTimeout(() => { dropdown.style.display = ''; }, 350);
+        });
+        
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    // Close any pinned dropdown when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    // 2. Enhance each header element across all slides
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      
+      const links = header.querySelectorAll('a');
+      let prevLink = null;
+      let nextLink = null;
+      
+      links.forEach(a => {
+        const txt = a.textContent.trim();
+        if (txt === '◄' || txt === '◀') prevLink = a;
+        if (txt === '►' || txt === '▶') nextLink = a;
+      });
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      
+      header.innerHTML = '';
+      if (prevLink) {
+        prevLink.className = 'header-nav-arrow';
+        prevLink.title = '上一章節';
+        header.appendChild(prevLink);
+        header.appendChild(document.createTextNode(' '));
+      }
+      
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+      
+      if (nextLink) {
+        header.appendChild(document.createTextNode(' '));
+        nextLink.className = 'header-nav-arrow';
+        nextLink.title = '下一章節';
+        header.appendChild(nextLink);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderDropdown);
+  } else {
+    initHeaderDropdown();
+  }
+  setTimeout(initHeaderDropdown, 400);
+})();
+</script>

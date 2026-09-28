@@ -26,6 +26,172 @@ style: |
  font-size: 14px;
  color: #64748b;
  text-align: right;
+ z-index: 1000;
+ }
+ header a.header-nav-arrow {
+ display: inline-block;
+ padding: 2px 6px;
+ border-radius: 4px;
+ color: #475569;
+ text-decoration: none;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ font-size: 13px;
+ line-height: 1;
+ transition: background 0.15s ease, color 0.15s ease;
+ }
+ header a.header-nav-arrow:hover {
+ background: #e2e8f0;
+ color: #1e293b;
+ }
+ .header-nav-wrapper {
+ position: relative;
+ display: inline-block;
+ }
+ .header-nav-title {
+ display: inline-flex;
+ align-items: center;
+ cursor: pointer;
+ padding: 3px 8px;
+ border-radius: 6px;
+ font-weight: 500;
+ color: #475569;
+ transition: background 0.15s ease, color 0.15s ease;
+ }
+ .header-nav-wrapper:hover .header-nav-title,
+ .header-nav-wrapper.is-open .header-nav-title {
+ background: #e0f2fe;
+ color: #0369a1;
+ }
+ .nav-caret {
+ font-size: 10px;
+ margin-left: 4px;
+ opacity: 0.6;
+ transition: transform 0.2s ease;
+ display: inline-block;
+ }
+ .header-nav-wrapper:hover .nav-caret,
+ .header-nav-wrapper.is-open .nav-caret {
+ transform: rotate(180deg);
+ opacity: 1;
+ }
+ .nav-dropdown {
+ display: none;
+ position: absolute;
+ right: 0;
+ top: 100%;
+ margin-top: 4px;
+ width: 580px;
+ max-height: 480px;
+ background: rgba(255, 255, 255, 0.98);
+ backdrop-filter: blur(16px);
+ -webkit-backdrop-filter: blur(16px);
+ border: 1px solid #cbd5e1;
+ border-radius: 12px;
+ box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.18), 0 6px 12px -2px rgba(15, 23, 42, 0.08);
+ padding: 12px 14px;
+ text-align: left;
+ z-index: 99999;
+ overflow-y: auto;
+ box-sizing: border-box;
+ }
+ /* Invisible bridge connecting trigger to dropdown */
+ .nav-dropdown::before {
+ content: '';
+ position: absolute;
+ top: -14px;
+ left: 0;
+ right: 0;
+ height: 14px;
+ background: transparent;
+ }
+ .header-nav-wrapper:hover .nav-dropdown,
+ .header-nav-wrapper.is-open .nav-dropdown {
+ display: block;
+ animation: navFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+ @keyframes navFadeIn {
+ from {
+ opacity: 0;
+ transform: translateY(-4px);
+ }
+ to {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ }
+ .nav-dropdown-header {
+ font-size: 13px;
+ font-weight: 700;
+ color: #1e293b;
+ border-bottom: 1px solid #e2e8f0;
+ padding-bottom: 8px;
+ margin-bottom: 8px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+ .nav-dropdown-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 4px 10px;
+ }
+ .nav-dropdown-item {
+ display: flex;
+ align-items: center;
+ padding: 6px 8px;
+ border-radius: 6px;
+ text-decoration: none;
+ color: #334155 !important;
+ font-size: 12px;
+ line-height: 1.3;
+ transition: all 0.12s ease;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+ .nav-dropdown-item:hover {
+ background: #eff6ff !important;
+ color: #1d4ed8 !important;
+ font-weight: 600;
+ transform: translateX(2px);
+ }
+ .nav-dropdown-item.active {
+ background: #dbeafe !important;
+ color: #1e40af !important;
+ font-weight: 700;
+ }
+ .nav-dropdown-item .badge {
+ display: inline-block;
+ font-size: 11px;
+ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+ font-weight: 600;
+ color: #64748b;
+ background: #f1f5f9;
+ padding: 1px 5px;
+ border-radius: 4px;
+ margin-right: 6px;
+ flex-shrink: 0;
+ }
+ .nav-dropdown-item:hover .badge {
+ background: #bfdbfe;
+ color: #1e40af;
+ }
+ .nav-dropdown-item.active .badge {
+ background: #3b82f6;
+ color: #ffffff;
+ }
+ .nav-dropdown-item .item-text {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ }
+ @media print {
+ .nav-dropdown, .nav-caret {
+ display: none !important;
+ }
+ header {
+ z-index: auto !important;
+ }
  }
  footer {
  font-size: 14px;
@@ -740,7 +906,7 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_04.jpg)
 
 ---
-<!-- header: '[◄](#24) NS05 錯誤預防 (Error Prevention) [►](#33)' -->
+<!-- header: '[◄](#24) NS05 錯誤預防 (Error Prevention) [►](#34)' -->
 
 ## NS05 錯誤預防 (Error Prevention)
 
@@ -814,7 +980,30 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_05.jpg)
 
 ---
-<!-- header: '[◄](#28) NS06 易於識別而非記憶 (Recognition) [►](#39)' -->
+
+<!-- id: ux-ch02-ccq1 -->
+### 🙋 概念核對問答 (CCQ1)
+
+<div class="two-columns-64">
+<div class="card">
+
+### 錯誤預防 (NS05)
+**[ 是 / 否 ]**
+
+> 「為了徹底落實錯誤預防，系統在使用者執行『任何』可能修改資料的操作（包括編輯個人暱稱、切換深色模式）時，都強制彈出確認視窗要求點擊『確定修改』，這是兼顧安全性與可用性的最佳實踐。」
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1" target="_blank"><img src="../../img/ch02/ux-ch02-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+<!-- header: '[◄](#28) NS06 易於識別而非記憶 (Recognition) [►](#40)' -->
 
 ## NS06 易於識別而非記憶 (Recognition Rather Than Recall)
 
@@ -894,7 +1083,7 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_06.jpg)
 
 ---
-<!-- header: '[◄](#33) NS07 彈性與使用效率 (Efficiency) [►](#44)' -->
+<!-- header: '[◄](#34) NS07 彈性與使用效率 (Efficiency) [►](#45)' -->
 
 ## NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
 
@@ -963,7 +1152,7 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_07.jpg)
 
 ---
-<!-- header: '[◄](#39) NS08 優雅簡潔的設計 (Minimalist) [►](#50)' -->
+<!-- header: '[◄](#40) NS08 優雅簡潔的設計 (Minimalist) [►](#52)' -->
 
 ## NS08 優雅簡潔的設計 (Aesthetic & Minimalist Design)
 
@@ -1035,7 +1224,30 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_08.jpg)
 
 ---
-<!-- header: '[◄](#44) NS09 清楚的錯誤處理 (Recover Errors) [►](#55)' -->
+
+<!-- id: ux-ch02-ccq2 -->
+### 🙋 概念核對問答 (CCQ2)
+
+<div class="two-columns-64">
+<div class="card">
+
+### 簡潔設計 (NS08)
+**[ 是 / 否 ]**
+
+> 「為了實現極致簡潔的視覺體驗，將資料表格中的操作按鈕（編輯/刪除/下載）全數隱藏，改為僅在使用者將滑鼠 Hover 懸停於該列時才浮現，這在所有裝置與情境下都是最推薦的做法。」
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2" target="_blank"><img src="../../img/ch02/ux-ch02-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+<!-- header: '[◄](#45) NS09 清楚的錯誤處理 (Recover Errors) [►](#58)' -->
 
 ## NS09 清楚的錯誤處理 (Help Users Recover from Errors)
 
@@ -1106,7 +1318,32 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_09.jpg)
 
 ---
-<!-- header: '[◄](#50) NS10 說明與文件 (Help & Docs) [►](#60)' -->
+
+<!-- id: ux-ch03-ccq1 -->
+### 🙋 概念核對問答 (CCQ3)
+
+<div class="two-columns-64">
+<div class="card">
+
+### ❓ API 例外處理與使用者感知 (NS09)
+**[ 是 / 否 ]**
+
+> 「在要求 AI 生成前端資料請求組件時，提示詞明確要求『當 API 發生 500 伺服器錯誤時，必須使用 `try...catch` 捕捉並在控制台輸出 `console.error(err)`』，在軟體工程與 UX 層面上已完整滿足了 NS09（協助辨識與復原錯誤）的要求。」
+
+請判斷上述說法是否正確，並思考對使用者介面的影響。
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq1)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq1" target="_blank"><img src="../../img/ch03/ux-ch03-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+<!-- header: '[◄](#52) NS10 說明與文件 (Help & Docs) [►](#63)' -->
 
 ## NS10 說明與文件 (Help and Documentation)
 
@@ -1175,7 +1412,7 @@ Upload 100 files
 ![bg 80%](../../img/ns_ai_10.jpg)
 
 ---
-<!-- header: '[◄](#55) 尼爾森 10 大原則總結對照 [►](#62)' -->
+<!-- header: '[◄](#58) 尼爾森 10 大原則總結對照 [►](#68)' -->
 
 ## 尼爾森 10 大可用性原則總結對照表
 
@@ -1262,18 +1499,96 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#60) 課堂遊戲：尼爾森原則闖關挑戰 [►](#64)' -->
+
+<!-- id: ux-ch02-ccq3 -->
+### 🙋 概念核對問答 (CCQ4)
+
+<div class="two-columns-64">
+<div class="card">
+
+### 尼爾森原則綜合交叉應用
+電商結帳頁在輸入信用卡時，自動依卡號長度在每 4 碼插入空格（`4111 2222 3333 4444`），並在辨識出卡別後即時於右側點亮 Visa 圖示。這項設計最直接體現了哪兩項原則的結合？
+
+- **(A)** NS05 (錯誤預防) 與 NS06 (易於識別而非記憶)
+- **(B)** NS03 (控制權) 與 NS07 (彈性與使用效率)
+- **(C)** NS04 (一致性) 與 NS09 (清楚的錯誤處理)
+- **(D)** NS08 (優雅簡潔的設計) 與 NS10 (適當的說明與文件)
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3" target="_blank"><img src="../../img/ch02/ux-ch02-ccq3.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+
+<!-- id: ux-ch02-ccq4 -->
+### 🙋 概念核對問答 (CCQ5)
+
+<div class="two-columns-64">
+<div class="card">
+
+### 尼爾森原則綜合交叉應用
+使用者在 Gmail 內文提及「如附件企劃書」，但在未附加檔案時點擊「傳送」，系統即時攔截並提示：*「您提及了附件但未附加檔案，是否仍要傳送？」* ，並提供「取消」與「直接傳送」。這最直接體現了哪兩項原則的結合？
+
+- **(A)** NS05 (錯誤預防) 與 NS03 (使用者控制與自由)
+- **(B)** NS01 (系統狀態能見度) 與 NS08 (優雅簡潔的設計)
+- **(C)** NS02 (與真實世界對應) 與 NS06 (易於識別而非記憶)
+- **(D)** NS04 (一致性與標準) 與 NS10 (適當的說明與文件)
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4" target="_blank"><img src="../../img/ch02/ux-ch02-ccq4.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+
+<!-- id: ux-ch03-ccq2 -->
+### 🙋 概念核對問答 (CCQ6)
+
+<div class="two-columns-64">
+<div class="card">
+
+### ❓ 高保真提示詞的多維度 UX 約束
+在要求 AI 生成「多步驟註冊表單」時，以下哪一段提示詞最能同時滿足 **NS01 (狀態)** 、 **NS03 (控制權)** 與 **NS05 (錯誤預防)** ？
+
+- **(A)** 「請用 React + Tailwind 寫一個美觀的註冊表單，支援深色模式。」
+- **(B)** 「提供步驟進度條；每步均有『上一步』且保留資料；欄位 blur 時即時驗證並禁用未過關的『下一步』按鈕。」
+- **(C)** 「表單最後提供送出按鈕，送出失敗時彈出 Toast `Submission failed`。」
+- **(D)** 「使用 LocalStorage 快取所有欄位，並提供一鍵重設按鈕。」
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq2)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq2" target="_blank"><img src="../../img/ch03/ux-ch03-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+<!-- header: '[◄](#63) 課堂遊戲：尼爾森原則闖關挑戰 [►](#77)' -->
 
 <!-- id: ux-ch02-game1 -->
-## 🎮 課堂遊戲：尼爾森 10 大原則闖關大挑戰 (Game)
+## 🙋 課堂遊戲：尼爾森 10 大原則闖關大挑戰 (Game01)
 
 <div class="two-columns-64">
 <div class="card">
 
 ### 🏆 遊戲任務說明
-* **挑戰目標 ** ：快速判別 10 個經典軟體情境對應的 ** 尼爾森 10 大可用性原則 (NS01 ~ NS10)** 。
-* **搶答規則 ** ：共 **10 道實戰單選題** ，每題限時搶答！請選出最符合情境的核心原則。
-* **操作方式** ：請拿起手機或平板掃描右側 QR Code，或點擊下方連結進入遊戲間。
+- **挑戰目標** ：融會貫通尼爾森可用性原則 (NS) 與 AI-UX 提示工程實踐。
+- **搶答規則** ：共 **7 道實戰單選題** （5 題 NS 原則 + 2 題 AI-UX 實踐），每題限時搶答！請選出最符合情境的核心原則或實踐。
+- **操作方式** ：請拿起手機或平板掃描右側 QR Code，或點擊下方連結進入遊戲間。
 
 [線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-game1)
 
@@ -1285,16 +1600,153 @@ Upload 100 files
 </div>
 </div>
 
+---
 
+### 🎮 闖關第 01 關：【大檔案上傳與即時回饋】
 
+<div class="card">
+
+**情境描述** ：
+使用者在雲端硬碟上傳 1GB 的影片檔，系統在右下角以浮動視窗顯示圓形百分比進度、已上傳容量（如 450MB / 1GB）、即時傳輸速度與預估剩餘時間。
+
+**請問這項設計最直接落實了哪一項易用性原則？**
+- **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
+- **(B)** NS03 使用者控制與自由 (User Control and Freedom)
+- **(C)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
+- **(D)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
+
+</div>
 
 ---
+
+### 🎮 闖關第 02 關：【實體閱讀隱喻與書架設計】
+
+<div class="card">
+
+**情境描述** ：
+電子書閱讀 App 在使用者翻頁時提供紙張翻摺陰影與沙沙紙張翻頁聲，並使用「書籤」、「螢光筆劃記」與「書架」來組織收藏，介面詞彙亦使用讀者熟悉的「章節」、「目錄」而非底層工程術語。
+
+**請問這項設計最直接體現了哪一項易用性原則？**
+- **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
+- **(B)** NS02 與真實世界對應 (Match Between System and Real World)
+- **(C)** NS04 一致性與標準 (Consistency and Standards)
+- **(D)** NS06 易於識別而非記憶 (Recognition Rather Than Recall)
+
+</div>
+
+---
+
+### 🎮 闖關第 03 關：【批次操作的緊急出口】
+
+<div class="card">
+
+**情境描述** ：
+使用者在照片管理工具中勾選了 50 張照片並點擊「全數封存」，畫面底部立即彈出 SnackBar 提示：「已封存 50 張照片」，並在旁邊提供明顯的「復原 (Undo)」按鈕，且提供 10 秒的反悔猶豫期。
+
+**請問這項設計最直接符合哪一項易用性原則？**
+- **(A)** NS02 與真實世界對應 (Match Between System and Real World)
+- **(B)** NS03 使用者控制與自由 (User Control and Freedom)
+- **(C)** NS05 錯誤預防 (Error Prevention)
+- **(D)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
+
+</div>
+
+---
+
+### 🎮 闖關第 04 關：【全站按鈕規範與平台標準】
+
+<div class="card">
+
+**情境描述** ：
+某跨平台購物系統在 iOS App 遵循蘋果 HIG 規範將導覽標籤放在底部，在 Web 則遵循常見的頂部 Header 導航；全站無論在哪個頁面，「加入購物車」一律是深橘色按鈕、「立即結帳」一律是綠色按鈕，危險操作一律是紅色文字。
+
+**請問這項設計最直接符合哪一項易用性原則？**
+- **(A)** NS03 使用者控制與自由 (User Control and Freedom)
+- **(B)** NS04 一致性與標準 (Consistency and Standards)
+- **(C)** NS06 易於識別而非記憶 (Recognition Rather Than Recall)
+- **(D)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
+
+</div>
+
+---
+
+### 🎮 闖關第 05 關：【新手視覺按鈕與專家快捷鍵】
+
+<div class="card">
+
+**情境描述** ：
+現代程式碼編輯器（如 VS Code）為新手提供視覺化的功能選單與側邊欄按鈕，同時為資深工程師提供強大的快捷鍵（如 `Cmd + P` 快速開檔、`Cmd + Shift + L` 多游標編輯），並允許自訂程式碼片段 (Snippets) 與巨集。
+
+**請問這項設計最直接符合哪一項易用性原則？**
+- **(A)** NS03 使用者控制與自由 (User Control and Freedom)
+- **(B)** NS05 錯誤預防 (Error Prevention)
+- **(C)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
+- **(D)** NS09 清楚的錯誤處理 (Help Users Recognize, Diagnose, and Recover from Errors)
+
+</div>
+
+---
+
+### 🎮 闖關第 06 關：【AI-UX 概念：1-10-100 品質成本法則】
+
+<div class="card">
+
+**情境描述** ：
+開發團隊在專案初期運用 AI 生成前端原型時，即在提示詞中明確定義防呆約束與錯誤復原指引，及早發現並修復體驗瑕疵。相較於系統上線後因使用者客訴才動員十倍人力進行重構修復，這種在前端即落實 UX 的做法最直接體現了哪一項核心定律？
+
+**請問下列哪一項是正確的軟體工程與品質法則？**
+- **(A)** 摩爾定律 (Moore's Law)
+- **(B)** 1-10-100 品質成本法則 (Cost of Quality Rule)
+- **(C)** 阿姆達爾定律 (Amdahl's Law)
+- **(D)** 康威定律 (Conway's Law)
+
+</div>
+
+---
+
+### 🎮 闖關第 07 關：【AI-UX 提示工程：RTCF 框架中的 UX 約束】
+
+<div class="card">
+
+**情境描述** ：
+工程師撰寫提示詞：「你是一位 UI 設計師（Role），請設計電商購物車結帳頁（Task）。**【約束：載入時必須顯示骨架屏 (Skeleton Screen) 消除等待焦慮，且 API 斷線時必須以白話說明並提供重試按鈕，嚴禁僅拋出無說明的狀態碼】**（Constraints），請以 React 輸出（Format）。」
+
+**請問提示詞中針對 Constraints 的具體要求，最主要是為了確保 AI 生成的介面滿足哪兩項尼爾森原則？**
+- **(A)** NS02 (與真實世界對應) 與 NS04 (一致性與標準)
+- **(B)** NS01 (系統狀態能見度) 與 NS09 (清楚的錯誤處理)
+- **(C)** NS06 (易於識別而非記憶) 與 NS08 (優雅簡潔的設計)
+- **(D)** NS03 (使用者控制權) 與 NS07 (彈性與使用效率)
+
+</div>
+
+---
+
+### 🎯 闖關挑戰 7 題完整解答與核心解析
+
+<div class="two-columns">
+<div class="card" style="font-size: 18px;" data-marpit-fragment>
+
+- **第 01 題 (A)** ： **NS01 狀態能見度** —— 百分比與進度條即時回饋，消除等待焦慮。
+- **第 02 題 (B)** ： **NS02 與真實世界對應** —— 書架、書籤與紙張翻頁隱喻。
+- **第 03 題 (B)** ： **NS03 使用者控制與自由** —— SnackBar Undo 10 秒反悔復原機制。
+- **第 04 題 (B)** ： **NS04 一致性與標準** —— 遵循 iOS HIG/Web 平台規範與統一色彩意圖。
+
+</div>
+<div class="card" style="font-size: 18px;" data-marpit-fragment>
+
+- **第 05 題 (C)** ： **NS07 彈性與使用效率** —— 鍵盤加速鍵兼顧初學者與資深專家操作速度。
+- **第 06 題 (B)** ： **1-10-100 品質成本法則** —— 早期以 UX 約束生成原型，修復成本遠低於上線後客訴返工。
+- **第 07 題 (B)** ： **RTCF 之 UX 約束落地** —— 將 NS01 (狀態) 與 NS09 (錯誤指引) 注入提示詞直接規範 AI 原型。
+
+</div>
+</div>
+
+---
+<!-- header: '[◄](#68) 從 Prompting 到 Agent 典範轉移 [►](#86)' -->
 
 ![bg fit](../../img/agent_ai_concept.png)
 
 ---
-<!-- header: '[◄](#62) 從 Prompting 到 Agent 典範轉移 [►](#67)' -->
-
 ## 從 Prompting 到 Agent：AI 體驗設計的典範轉移
 
 <div class="two-columns">
@@ -1356,7 +1808,6 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#64) 跨專案通用工程與 UX 準則 [►](#74)' -->
 
 ### 實戰範例：AGENTS.md 跨專案通用守則
 
@@ -1486,22 +1937,23 @@ description: >-
 
 ### 📋 階段一：脈絡診斷與架構計畫 (Plan)
 - **步驟 1【全專案脈絡走訪與診斷】** ：
- - 開發者指派任務：*「請對購物車結帳模組進行 Nielsen 易用性健檢。」*
- - Agent 主動跨檔案分析組件關聯，偵測出送出按鈕缺少 Loading 狀態 ( **NS01**) 以及刪除項目無二次確認防呆 (**NS05** )。
+    - 開發者指派任務：*「請對購物車結帳模組進行 Nielsen 易用性健檢。」*
+    - Agent 主動跨檔案分析組件關聯，偵測出送出按鈕缺少 Loading 狀態 ( **NS01**) 以及刪除項目無二次確認防呆 (**NS05** )。
+
 - **步驟 2【產出變更計畫書 (`implementation_plan.md`)】** ：
- - 明確條列受影響檔案、組件依賴關係與狀態邏輯改動點。
- - 落實 **人機協同 (Human-in-the-Loop)** ：暫停並等待人類審核批准。
+    - 明確條列受影響檔案、組件依賴關係與狀態邏輯改動點。
+    - 落實 **人機協同 (Human-in-the-Loop)** ：暫停並等待人類審核批准。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 🚀 階段二：精準重構與驗證交付 (Execute)
 - **步驟 3【自主程式碼重構與防呆注入】** ：
- - 獲得授權後，Agent 調用工具精準修改前端程式碼檔案。
- - 實作按鈕 Disabled 防重複送出、注入防呆 Modal，並新增 SnackBar 提供 10 秒 Undo 復原反悔機制 ( **NS03** )。
+    - 獲得授權後，Agent 調用工具精準修改前端程式碼檔案。
+    - 實作按鈕 Disabled 防重複送出、注入防呆 Modal，並新增 SnackBar 提供 10 秒 Undo 復原反悔機制 ( **NS03** )。
 - **步驟 4【自動化工具鏈驗證與交付 (`walkthrough.md`)】** ：
- - 背景調用終端機指令編譯專案、自動排查語法錯誤並透過瀏覽器確認渲染。
- - 輸出改動對照走查報告，清楚呈現體驗升級成果供團隊驗收。
+    - 背景調用終端機指令編譯專案、自動排查語法錯誤並透過瀏覽器確認渲染。
+    - 輸出改動對照走查報告，清楚呈現體驗升級成果供團隊驗收。
 
 </div>
 </div>
@@ -1534,7 +1986,137 @@ description: >-
 * > **Prompt 讓你與 AI 對話，而 Agent 讓你與 AI 並肩建立卓越的軟體產品！**
 
 ---
-<!-- header: '[◄](#67) 練習：應用尼爾森原則評估系統 [►](#82)' -->
+
+<!-- header: '[◄](#77) 課堂遊戲：從 Prompting 到 Agent 闖關挑戰 [►](#93)' -->
+
+<!-- id: ux-ch03-game1 -->
+## 🙋 課堂遊戲：從 Prompting 到 Agent 典範轉移闖關挑戰 (Game02)
+
+<div class="two-columns-64">
+<div class="card">
+
+### 🏆 遊戲任務說明
+* **挑戰目標** ：深刻體會從傳統 Chat 對話框到現代 Agentic 自主工作流的關鍵思維升級。
+* **搶答規則** ：共 **5 道實戰單選題** ，每題限時搶答！請選出最符合現代 Agentic UX 的最佳實踐。
+* **操作方式** ：請拿起手機或平板掃描右側 QR Code，或點擊下方連結進入遊戲間。
+
+[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-game1)
+
+</div>
+<div class="card-img">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-game1" target="_blank"><img src="../../img/ch03/ux-ch03-game1.png" alt="QR Code" style="max-height: 280px;"></a>
+
+</div>
+</div>
+
+---
+
+### 🎮 闖關第 01 關：【Chat-based Prompting 的上下文孤島】
+
+<div class="card">
+
+**情境描述** ：
+工程師在傳統對話框中輸入「請幫我寫一個符合 NS01 的購物車組件」，AI 給出了一段語法正確的 React 程式碼。然而當工程師複製進專案時，卻發現該組件無法辨識專案既有的 Pinia/Redux 狀態機，CSS 變數亦與全域 Design System 衝突，還缺漏了必要的依賴套件。
+
+**請問這最能說明傳統對話型 Prompting 的哪一項核心局限？**
+- **(A)** 大型語言模型的推理速度過慢
+- **(B)** 上下文孤島 (Context Silo) 與缺乏全專案視野
+- **(C)** 模型欠缺基本的程式碼語法檢查能力
+- **(D)** 對話介面無法輸出超過 50 行的文字
+
+</div>
+
+---
+
+### 🎮 闖關第 02 關：【Agent 的規劃優先原則 (Planning Mode)】
+
+<div class="card">
+
+**情境描述** ：
+當我們指派 AI Agent 一個涉及 5 個前端組件、全站深色模式變數以及結帳狀態機的複雜 UX 重構任務時，一個成熟的 Agentic 協同工作流應該採取的第一步動作為何？
+
+**請問下列哪一項是最佳實踐？**
+- **(A)** 立即以多執行緒同時盲目改寫 5 個前端程式碼檔案
+- **(B)** 自動覆寫既有檔案並強制執行 `git push --force` 推送至遠端
+- **(C)** 優先進入規劃模式 (Plan)，主動分析相依性並產出結構化實施計畫書，等待人類審查批准
+- **(D)** 自動關閉終端機並拒絕執行跨檔案操作
+
+</div>
+
+---
+
+### 🎮 闖關第 03 關：【閉環驗證與自主走查 (Feedback Loop)】
+
+<div class="card">
+
+**情境描述** ：
+AI Agent 在完成購物車刪除防呆 Modal (NS05) 的前端程式碼改動後，自主調用終端機指令編譯專案、開啟瀏覽器走查工具模擬點擊結帳流程，並在瀏覽器控制台檢測有無未捕捉之 JavaScript 錯誤。
+
+**請問這項特徵體現了 Agent 與傳統 Prompting 的哪項本質差異？**
+- **(A)** 單一對話的提示詞長度能無限擴展
+- **(B)** 外部工具調用與自主閉環走查驗證 (Tool Calling & Feedback Loop)
+- **(C)** 取代人類產品經理的所有商業決策
+- **(D)** 完全不需要依賴任何底層大型語言模型
+
+</div>
+
+---
+
+### 🎮 闖關第 04 關：【人機協同 (Human-in-the-Loop) 的角色演進】
+
+<div class="card">
+
+**情境描述** ：
+在現代 Agentic UX 開發模式下，AI Agent 能自主負擔繁重的跨檔案重構、樣式微調與自動化測試驗證。
+
+**請問在此典範轉移下，人類工程師與設計師最關鍵的核心職責轉變為何？**
+- **(A)** 專職手動輸入終端機編譯指令
+- **(B)** 意圖定義、架構審核、關鍵決策批准與最終體驗驗收 (Reviewer & Orchestrator)
+- **(C)** 完全退出軟體開發流程，由 AI 獨立交付與部署上線
+- **(D)** 僅負責幫 AI 支付 API 費用與伺服器硬體維護
+
+</div>
+
+---
+
+### 🎮 闖關第 05 關：【斜線指令實踐：經驗固化 (`/learn`)】
+
+<div class="card">
+
+**情境描述** ：
+團隊在協同開發時，發現 Agent 預設常常生成未對齊 Design System 的任意色彩，破壞了介面一致性 (NS04)。若使用 Antigravity IDE，團隊最推薦透過哪一項指令將「一律使用 tokens.css 變數」的決策沉澱為全專案的長期記憶？
+
+**請問應該使用哪一個斜線指令？**
+- **(A)** `/goal`
+- **(B)** `/schedule`
+- **(C)** `/learn`
+- **(D)** `/plan`
+
+</div>
+
+---
+
+### 🎯 闖關挑戰 (Game02) 5 題完整解答與核心解析
+
+<div class="two-columns">
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
+
+- **第 01 題 (B)** ： **上下文孤島** —— 傳統 Chat 無法感知全專案架構，導致生成的程式碼與既有狀態及 Design System 脫節。
+- **第 02 題 (C)** ： **規劃優先 (Plan First)** —— 複雜重構先擬定變更計畫書並落實人機協同審查，避免盲目修改引發災難。
+- **第 03 題 (B)** ： **自主閉環驗證** —— Agent 具備感知式工具調用能力，能啟動伺服器與瀏覽器自主驗證操作路徑。
+
+</div>
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
+
+- **第 04 題 (B)** ： **人機協同關鍵價值** —— 人類專家從低層次搬磚轉變為架構審核、意圖掌控與最終體驗品質把關者。
+- **第 05 題 (C)** ： **`/learn` 經驗固化** —— 將人類反饋與專案規範沉澱為持久性規則，避免每次對話重複糾正。
+
+</div>
+</div>
+
+---
+<!-- header: '[◄](#86) 練習：應用尼爾森原則評估系統 [►](#95)' -->
 
 ## 練習 🏄🏻‍♀️：應用尼爾森原則評估系統
 
@@ -1549,165 +2131,6 @@ description: >-
 - 🏫 校園資訊入口網站（Web）
 - 🚗 汽車中控車機資訊系統（Car）
 
-</div>
-
----
-
-<!-- id: ux-ch02-ccq1 -->
-### 🙋 概念核對問答 (CCQ1)
-
-<div class="two-columns-64">
-<div class="card">
-
-### 錯誤預防 (NS05) 
-**[ 是 / 否 ]**
-
-> 「為了徹底落實錯誤預防，系統在使用者執行『任何』可能修改資料的操作（包括編輯個人暱稱、切換深色模式）時，都強制彈出確認視窗要求點擊『確定修改』，這是兼顧安全性與可用性的最佳實踐。」
-
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1)
-
- 
-
-</div>
-<div class="card-img">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq1" target="_blank"><img src="../../img/ch02/ux-ch02-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
-</div>
-
----
-
-<!-- id: ux-ch02-ccq2 -->
-### 🙋 概念核對問答 (CCQ2)
-
-<div class="two-columns-64">
-<div class="card">
-
-### 簡潔設計
-**[ 是 / 否 ]**
-
-> 「為了實現極致簡潔的視覺體驗，將資料表格中的操作按鈕（編輯/刪除/下載）全數隱藏，改為僅在使用者將滑鼠 Hover 懸停於該列時才浮現，這在所有裝置與情境下都是最推薦的做法。」
-
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2)
-
- 
-
-</div>
-<div class="card-img">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq2" target="_blank"><img src="../../img/ch02/ux-ch02-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
-</div>
-
----
-
-<!-- id: ux-ch02-ccq3 -->
-### 🙋 概念核對問答 (CCQ3)
-
-<div class="two-columns-64">
-<div class="card">
-
-### 尼爾森原則綜合交叉應用
-電商結帳頁在輸入信用卡時，自動依卡號長度在每 4 碼插入空格（`4111 2222 3333 4444`），並在辨識出卡別後即時於右側點亮 Visa 圖示。這項設計最直接體現了哪兩項原則的結合？
-
-* **(A)** NS05 (錯誤預防) 與 NS06 (易於識別而非記憶)
-* **(B)** NS03 (控制權) 與 NS07 (彈性與使用效率)
-* **(C)** NS04 (一致性) 與 NS09 (清楚的錯誤處理)
-* **(D)** NS08 (優雅簡潔的設計) 與 NS10 (適當的說明與文件)
-
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3)
-
- 
-
-</div>
-<div class="card-img">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq3" target="_blank"><img src="../../img/ch02/ux-ch02-ccq3.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
-</div>
-
----
-
-<!-- id: ux-ch02-ccq4 -->
-### 🙋 概念核對問答 (CCQ4)
-
-<div class="two-columns-64">
-<div class="card">
-
-### 尼爾森原則綜合交叉應用
-使用者在 Gmail 內文提及「如附件企劃書」，但在未附加檔案時點擊「傳送」，系統即時攔截並提示：*「您提及了附件但未附加檔案，是否仍要傳送？」* ，並提供「取消」與「直接傳送」。這最直接體現了哪兩項原則的結合？
-
-* **(A)** NS05 (錯誤預防) 與 NS03 (使用者控制與自由)
-* **(B)** NS01 (系統狀態能見度) 與 NS08 (優雅簡潔的設計)
-* **(C)** NS02 (與真實世界對應) 與 NS06 (易於識別而非記憶)
-* **(D)** NS04 (一致性與標準) 與 NS10 (適當的說明與文件)
-
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4)
-
- 
-
-</div>
-<div class="card-img">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch02-ccq4" target="_blank"><img src="../../img/ch02/ux-ch02-ccq4.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
-</div>
-
----
-
-<!-- id: ux-ch03-ccq1 -->
-### 🙋 概念核對問答 (CCQ1)
-
-<div class="two-columns-64">
-<div class="card">
-
-### ❓ API 例外處理與使用者感知 (NS09)
-**[ 是 / 否 ]**>** 「在要求 AI 生成前端資料請求組件時，提示詞明確要求『當 API 發生 500 伺服器錯誤時，必須使用 `try...catch` 捕捉並在控制台輸出 `console.error(err)`』，在軟體工程與 UX 層面上已完整滿足了 NS09（協助辨識與復原錯誤）的要求。」**
-
-請判斷上述說法是否正確，並思考對使用者介面的影響。
-
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq1)
-
- 
-
-</div>
-<div class="card-img">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq1" target="_blank"><img src="../../img/ch03/ux-ch03-ccq1.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
-</div>
-
----
-
-<!-- id: ux-ch03-ccq2 -->
-### 🙋 概念核對問答 (CCQ2)
-
-<div class="two-columns-64">
-<div class="card">
-
-### ❓ 高保真提示詞的多維度 UX 約束
-在要求 AI 生成「多步驟註冊表單」時，以下哪一段提示詞最能同時滿足 **NS01 (狀態)** 、 **NS03 (控制權)** 與 **NS05 (錯誤預防)** ？
-
-* **(A)** 「請用 React + Tailwind 寫一個美觀的註冊表單，支援深色模式。」
-* **(B)** 「提供步驟進度條；每步均有『上一步』且保留資料；欄位 blur 時即時驗證並禁用未過關的『下一步』按鈕。」
-* **(C)** 「表單最後提供送出按鈕，送出失敗時彈出 Toast `Submission failed`。」
-* **(D)** 「使用 LocalStorage 快取所有欄位，並提供一鍵重設按鈕。」
-
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq2)
-
- 
-
-</div>
-<div class="card-img">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-ccq2" target="_blank"><img src="../../img/ch03/ux-ch03-ccq2.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
 </div>
 
 ---
@@ -1727,208 +2150,10 @@ description: >-
 
 [線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-qa1)
 
- 
-
 </div>
 <div class="card-img">
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ux-ch03-qa1" target="_blank"><img src="../../img/ch03/ux-ch03-qa1.png" alt="QR Code" style="max-height: 280px;"></a>
-
-</div>
-</div>
-
----
-<!-- header: '[◄](#74) 課堂遊戲：10 大原則闖關題庫 [►](#93)' -->
-
-### 🎮 闖關第 01 關：【大檔案上傳與即時回饋】
-
-<div class="card">
-
-**情境描述** ：
-使用者在雲端硬碟上傳 1GB 的影片檔，系統在右下角以浮動視窗顯示圓形百分比進度、已上傳容量（如 450MB / 1GB）、即時傳輸速度與預估剩餘時間。
-
-**請問這項設計最直接落實了哪一項易用性原則？**
-* **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
-* **(B)** NS03 使用者控制與自由 (User Control and Freedom)
-* **(C)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
-* **(D)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
-
-</div>
-
----
-
-### 🎮 闖關第 02 關：【實體閱讀隱喻與書架設計】
-
-<div class="card">
-
-**情境描述** ：
-電子書閱讀 App 在使用者翻頁時提供紙張翻摺陰影與沙沙紙張翻頁聲，並使用「書籤」、「螢光筆劃記」與「書架」來組織收藏，介面詞彙亦使用讀者熟悉的「章節」、「目錄」而非底層工程術語。
-
-**請問這項設計最直接體現了哪一項易用性原則？**
-* **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
-* **(B)** NS02 與真實世界對應 (Match Between System and Real World)
-* **(C)** NS04 一致性與標準 (Consistency and Standards)
-* **(D)** NS06 易於識別而非記憶 (Recognition Rather Than Recall)
-
-</div>
-
----
-
-### 🎮 闖關第 03 關：【批次操作的緊急出口】
-
-<div class="card">
-
-**情境描述** ：
-使用者在照片管理工具中勾選了 50 張照片並點擊「全數封存」，畫面底部立即彈出 SnackBar 提示：「已封存 50 張照片」，並在旁邊提供明顯的「復原 (Undo)」按鈕，且提供 10 秒的反悔猶豫期。
-
-**請問這項設計最直接符合哪一項易用性原則？**
-* **(A)** NS02 與真實世界對應 (Match Between System and Real World)
-* **(B)** NS03 使用者控制與自由 (User Control and Freedom)
-* **(C)** NS05 錯誤預防 (Error Prevention)
-* **(D)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
-
-</div>
-
----
-
-### 🎮 闖關第 04 關：【全站按鈕規範與平台標準】
-
-<div class="card">
-
-**情境描述** ：
-某跨平台購物系統在 iOS App 遵循蘋果 HIG 規範將導覽標籤放在底部，在 Web 則遵循常見的頂部 Header 導航；全站無論在哪個頁面，「加入購物車」一律是深橘色按鈕、「立即結帳」一律是綠色按鈕，危險操作一律是紅色文字。
-
-**請問這項設計最直接符合哪一項易用性原則？**
-* **(A)** NS03 使用者控制與自由 (User Control and Freedom)
-* **(B)** NS04 一致性與標準 (Consistency and Standards)
-* **(C)** NS06 易於識別而非記憶 (Recognition Rather Than Recall)
-* **(D)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
-
-</div>
-
----
-
-### 🎮 闖關第 05 關：【表單格式約束與不可逆確認】
-
-<div class="card">
-
-**情境描述** ：
-銀行跨行轉帳頁面中，系統在使用者輸入帳號時只允許輸入數字，並在輸滿 14 碼前自動禁用「下一步」按鈕；當使用者欲執行「結清並註銷帳戶」不可逆重大操作時，系統強制彈出視窗要求使用者親自輸入「我確認註銷」字樣才允許送出。
-
-**請問這項設計最直接體現了哪一項易用性原則？**
-* **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
-* **(B)** NS04 一致性與標準 (Consistency and Standards)
-* **(C)** NS05 錯誤預防 (Error Prevention)
-* **(D)** NS09 清楚的錯誤處理 (Help Users Recognize, Diagnose, and Recover from Errors)
-
-</div>
-
----
-
-### 🎮 闖關第 06 關：【搜尋歷程與多商品規格對照】
-
-<div class="card">
-
-**情境描述** ：
-使用者在線上選購筆記型電腦時，搜尋列在點擊時主動列出「最近搜尋過之關鍵字」，在瀏覽商品時提供浮動按鈕讓使用者勾選 3 款筆電展開「規格橫向對照表」，各項規格一覽無遺，使用者不必自行反覆切換頁面抄寫記憶。
-
-**請問這項設計最直接體現了哪一項易用性原則？**
-* **(A)** NS02 與真實世界對應 (Match Between System and Real World)
-* **(B)** NS06 易於識別而非記憶 (Recognition Rather Than Recall)
-* **(C)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
-* **(D)** NS10 適當的說明與文件 (Help and Documentation)
-
-</div>
-
----
-
-### 🎮 闖關第 07 關：【新手視覺按鈕與專家快捷鍵】
-
-<div class="card">
-
-**情境描述** ：
-現代程式碼編輯器（如 VS Code）為新手提供視覺化的功能選單與側邊欄按鈕，同時為資深工程師提供強大的快捷鍵（如 `Cmd + P` 快速開檔、`Cmd + Shift + L` 多游標編輯），並允許自訂程式碼片段 (Snippets) 與巨集。
-
-**請問這項設計最直接符合哪一項易用性原則？**
-* **(A)** NS03 使用者控制與自由 (User Control and Freedom)
-* **(B)** NS05 錯誤預防 (Error Prevention)
-* **(C)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
-* **(D)** NS09 清楚的錯誤處理 (Help Users Recognize, Diagnose, and Recover from Errors)
-
-</div>
-
----
-
-### 🎮 闖關第 08 關：【極簡搜尋首頁與視覺降噪】
-
-<div class="card">
-
-**情境描述** ：
-Google 搜尋引擎首頁中央僅保留一個搜尋輸入框、兩個按鈕與簡約商標，將所有進階篩選、搜尋歷史與廣告內容完全排除於首頁之外，避免不相干或極少使用的資訊干擾視覺。
-
-**請問這項設計最符合哪一項易用性原則？**
-* **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
-* **(B)** NS04 一致性與標準 (Consistency and Standards)
-* **(C)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
-* **(D)** NS10 適當的說明與文件 (Help and Documentation)
-
-</div>
-
----
-
-### 🎮 闖關第 09 關：【白話錯誤提示與修復指引】
-
-<div class="card">
-
-**情境描述** ：
-使用者在網頁註冊輸入 Email 時，系統沒有顯示冷冰冰的「錯誤碼：ERR_4021」，而是在欄位下方以紅字清楚標示：「信箱格式有誤：請檢查是否漏打了『@』符號，例如：user@example.com」，並將游標自動聚焦於該欄位方便直接修改。
-
-**請問這項設計最符合哪一項易用性原則？**
-* **(A)** NS02 與真實世界對應 (Match Between System and Real World)
-* **(B)** NS05 錯誤預防 (Error Prevention)
-* **(C)** NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
-* **(D)** NS09 清楚的錯誤處理 (Help Users Recognize, Diagnose, and Recover from Errors)
-
-</div>
-
----
-
-### 🎮 闖關第 10 關：【情境式引導與微教學 Tooltip】
-
-<div class="card">
-
-**情境描述** ：
-使用者首次開啟線上心智圖軟體時，畫面並非跳出長達 30 頁的 PDF 說明書，而是透過 3 個簡短的輕量級步驟氣泡（Tooltip）引導：「1. 拖曳此處新增節點、2. 點擊此處邀請成員、3. 按空白鍵平移畫布」，並在右上角提供隨時可搜尋的範本問答庫。
-
-**請問這項設計最符合哪一項易用性原則？**
-* **(A)** NS01 清楚的系統狀態能見度 (Visibility of System Status)
-* **(B)** NS06 易於識別而非記憶 (Recognition Rather Than Recall)
-* **(C)** NS08 優雅簡潔的設計 (Aesthetic and Minimalist Design)
-* **(D)** NS10 適當的說明與文件 (Help and Documentation)
-
-</div>
-
----
-
-### 🎯 闖關挑戰 10 題完整解答與核心解析
-
-<div class="two-columns">
-<div class="card" style="font-size: 19px;" data-marpit-fragment>
-
-- **第 01 題 (A)** ： **NS01 狀態能見度** —— 百分比與進度條即時回饋，消除等待焦慮。
-- **第 02 題 (B)** ： **NS02 與真實世界對應** —— 書架、書籤與紙張翻頁隱喻。
-- **第 03 題 (B)** ： **NS03 使用者控制與自由** —— SnackBar Undo 復原反悔機制。
-- **第 04 題 (B)** ： **NS04 一致性與標準** —— 遵循 iOS/Web 慣例與統一色彩意圖。
-- **第 05 題 (C)** ： **NS05 錯誤預防** —— 禁用無效輸入防呆與不可逆重大操作確認。
-
-</div>
-<div class="card" style="font-size: 19px;" data-marpit-fragment>
-
-- **第 06 題 (B)** ： **NS06 易於識別而非記憶** —— 搜尋歷程外顯與橫向規格比較。
-- **第 07 題 (C)** ： **NS07 彈性與使用效率** —— 鍵盤加速鍵與自訂巨集兼顧專家速度。
-- **第 08 題 (C)** ： **NS08 優雅簡潔設計** —— 80/20 法則剔除視覺噪訊，專注核心。
-- **第 09 題 (D)** ： **NS09 清楚錯誤處理** —— 白話指出問題、提供具體修復建議。
-- **第 10 題 (D)** ： **NS10 說明與文件** —— 情境化 Tooltip 與任務導向微引導。
 
 </div>
 </div>
@@ -1941,3 +2166,143 @@ Google 搜尋引擎首頁中央僅保留一個搜尋輸入框、兩個按鈕與�
 ## 結合可用性原則與 AI 提示，打造極致體驗
 
 **Q & A / 交流討論**
+
+<script>
+(function() {
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    // 1. Scan unique section titles and their slide IDs
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      
+      seenTitles.add(title);
+      sections.push({
+        id: sec.id,
+        title: title
+      });
+    });
+
+    if (sections.length === 0) return;
+
+    // Helper to create the dropdown DOM
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = '點擊固定或懸停查看所有章節快速跳轉';
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      // Click on title toggles pinned state
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) {
+          wrapper.classList.add('is-open');
+        }
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      
+      // Prevent clicks inside dropdown from bubbling and closing
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>📑 快速跳轉章節目錄</span><span style="font-size:11px;font-weight:normal;color:#64748b;">共 ' + sections.length + ' 個章節</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        
+        item.addEventListener('click', function(e) {
+          wrapper.classList.remove('is-open');
+          dropdown.style.display = 'none';
+          window.location.hash = '#' + s.id;
+          setTimeout(() => { dropdown.style.display = ''; }, 350);
+        });
+        
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    // Close any pinned dropdown when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    // 2. Enhance each header element across all slides
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      
+      const links = header.querySelectorAll('a');
+      let prevLink = null;
+      let nextLink = null;
+      
+      links.forEach(a => {
+        const txt = a.textContent.trim();
+        if (txt === '◄' || txt === '◀') prevLink = a;
+        if (txt === '►' || txt === '▶') nextLink = a;
+      });
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      
+      header.innerHTML = '';
+      if (prevLink) {
+        prevLink.className = 'header-nav-arrow';
+        prevLink.title = '上一章節';
+        header.appendChild(prevLink);
+        header.appendChild(document.createTextNode(' '));
+      }
+      
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+      
+      if (nextLink) {
+        header.appendChild(document.createTextNode(' '));
+        nextLink.className = 'header-nav-arrow';
+        nextLink.title = '下一章節';
+        header.appendChild(nextLink);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderDropdown);
+  } else {
+    initHeaderDropdown();
+  }
+  setTimeout(initHeaderDropdown, 400);
+})();
+</script>
