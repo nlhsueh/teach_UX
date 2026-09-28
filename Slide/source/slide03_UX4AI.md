@@ -836,7 +836,7 @@ style: |
 
 > *“讓資訊、動作與選項保持可見，降低使用者的記憶負荷。使用者不應背誦指令。”*
 
-<div class="two-columns-73">
+<div class="two-columns-64">
 <div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)

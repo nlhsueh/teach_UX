@@ -96,185 +96,104 @@
       z-index: 10;
     }
 
-    /* Bottom Control & Tips Bar */
-    .toolbar-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    /* Bottom Guide Card */
+    .guide-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
       margin-top: 32px;
     }
 
-    @media (max-width: 768px) {
-      .toolbar-wrapper {
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 800px) {
+      .guide-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
     }
 
-    .control-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
+    .guide-section {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       gap: 12px;
     }
 
-    .control-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 4px;
-    }
-
-    .control-title {
+    .guide-section-header {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
       font-size: 15px;
       font-weight: 700;
       color: #1e3a8a;
     }
 
-    .control-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    .switch-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 48px;
-      height: 26px;
-      flex-shrink: 0;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #cbd5e1;
-      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 34px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 20px;
-      width: 20px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 50%;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    }
-
-    input:checked+.slider {
-      background-color: var(--primary);
-    }
-
-    input:checked+.slider:before {
-      transform: translateX(22px);
-    }
-
-    .status-pill {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 20px;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-
-    .status-pill.active {
-      background: #dbeafe;
-      color: #1d4ed8;
-      border: 1px solid #bfdbfe;
-    }
-
-    .status-pill.inactive {
-      background: #f1f5f9;
-      color: #64748b;
-      border: 1px solid #e2e8f0;
-    }
-
-    /* Tips Bar */
-    .tips-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
+    .guide-list {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
+      gap: 9px;
     }
 
-    .tips-title {
+    .guide-list li {
       display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .guide-badge {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      font-size: 11px;
       font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 14px;
-      text-align: center;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 2px 7px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .shortcuts-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
-      justify-content: center;
     }
 
     .shortcut-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       font-size: 12px;
-      color: var(--text-muted);
+      color: #475569;
+      background: #f8fafc;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
     }
 
     kbd {
-      background: #f1f5f9;
+      background: #ffffff;
       border: 1px solid #cbd5e1;
+      border-bottom: 2px solid #94a3b8;
       border-radius: 4px;
       padding: 1px 6px;
       font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       color: #1e293b;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06);
     }
 
     /* Modules Grid */
@@ -426,7 +345,7 @@
           <p>UX 核心概念、使用者中心設計 (UCD) 流程、雙鑽石設計模型與工程思維整合。</p>
         </div>
         <div class="card-actions">
-          <a href="Slide/html/slide01_intro.html" class="btn btn-primary slide-link" target="_blank">
+          <a href="Slide/html/slide01_intro.html?transition=fade" class="btn btn-primary" target="_blank">
             🖥️ 開啟簡報 (HTML 互動模式)
           </a>
           <a href="Slide/pdf/slide01_intro.pdf" class="btn btn-secondary" target="_blank">
@@ -443,7 +362,7 @@
           <p>Nielsen 10 大易用性原則、約束式 Prompt 架構、Antigravity Agentic 實務與互動題庫闖關。</p>
         </div>
         <div class="card-actions">
-          <a href="Slide/html/slide02_AI4UX.html" class="btn btn-primary slide-link" target="_blank">
+          <a href="Slide/html/slide02_AI4UX.html?transition=fade" class="btn btn-primary" target="_blank">
             🖥️ 開啟簡報 (HTML 互動模式)
           </a>
           <a href="Slide/pdf/slide02_AI4UX.pdf" class="btn btn-secondary" target="_blank">
@@ -460,7 +379,7 @@
           <p>以使用者為中心的 AI 系統介面設計、可解釋性、狀態透明度與防呆信任架構。</p>
         </div>
         <div class="card-actions">
-          <a href="Slide/html/slide03_UX4AI.html" class="btn btn-primary slide-link" target="_blank">
+          <a href="Slide/html/slide03_UX4AI.html?transition=fade" class="btn btn-primary" target="_blank">
             🖥️ 開啟簡報 (HTML 互動模式)
           </a>
           <a href="Slide/pdf/slide03_UX4AI.pdf" class="btn btn-secondary" target="_blank">
@@ -477,7 +396,7 @@
           <p>經典 UI/UX 設計模式庫（導覽、搜尋、資料呈現、操作流）與現代前端組件實踐。</p>
         </div>
         <div class="card-actions">
-          <a href="Slide/html/slide04_Tidwell.html" class="btn btn-primary slide-link" target="_blank">
+          <a href="Slide/html/slide04_Tidwell.html?transition=fade" class="btn btn-primary" target="_blank">
             🖥️ 開啟簡報 (HTML 互動模式)
           </a>
           <a href="Slide/pdf/slide04_Tidwell.pdf" class="btn btn-secondary" target="_blank">
@@ -488,83 +407,53 @@
 
     </div>
 
-    <!-- Bottom Controls: Transition Setting & Keyboard Shortcuts -->
-    <div class="toolbar-wrapper">
-
-      <!-- Transition Controller -->
-      <div class="control-card">
-        <div class="control-info">
-          <div class="control-title">
-            <span>🎬</span>
-            <span>換頁轉場效果 (Transition)</span>
+    <!-- Bottom Guide: Header Navigation & Keyboard Shortcuts -->
+    <div class="guide-card">
+      <div class="guide-grid">
+        <!-- Section 1: Header Navigation -->
+        <div class="guide-section">
+          <div class="guide-section-header">
+            <span>🧭</span>
+            <span>頂部導覽列 (Header) 操作指南</span>
           </div>
-          <div class="control-desc">開啟時具備平滑淡入動畫；關閉時俐落切換</div>
+          <ul class="guide-list">
+            <li>
+              <span class="guide-badge">◄ / ►</span>
+              <span>點擊左右箭頭快速跳轉至「上一章節」或「下一章節」起始頁。</span>
+            </li>
+            <li>
+              <span class="guide-badge">懸停章節名</span>
+              <span>滑鼠移至頂部章節文字上方，即刻展開「全簡報章節目錄清單」可直達各節。</span>
+            </li>
+            <li>
+              <span class="guide-badge">點擊章節名</span>
+              <span>釘選固定目錄面板，便於瀏覽選擇；點擊任一章節或點擊外部任意處即可關閉。</span>
+            </li>
+          </ul>
         </div>
-        <div class="switch-container">
-          <label class="switch" title="切換是否啟用換頁動畫">
-            <input type="checkbox" id="transitionToggle" checked>
-            <span class="slider"></span>
-          </label>
-          <span id="transitionStatus" class="status-pill active">開啟中 (Fade)</span>
+
+        <!-- Section 2: Marp Keyboard Guide -->
+        <div class="guide-section">
+          <div class="guide-section-header">
+            <span>⌨️</span>
+            <span>簡報互動模式快捷鍵 (Keyboard Shortcuts)</span>
+          </div>
+          <div class="shortcuts-list">
+            <span class="shortcut-badge"><kbd>F</kbd> 全螢幕模式</span>
+            <span class="shortcut-badge"><kbd>→</kbd> / <kbd>Space</kbd> 下一頁</span>
+            <span class="shortcut-badge"><kbd>←</kbd> 上一頁</span>
+            <span class="shortcut-badge"><kbd>P</kbd> 簡報者講稿</span>
+            <span class="shortcut-badge"><kbd>數字</kbd>+<kbd>Enter</kbd> 指定跳頁</span>
+            <span class="shortcut-badge"><kbd>Esc</kbd> 退出全螢幕</span>
+          </div>
         </div>
       </div>
-
-      <!-- Marp Keyboard Guide -->
-      <div class="tips-card">
-        <div class="tips-title">
-          <span>💡 簡報互動模式快捷鍵</span>
-        </div>
-        <div class="shortcuts-list">
-          <span class="shortcut-badge"><kbd>F</kbd> 全螢幕</span>
-          <span class="shortcut-badge"><kbd>P</kbd> 簡報者講稿</span>
-          <span class="shortcut-badge"><kbd>→</kbd> / <kbd>Space</kbd> 下一頁</span>
-          <span class="shortcut-badge"><kbd>←</kbd> 上一頁</span>
-          <span class="shortcut-badge"><kbd>數字</kbd>+<kbd>Enter</kbd> 跳頁</span>
-        </div>
-      </div>
-
     </div>
 
     <footer>
       <p>授課教師：薛念林 教授 | 逢甲大學資訊工程學系</p>
     </footer>
   </div>
-
-  <script>
-    // 換頁轉場開關控制邏輯
-    const toggle = document.getElementById('transitionToggle');
-    const statusPill = document.getElementById('transitionStatus');
-    const slideLinks = document.querySelectorAll('.slide-link');
-
-    // 1. 初始化讀取使用者偏好（預設為開啟 fade）
-    const savedPref = localStorage.getItem('marp-transition');
-    const isEnabled = savedPref !== 'false';
-    toggle.checked = isEnabled;
-    updateTransitionState(isEnabled);
-
-    // 2. 監聽開關切換
-    toggle.addEventListener('change', () => {
-      const enabled = toggle.checked;
-      localStorage.setItem('marp-transition', enabled ? 'fade' : 'false');
-      updateTransitionState(enabled);
-    });
-
-    function updateTransitionState(enabled) {
-      if (enabled) {
-        statusPill.textContent = '開啟中 (Fade)';
-        statusPill.className = 'status-pill active';
-      } else {
-        statusPill.textContent = '已關閉 (無動畫)';
-        statusPill.className = 'status-pill inactive';
-      }
-
-      // 同步更新所有簡報連結的 query string
-      slideLinks.forEach(link => {
-        const rawHref = link.getAttribute('href').split('?')[0];
-        link.setAttribute('href', rawHref + '?transition=' + (enabled ? 'fade' : 'false'));
-      });
-    }
-  </script>
 
 </body>
 
