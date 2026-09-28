@@ -2,7 +2,6 @@
 marp: true
 theme: default
 paginate: true
-header: 'AI-Powered UI/UX Prototyping'
 footer: '薛念林 教授 | 逢甲大學資訊工程學系'
 size: 16:9
 transition: fade
@@ -14,6 +13,50 @@ style: |
     background-color: #f8fafc;
     color: #1e293b;
   }
+  header {
+    position: absolute;
+    left: auto !important;
+    right: 50px !important;
+    top: 18px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  header a {
+    color: #2563eb !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    font-size: 11px;
+    line-height: 1.4;
+    transition: all 0.15s ease;
+  }
+  header a:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    text-decoration: none !important;
+  }
+  section.part-cover header, .part-cover header {
+    color: #cbd5e1;
+  }
+  section.part-cover header a, .part-cover header a {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  section.part-cover header a:hover, .part-cover header a:hover {
+    background: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+  }
+
   footer {
     font-size: 14px;
     color: #64748b;
@@ -213,82 +256,11 @@ style: |
     box-shadow: none;
   }
 
+
 ---
 
-<script>
-  // 1. 支援由首頁 index.html 控制是否啟用換頁動畫
-  const params = new URLSearchParams(window.location.search);
-  const transitionPref = params.get('transition') ?? localStorage.getItem('marp-transition');
-  if (transitionPref === 'false' || transitionPref === 'none') {
-    document.querySelectorAll('section[data-transition], section[data-transition-back]').forEach(el => {
-      el.removeAttribute('data-transition');
-      el.removeAttribute('data-transition-back');
-    });
-  }
-
-  // 2. 支援鍵盤輸入「數字 + Enter」直接跳轉至指定頁碼
-  (function() {
-    let pageBuffer = '';
-    let bufferTimer = null;
-
-    function getOrCreateIndicator() {
-      let el = document.getElementById('marp-page-jump-indicator');
-      if (!el) {
-        el = document.createElement('div');
-        el.id = 'marp-page-jump-indicator';
-        el.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: rgba(15, 23, 42, 0.9); color: white; padding: 8px 16px; border-radius: 8px; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.25); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); display: none; transition: all 0.15s ease;';
-        document.body.appendChild(el);
-      }
-      return el;
-    }
-
-    window.addEventListener('keydown', function(e) {
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
-
-      const indicator = getOrCreateIndicator();
-
-      if (e.key >= '0' && e.key <= '9') {
-        pageBuffer += e.key;
-        clearTimeout(bufferTimer);
-        indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        indicator.style.display = 'block';
-
-        bufferTimer = setTimeout(function() {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-        }, 2500);
-      } else if (e.key === 'Enter' && pageBuffer.length > 0) {
-        e.preventDefault();
-        const target = parseInt(pageBuffer, 10);
-        pageBuffer = '';
-        indicator.style.display = 'none';
-        clearTimeout(bufferTimer);
-
-        if (!isNaN(target) && target > 0) {
-          const oldHash = window.location.hash;
-          const newHash = '#' + target;
-          if (oldHash === newHash) {
-            window.dispatchEvent(new HashChangeEvent('hashchange'));
-          } else {
-            window.location.hash = newHash;
-          }
-        }
-      } else if (e.key === 'Escape' || e.key === 'Backspace') {
-        if (e.key === 'Backspace' && pageBuffer.length > 1) {
-          pageBuffer = pageBuffer.slice(0, -1);
-          indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        } else {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-          clearTimeout(bufferTimer);
-        }
-      }
-    });
-  })();
-</script>
-
-
 <!-- _class: lead -->
+<!-- _header: '' -->
 # AI 驅動的系統雛形設計與前期體驗確認
 ## AI-Powered UI/UX Prototyping & Early Validation
 
@@ -298,6 +270,7 @@ style: |
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
+<!-- header: '[◄](#1) 課程大綱與核心概念 [►](#4)' -->
 
 ## 課程核心概念地圖
 
@@ -324,7 +297,7 @@ style: |
 ## 講義大綱
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🎯 前半部：觀念與工具解析
 - **Part 1: 為什麼前期確認 (Early Validation) 是關鍵？**
@@ -337,7 +310,7 @@ style: |
   - 輕量預覽型：`Claude Artifacts`、`ChatGPT Canvas`
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🚀 後半部：流程與實戰應用
 - **Part 3: AI 驅動的 UI/UX 前期確認作業流程**
@@ -353,6 +326,7 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#2) Part 1: 為什麼前期確認是關鍵？ [►](#17)' -->
 
 <!-- _class: part-cover -->
 # Part 1: 為什麼前期確認是關鍵？
@@ -363,7 +337,7 @@ style: |
 ## 傳統軟體開發的「溝通代溝」
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 傳統瀑布或口頭溝通模式
 - 📝 **需求規格書 (PRD)** ：厚達數十頁的抽象文字與流程圖。
@@ -372,7 +346,7 @@ style: |
 - 💥 **交付成果 Demo** ：「這跟我當初想像的完全不一樣！按鈕怎麼在這裡？操作太反人類了！」
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 傳統溝通帶來的巨大痛點
 - **文字的語意歧義** ：每個人對「友善的搜尋介面」定義不同。
@@ -396,14 +370,14 @@ style: |
 
 ## 軟體工程的黃金法則：1-10-100 法則
 
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 > **「在需求確認階段花 1 元修改的錯誤，到了開發階段要花 10 元，上線營運後要花 100 元甚至更多！」**
 
 </div>
 
 <div class="three-columns" style="margin-top: 16px;">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 需求與雛形階段 (1x)
 - **成本** ：低（數分鐘到數小時）
@@ -411,7 +385,7 @@ style: |
 - **價值** ：5 分鐘推翻重來毫無負擔，快速收斂真正需求。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### ⚙️ 開發與編程階段 (10x)
 - **成本** ：中（數天到數週）
@@ -419,7 +393,7 @@ style: |
 - **痛點** ：需協調前端、後端、QA 測試，進度嚴重延宕。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🔥 上線與營運階段 (100x+)
 - **成本** ：極高（數月 + 品牌信譽）
@@ -434,7 +408,7 @@ style: |
 ## 雛形保真度的演進 (Fidelity Spectrum)
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 1. 低保真 (Low-Fi)
 - **形式** ：紙筆草圖、灰階線框圖 (Wireframe)。
@@ -442,7 +416,7 @@ style: |
 - **限制** ：缺乏視覺美感與真實動態互動。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 2. 中保真 (Mid-Fi)
 - **形式** ：Figma 靜態設計稿、頁面跳轉流程。
@@ -450,12 +424,12 @@ style: |
 - **限制** ：無法輸入真實資料，動態狀態有限。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 3. 高保真 (High-Fi / Code)
 - **形式** ：可互動程式碼原型 (React / Vue / HTML)。
-- **目的** ：**100% 還原真實操作體驗** ，包含即時驗證、動畫與資料連動。
-- **AI 賦能** ：**過去需耗費數週，現在 AI 數十秒即刻產出！**
+- **目的 ** ： **100% 還原真實操作體驗** ，包含即時驗證、動畫與資料連動。
+- **AI 賦能 ** ： ** 過去需耗費數週，現在 AI 數十秒即刻產出！**
 
 </div>
 </div>
@@ -465,16 +439,16 @@ style: |
 ## 1. Wireframe (低保真線框圖)：資訊骨架與 AI 協作
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 什麼是 Wireframe？
 - 📐 **產品結構藍圖** ：使用灰階方塊、線條與佔位符，排除顏色與美工干擾。
-- 🎯 **核心目標** ：專注於 **資訊架構 (IA)** 、功能位置與內容優先級。
+- 🎯 **核心目標 ** ：專注於 ** 資訊架構 (IA)** 、功能位置與內容優先級。
 - 🧠 **降低認知干擾** ：在早期討論中，避免團隊分心於按鈕顏色等表面細節。
 - ⚡ **低成本快速試錯** ：紙筆手繪或數位排版皆可，推翻重構成本趨近於零。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🤖 AI 賦能與協作模式
 - **Prompt-to-Wireframe** ：輸入一句業務需求，AI（如 `Relume`、`Uizard`）自動生成全站 Sitemap 與頁面模組。
@@ -498,14 +472,14 @@ style: |
 
 ## 練習 🏄🏻‍♀️：使用 Relume 設計「辦公室點餐系統」Wireframe
 
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🎯 任務目標：運用 Relume AI 在 10 分鐘內建立並微調出理想的辦公室下午茶/便當點餐線框圖
 
 </div>
 
 <div class="two-columns" style="margin-top: 14px;">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 📝 實作步驟
 1. 🌐 開啟 **[Relume.ai](https://www.relume.ai/)** 建立免費專案。
@@ -517,7 +491,7 @@ style: |
    - 調整元件順序與文案，直到完全符合你的設計想像！
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 評估與反思要點
 - **資訊階層** ：菜單名稱、價格與「加入點餐」按鈕是否足夠顯眼？
@@ -533,7 +507,7 @@ style: |
 ## 2. Figma：設計系統與視覺互動原型標準
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 什麼是 Figma？
 - 🎨 **UI/UX 設計與協作標準** ：向量設計、Design System、Auto-layout 與元件變體 (Variants)。
@@ -541,7 +515,7 @@ style: |
 - 👥 **多人即時協作** ：設計師、工程師與 PM 可即時留言標註與共同編輯。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🪄 AI 賦能與生態系協作
 - **Figma AI 原生功能** ：一鍵生成多版型設計稿、AI 智能圖層重命名與自動翻譯。
@@ -566,7 +540,7 @@ style: |
 ## 3. React / Vue / HTML：可執行的真實程式碼原型
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 什麼是前端程式碼原型？
 - 💻 **真實運行的動態 Web 應用** ：具備真正狀態管理 (`useState`, `Pinia`)、資料綁定與表單邏輯。
@@ -574,7 +548,7 @@ style: |
 - 🏆 **原型即產出物 (Zero Waste)** ：確認程式碼直接由工程團隊接手，零重寫浪費！
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### ⚡ AI 賦能與 Prompt-to-Code
 - **現代程式碼生成神器** ：`v0.dev`、`Lovable`、`Bolt.new` 打造端到端開發體驗。
@@ -601,12 +575,13 @@ style: |
 | 載體維度 | Wireframe (線框圖) | Figma (設計原型) | React / Vue / HTML (程式碼原型) |
 | :--- | :--- | :--- | :--- |
 | **主要溝通對象** | 產品經理 (PM)、客戶確認架構 | UI 設計師、前端工程師、決策主管 | 真實終端使用者、利害關係人、全端團隊 |
-| **互動體驗深度** | 靜態版面、無動態互動 | 點擊跳轉、微動畫、狀態切換 | **真實數據輸入、邏輯驗證、API 互動** |
-| **修改與試錯速度** | ⚡ 秒級調整，推翻成本極低 | ⏱️ 分鐘級調整視覺與排版 | 🚀 **AI 賦能下已可達成分鐘級即時重構** |
+| **互動體驗深度 **| 靜態版面、無動態互動 | 點擊跳轉、微動畫、狀態切換 |** 真實數據輸入、邏輯驗證、API 互動** |
+| **修改與試錯速度 **| ⚡ 秒級調整，推翻成本極低 | ⏱️ 分鐘級調整視覺與排版 | 🚀**AI 賦能下已可達成分鐘級即時重構** |
 | **主流 AI 協作工具** | Relume, Uizard, Miro AI | Figma AI, Galileo AI, Musho | v0, Lovable, Bolt.new, Cursor |
-| **AI 賦能最大價值** | 自動生成架構與真實情境文案 | 自動排版、Mockup 資料與組件生成 | **直接生成 Clean Code，原型即是產出物** |
+| **AI 賦能最大價值 **| 自動生成架構與真實情境文案 | 自動排版、Mockup 資料與組件生成 |** 直接生成 Clean Code，原型即是產出物** |
 
 ---
+<!-- header: '[◄](#4) Part 2: 現代 AI 雛形生成工具深度盤點 [►](#26)' -->
 
 <!-- _class: part-cover -->
 # Part 2: 現代 AI 雛形生成工具深度盤點
@@ -617,7 +592,7 @@ style: |
 ## AI 雛形工具全景分類 (Tool Landscape)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🛠️ 1. 全端/程式碼型雛形 (Code-First)
 直接生成可運行的 Web/React 前端程式碼，支援真實點擊、狀態管理與資料輸入：
@@ -627,7 +602,7 @@ style: |
 - **`Claude Artifacts / ChatGPT Canvas`** （輕量級單頁快速預覽）
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🎨 2. 設計/畫布型雛形 (Design-First)
 專注於視覺設計稿、線框圖、Figma 整合與整體站點規劃：
@@ -644,7 +619,7 @@ style: |
 ## 工具 1: v0 by Vercel (前端組件級王者)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心特性與優勢
 - **技術棧** ：React + Tailwind CSS + Lucide Icons + `shadcn/ui`。
@@ -656,7 +631,7 @@ style: |
 - Dashboard 後台管理系統、複雜表單輸入、SaaS 產品介面。
 
 </div>
-<div class="prompt-box" style="font-size: 17px;">
+<div class="prompt-box" style="font-size: 17px;" data-marpit-fragment>
 
 ### 💡 實戰 Prompt 範例
 ```text
@@ -678,7 +653,7 @@ style: |
 ## 工具 2: Lovable.dev (全功能 Web App 產出器)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心特色
 - 🚀 **超高保真** ：不只是靜態切版，而是完整具備邏輯、狀態路由與資料持久化的 Web App。
@@ -687,7 +662,7 @@ style: |
 - 💬 **自然語言迭代** ：「把側邊欄改成抽屜式」、「增加匯出 CSV 功能」，AI 自動修改程式碼並熱重載。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 適合的前期確認場景
 - 需要驗證完整使用者旅程（註冊 ➔ 填寫資料 ➔ 結帳付款 ➔ 收到通知）。
@@ -702,7 +677,7 @@ style: |
 ## 工具 3: Bolt.new (瀏覽器端完整開發環境)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心特色
 - ⚡ **Node.js in Browser** ：基於 WebContainers 技術，直接在瀏覽器執行 npm 套件與後端伺服器。
@@ -711,7 +686,7 @@ style: |
 - 🛠️ **自動修復報錯** ：當終端機或建置出錯時，AI 會主動讀取 Error Log 並一鍵修復。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 適合的前期確認場景
 - 工程團隊進行技術可行性評估 (Technical Spike)。
@@ -726,7 +701,7 @@ style: |
 ## 工具 4: Uizard (設計草圖與易用性分析專家)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心特色
 - ✍️ **Sketch-to-UI** ：在白板或紙上畫手繪草圖，拍照上傳後 AI 自動轉為高保真 UI 設計稿！
@@ -737,7 +712,7 @@ style: |
   - 前期即可評估 CTA (Call to Action) 是否夠顯眼！
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 適合的前期確認場景
 - 設計衝刺 (Design Sprint) 工作坊。
@@ -752,7 +727,7 @@ style: |
 ## 工具 5: Relume (網站資訊架構與線框圖神器)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心特色
 - 🗺️ **AI Sitemap Builder** ：輸入一句產品描述，自動規劃完整的站點地圖與頁面從屬架構。
@@ -761,7 +736,7 @@ style: |
 - 🔗 **一鍵匯入 Figma / Webflow** ：直接生成整套已 Auto-layout 且命名規範的 Figma 畫布。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 適合的前期確認場景
 - 官方網站、品牌門戶、SaaS 產品首頁的前期結構確認。
@@ -776,7 +751,7 @@ style: |
 ## 工具 6: Claude Artifacts / ChatGPT Canvas
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心特色
 - ⚡ **即問即看** ：在對話視窗右側即時渲染 React / HTML / SVG 動態元件。
@@ -784,7 +759,7 @@ style: |
 - 🔀 **多方案快速比較** ：可讓 AI 同時生成「方案 A：分步表單」與「方案 B：單頁滑動表單」，即時切換比對。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 適合的前期確認場景
 - 單一複雜 UI 元件的互動驗證（例如：三層連動下拉選單、自訂日期範圍篩選器）。
@@ -808,6 +783,7 @@ style: |
 | **Claude Artifacts** | 程式碼 (中/高) | Single File React | 🟢 低 | 對話即時渲染、零設定 | 單一元件互動邏輯、即興討論 |
 
 ---
+<!-- header: '[◄](#17) Part 3: AI 驅動的前期確認作業流程 [►](#33)' -->
 
 <!-- _class: part-cover -->
 # Part 3: AI 驅動的前期確認作業流程
@@ -834,7 +810,7 @@ style: |
 ## Step 1: 需求訪談與 User Story 梳理
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 傳統做法 vs AI 賦能
 - 傳統：手寫訪談筆記，整理需求需耗費 1~2 天。
@@ -847,7 +823,7 @@ style: |
 - **驗收準則 (Acceptance Criteria / Gherkin)** 。
 
 </div>
-<div class="prompt-box" style="font-size: 17px;">
+<div class="prompt-box" style="font-size: 17px;" data-marpit-fragment>
 
 ### 💡 AI 輔助分析 Prompt 範例
 ```text
@@ -869,7 +845,7 @@ style: |
 <div class="card">
 
 ### 重點：先定義骨架，再填充血肉
-- 在動手畫介面之前，必須先確定 **頁面層級 (Hierarchy)** 與 **導覽路徑 (Navigation Flow)** 。
+- 在動手畫介面之前，必須先確定 **頁面層級 (Hierarchy)** 與 ** 導覽路徑 (Navigation Flow)** 。
 - 避免出現「找不到入口」或「孤島頁面」的導覽死角。
 
 ### 工具搭配與產出
@@ -889,7 +865,7 @@ style: |
 ## Step 3: AI 快速生成高保真互動雛形
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心心法：結構化提示 (Structured Prompting)
 - 避免給予模糊指令（如：「給我一個漂亮的後台」）。
@@ -901,7 +877,7 @@ style: |
   5. ⚠️ **邊界與防呆** （空狀態 Empty State、錯誤提示、Loading 動畫）
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 工具選擇建議
 - **需要純元件展示** ➔ `v0.dev`
@@ -917,14 +893,14 @@ style: |
 
 ## Step 4: 啟發式評估 (Heuristic Walkthrough)
 
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 在展示給客戶前，先用「尼爾森 10 大原則」進行內部健康檢查！
 
 </div>
 
 <div class="two-columns" style="margin-top: 14px;">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🔍 內部走查檢查清單 (Checklist)
 - ✅ **NS01 系統狀態** ：按鈕點擊後是否有 Loading 指示？
@@ -935,7 +911,7 @@ style: |
 - ✅ **NS09 友善報錯** ：錯誤訊息是否具備具體修復建議？
 
 </div>
-<div class="prompt-box" style="font-size: 17px;">
+<div class="prompt-box" style="font-size: 17px;" data-marpit-fragment>
 
 ### 💡 AI 自檢 Prompt 範例
 ```text
@@ -954,15 +930,15 @@ style: |
 ## Step 5: 體驗閉環與工程交付 (Handoff)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 1. 利害關係人 (Stakeholder) 實機測試
 - 將可點擊的 Prototype 網址直接發送給真實使用者。
 - 觀察使用者在「未經解說」的情況下能否順利完成目標任務。
-- 記錄卡關點，**在會議現場直接透過 AI 在 5 分鐘內完成修訂並重新整理** ！
+- 記錄卡關點， **在會議現場直接透過 AI 在 5 分鐘內完成修訂並重新整理** ！
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 2. 順暢交接給開發團隊
 - 傳統：工程師對著靜態圖猜測響應式寬度與動畫時間。
@@ -975,6 +951,7 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#26) Part 4: 實戰 Prompt 技巧與避坑指南 [►](#37)' -->
 
 <!-- _class: part-cover -->
 # Part 4: 實戰 Prompt 技巧與避坑指南
@@ -1038,21 +1015,21 @@ style: |
 ## AI 雛形生成的常見盲點與避坑指南
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### ❌ 盲點 1: 只顧好看，忽略真實資料
 - **問題** ：AI 常填入完美長度的假文字，畫面很美；但真實用戶名字超長或內容破千字時直接破版。
-- **解法** ：在 Prompt 中要求處理 **文字截斷 (Truncation)** 、省略號 `...` 與換行。
+- **解法 ** ：在 Prompt 中要求處理 ** 文字截斷 (Truncation)** 、省略號 `...` 與換行。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### ❌ 盲點 2: 缺乏極端狀態 (Edge Cases)
 - **問題** ：只設計最理想的成功狀態，完全遺漏「網路斷線」、「查無結果」、「無權限」等狀態。
-- **解法** ：明確要求 AI 生成 **Empty State** 、**Error State** 與 **Loading Skeleton** 。
+- **解法 ** ：明確要求 AI 生成 **Empty State** 、 **Error State** 與 **Loading Skeleton** 。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### ❌ 盲點 3: 產生無效或難維護程式碼
 - **問題** ：AI 可能拼湊出過度巢狀的 CSS 或過時的 JavaScript 寫法。
@@ -1062,6 +1039,7 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#33) Part 5: 課堂實戰演練與總結 [►](#40)' -->
 
 <!-- _class: part-cover -->
 # Part 5: 課堂實戰演練與總結
@@ -1071,14 +1049,14 @@ style: |
 
 ## 練習 🏄🏻‍♀️：15 分鐘 AI 雛形快速驗證挑戰
 
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🎯 任務目標：為「逢甲智慧二手書/設備借還平台」打造可互動原型
 
 </div>
 
 <div class="two-columns" style="margin-top: 14px;">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 📝 實作步驟
 1. **選擇工具** ：開啟 `v0.dev`、`Lovable` 或 `Claude Artifacts`。
@@ -1090,7 +1068,7 @@ style: |
 4. **同儕測試** ：同桌同學互換網址操作，記錄 1 個可改進之處並即時優化！
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🏆 評分與驗收標準
 - **資訊架構清晰度** ：搜尋與分類是否一目了然？
@@ -1105,26 +1083,26 @@ style: |
 
 ## 課程核心總結 (Key Takeaways)
 
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 AI 不會取代 UX 設計師與工程師，但「善用 AI 快速驗證體驗」的團隊將淘汰傳統團隊！
 
 </div>
 
 <div class="three-columns" style="margin-top: 16px;">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 1. 速度即競爭力
 將雛形驗證週期從 **「數週」壓縮至「數十分鐘」** ，大幅降低溝通與試錯成本。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 2. 真實操作勝過千言萬語
 讓利害關係人「親手點擊」真實原型，在程式碼落地的第一天就消滅所有需求誤解。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 3. 永遠以人為本
 工具再快，核心依然是 **以使用者為中心的 UX 原則** （Nielsen 10 大原則、心理學與無障礙設計）。
@@ -1135,6 +1113,7 @@ style: |
 ---
 
 <!-- _class: lead -->
+<!-- _header: '' -->
 # Q & A 時間
 ## 歡迎提出討論與交流！
 

@@ -2,10 +2,11 @@
 marp: true
 theme: default
 paginate: true
-header: 'Introduction to User Experience Design'
+header: '使用者體驗設計導論 | 逢甲大學資工系'
 footer: '薛念林 教授 | 逢甲大學資訊工程學系'
 size: 16:9
 transition: fade
+html: true
 style: |
   section {
     font-family: 'PingFang SC', 'PingFang TC', 'Noto Sans CJK TC', 'Microsoft JhengHei', sans-serif;
@@ -13,7 +14,55 @@ style: |
     padding: 40px 50px;
     background-color: #f8fafc;
     color: #1e293b;
+    justify-content: flex-start;
   }
+  section.lead, .lead, section.part-cover, .part-cover {
+    justify-content: center;
+  }
+  header {
+    position: absolute;
+    left: auto !important;
+    right: 50px !important;
+    top: 18px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  header a {
+    color: #2563eb !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    font-size: 11px;
+    line-height: 1.4;
+    transition: all 0.15s ease;
+  }
+  header a:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    text-decoration: none !important;
+  }
+  section.part-cover header, .part-cover header {
+    color: #cbd5e1;
+  }
+  section.part-cover header a, .part-cover header a {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  section.part-cover header a:hover, .part-cover header a:hover {
+    background: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+  }
+
   footer {
     font-size: 14px;
     color: #64748b;
@@ -59,6 +108,13 @@ style: |
     color: #0369a1;
     font-style: italic;
   }
+  ul:has(> li > blockquote), li:has(> blockquote) {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
   code {
     background: #f1f5f9;
     color: #b91c1c;
@@ -82,10 +138,12 @@ style: |
     padding: 0;
   }
   table {
+    display: table !important;
     width: 95%;
     max-width: 1100px;
     border-collapse: collapse;
-    margin: 16px auto;
+    margin: 16px auto !important;
+    align-self: center !important;
     font-size: 19px;
   }
   th {
@@ -194,6 +252,11 @@ style: |
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
     border: 1px solid #e2e8f0;
   }
+  .card h3 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
   .full-img {
     display: flex;
     flex-direction: column;
@@ -249,83 +312,10 @@ style: |
     box-shadow: none;
   }
 
-
 ---
 
-<script>
-  // 1. 支援由首頁 index.html 控制是否啟用換頁動畫
-  const params = new URLSearchParams(window.location.search);
-  const transitionPref = params.get('transition') ?? localStorage.getItem('marp-transition');
-  if (transitionPref === 'false' || transitionPref === 'none') {
-    document.querySelectorAll('section[data-transition], section[data-transition-back]').forEach(el => {
-      el.removeAttribute('data-transition');
-      el.removeAttribute('data-transition-back');
-    });
-  }
-
-  // 2. 支援鍵盤輸入「數字 + Enter」直接跳轉至指定頁碼
-  (function() {
-    let pageBuffer = '';
-    let bufferTimer = null;
-
-    function getOrCreateIndicator() {
-      let el = document.getElementById('marp-page-jump-indicator');
-      if (!el) {
-        el = document.createElement('div');
-        el.id = 'marp-page-jump-indicator';
-        el.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: rgba(15, 23, 42, 0.9); color: white; padding: 8px 16px; border-radius: 8px; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.25); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); display: none; transition: all 0.15s ease;';
-        document.body.appendChild(el);
-      }
-      return el;
-    }
-
-    window.addEventListener('keydown', function(e) {
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
-
-      const indicator = getOrCreateIndicator();
-
-      if (e.key >= '0' && e.key <= '9') {
-        pageBuffer += e.key;
-        clearTimeout(bufferTimer);
-        indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        indicator.style.display = 'block';
-
-        bufferTimer = setTimeout(function() {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-        }, 2500);
-      } else if (e.key === 'Enter' && pageBuffer.length > 0) {
-        e.preventDefault();
-        const target = parseInt(pageBuffer, 10);
-        pageBuffer = '';
-        indicator.style.display = 'none';
-        clearTimeout(bufferTimer);
-
-        if (!isNaN(target) && target > 0) {
-          const oldHash = window.location.hash;
-          const newHash = '#' + target;
-          if (oldHash === newHash) {
-            window.dispatchEvent(new HashChangeEvent('hashchange'));
-          } else {
-            window.location.hash = newHash;
-          }
-        }
-      } else if (e.key === 'Escape' || e.key === 'Backspace') {
-        if (e.key === 'Backspace' && pageBuffer.length > 1) {
-          pageBuffer = pageBuffer.slice(0, -1);
-          indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        } else {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-          clearTimeout(bufferTimer);
-        }
-      }
-    });
-  })();
-</script>
-
-
 <!-- _class: lead -->
+<!-- _header: '' -->
 # Introduction to User Experience Design
 ## 使用者體驗設計導論
 
@@ -335,11 +325,12 @@ style: |
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
+<!-- header: '[◄](#1) 本單元大綱 (Outline) [►](#3)' -->
 
 ## 本單元大綱 (Outline)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🔍 日常體驗與設計反思
 - 生活中的體驗與設計
@@ -348,7 +339,7 @@ style: |
 - 糟糕設計類型分析（夜市擺攤型、顏料不用錢型、不知從何下手型）
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 UX 核心概念與實踐流程
 - 什麼是使用者體驗 (UX)？
@@ -360,40 +351,27 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#2) 1. 日常體驗與設計反思 [►](#17)' -->
 
-## 生活中的體驗與設計
-
-我們在生活的每一天，不斷地 **體驗** 各種 **設計** 。
-
-- 🚌 搭乘大眾交通工具（公車動態、捷運刷卡閘門）
-- 📱 滑手機使用 App（社群瀏覽、外送點餐、行動支付）
-- 💻 辦公與學習系統（選課系統、請假系統、線上會議）
-- 🚗 駕駛或操作各類設備（汽車中控螢幕、家電開關）
-
-> **好的設計** 讓你如沐春風、自然流暢；
-> **壞的設計** 讓你懷疑人生、挫折抓狂。
-
----
-
-## 生活中處處是 UX
+## 無所不在的使用體驗 (Everywhere UX)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
-### <span class="badge-good">好的 UX</span>
-- 生活有效率、順手
-- 感覺舒服、自然
-- 帶來愉快的心情 😀
-- 直覺無負擔，一次就做對
+### 🏡 實體生活中的體驗案例
+- 🚪 **門把與推拉門** ：扁平鐵板直覺「推」、握把直覺「拉」（預設用途 Affordance）。
+- ☕ **外帶咖啡杯蓋** ：防溢流吸口與透氣孔，流暢飲用不燙嘴。
+- 🚦 **行人號誌（小綠人）** ：倒數秒數與動態快走，即時反饋剩餘時間。
+- 🎛️ **家電操作旋鈕** ：實體段位手感回饋 vs. 繁瑣反光觸控板。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
-### <span class="badge-bad">不好的 UX</span>
-* 容易誤操作、迷路
-* 浪費大量寶貴時間
-* 讓人感到挫折與焦慮
-* 產生困惑、生氣惱怒 😡
+### 💻 資訊系統中的體驗案例
+- 📱 **行動支付與掃碼** ：一鍵亮碼、震動感應反饋、即時顯示交易明細。
+- 🎓 **選課與購票系統** ：透明排隊進度與即時餘額 vs. 流量過載白畫面。
+- 🛵 **外送點餐 App** ：即時地圖追蹤外送員軌跡，消除等待焦慮。
+- 🔑 **生物辨識登入** ：Face ID / 指紋秒速授權 vs. 繁瑣多重驗證碼。
 
 </div>
 </div>
@@ -402,8 +380,8 @@ style: |
 
 ## 經典反面教材：Norman's Door (諾曼門)
 
-<div class="two-columns">
-<div class="card">
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
 
 ### 什麼是「諾曼門」？
 當你看到一扇門，上面裝了漂亮的「拉手把」，你下意識用力往外拉——結果門紋絲不動，因為它是 **「推門」** 。門上甚至貼了手寫字條：`「請用推的 PUSH」`。
@@ -413,7 +391,7 @@ style: |
 - 參考來源：[Norman Door at Apple Store](https://www.reddit.com/r/CrappyDesign/comments/5wolzl/a_norman_door_at_the_apple_store/)
 
 </div>
-<div class="card-img">
+<div class="card-img" data-marpit-fragment>
 
 <img src="../../img/normans_door.png" alt="Norman's Door">
 
@@ -424,33 +402,64 @@ style: |
 
 ## 遇到糟糕的 UI/UX，你會感到…
 
-當系統介面難用、卡關、報錯不明時，使用者的真實情緒反映：
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
 
-- 😣 **情緒受挫** ：丟臉、煩躁、委屈、羞恥
-- ❓ **認知迷失** ：不悅、困惑、生氣、挫折
-- 🚫 **信任崩塌** ：對該產品甚至品牌喪失信心，不再願意嘗試
+### 😣 情緒受挫
+- **負面情緒蔓延**
+- 丟臉、煩躁、委屈、羞恥
+- 懷疑自己的操作能力
 
-<div data-marpit-fragment>
+</div>
+<div class="card" data-marpit-fragment>
 
-> 設計不良不僅僅是外觀難看，更會直接傷害使用者的心理安全感與效率！
+### ❓ 認知迷失
+- **心智負擔爆表**
+- 不悅、困惑、生氣、挫折
+- 迷失在複雜流程中
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🚫 信任崩塌
+- **拒絕再次使用**
+- 對該產品甚至品牌喪失信心
+- 轉向競爭對手產品
+
+</div>
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 16px;">
+
+> 💡 **核心啟示** ：設計不良不僅僅是外觀難看，更會直接傷害使用者的心理安全感與操作效率！
 
 </div>
 
 ---
 
-![bg 100%](../../img/bad_ui_ux_frustration.jpg)
+<!-- _class: full-img -->
+
+![](../../img/bad_ui_ux_frustration.jpg)
 
 ---
 
 ## 糟糕設計類型 (1)：夜市擺攤型
 
-<div class="card">
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-### 特徵：資訊雜亂無章、隨機塞滿畫面
+### 資訊雜亂無章、隨機塞滿畫面
 - **模式識別失效** ：現代電商的商品區塊（圖片、價格、名稱）位置固定。若區塊長寬比、對齊線、字體完全隨機，大腦無法建立模式，必須對每個點重新「對焦」，造成大腦極度疲勞。
 - **缺乏視覺錨點** ：缺乏嚴格的網格系統（Grid System），使用者的視線無法沿著水平或垂直軸順暢掃描。
-- **成因** ：往往不是審美問題，而是技術不足（例如只會用 Flow Layout 依序硬塞元件，且未規劃架構）。
 
+</div>
+<div class="card" data-marpit-fragment>
+
+### 核心成因與危害
+- **成因** ：往往不是審美問題，而是架構規劃與技術不足（例如只會用 Flow Layout 依序硬塞元件，且未規劃資訊階層）。
+- **後果** ：使用者無法快速找到核心任務，跳出率極高。
+
+</div>
 </div>
 
 ---
@@ -463,65 +472,96 @@ style: |
 
 ## 糟糕設計類型 (2)：顏料不用錢型
 
-<div class="card">
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
 ### 「視覺虐待」與易讀性的毀滅
 - **色彩對比崩壞（Color Contrast）** ：藍色漸層橫條紋搭配深紅細體字，產生視覺閃爍感，對色弱與年長使用者完全不可讀。
 - **排版災難（Typography Nightmares）** ：隨機浮雕陰影增加視覺噪音；文字列表「左右交錯」長短不一，強迫視線痛苦地 Z 字型掃視。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 負空間與品牌信賴
 - **缺乏負空間（White Space）** ：內容塞得密不透風，讓人感覺呼吸困難。
 - **摧毀品牌信賴感** ：專業醫療或科技器材網站若採用五顏六色的隨意混搭，會直接摧毀安全感與專業度。
 
 </div>
+</div>
 
 ---
 
-![bg 80%](../../img/bad_design_color_contrast_xray.png)
+<!-- _class: full-img -->
+
+![](../../img/bad_design_color_contrast_xray.png)
 
 ---
 
 ## 糟糕設計類型 (3)：不知從何下手型
 
-<div class="card">
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-### 特徵：視覺過載、內容過剩、導覽失能
+### 視覺過載與導覽失能
 - **資訊洪流** ：首頁塞滿大量電話、Email、跑馬燈與未分類圖示，完全沒有視覺焦點。
-- **寬度失控** ：文字段落橫跨整個螢幕且字距緊湊。
-  - 人類最舒適的閱讀長度為 **每行 45 ~ 75 個字元** 。
-  - 超寬排版強迫讀者的脖子與眼球頻繁左右擺動，嚴重損害閱讀體驗。
 - **死連結（Broken Links）** ：大量按鈕點進去無效或 404，使用者徹底迷航。
 
+</div>
+<div class="card" data-marpit-fragment>
+
+### 寬度失控（Line Length Issue）
+- **寬度失控** ：文字段落橫跨整個螢幕且字距緊湊。
+- 人類最舒適的閱讀長度為 **每行 45 ~ 75 個字元** 。
+- 超寬排版強迫讀者的脖子與眼球頻繁左右擺動，嚴重損害閱讀體驗。
+
+</div>
 </div>
 
 ---
 
-![bg 80%](../../img/bad_design_cluttered_gates.png)
+<!-- _class: full-img -->
+
+![](../../img/bad_design_cluttered_gates.png)
 
 ---
 
-![bg 80%](../../img/bad_design_fcu_cs_old.png)
+## 案例對照：健保快易通 App 介面重構
 
----
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-![bg 80%](../../img/mask_order_app_quiz.png)
+### 改版前（猜猜看口罩在哪裡買？）
 
----
+<div class="card-img" style="margin-top: 8px;">
+  <img src="../../img/mask_order_app_before.png" alt="改版前" style="max-height: 360px;">
+</div>
 
-![bg 80%](../../img/mask_order_app_answer.png)
+</div>
+<div class="card" data-marpit-fragment>
+
+### 改版後（九宮格標準化重構）
+
+<div class="card-img" style="margin-top: 8px;">
+  <img src="../../img/mask_order_app_after.png" alt="改版後" style="max-height: 360px;">
+</div>
+
+</div>
+</div>
 
 ---
 
 ## UX 為何如此困難？
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 常見的開發盲點
-- ❌ **只有模組思考，沒有系統思考** ：疊床架屋，來一個做一個。
-- ❌ **只有系統思考，沒有使用者思考** ：忽略同理心與實際體驗。
-- ❌ **沒有使用者研究，沒有需求分析** ：閉門造車。
-- ❌ **沒有設計就直接施工** ：邊寫邊改，架構混亂。
-- ❌ **沒有測試反饋與修正** 。
-- 💸 **No Money** → 便宜行事；😴 **Lazy** → 知錯不改。
+* 只有模組思考，沒有系統思考: 疊床架屋，來一個做一個。
+* 只有系統思考，沒有使用者思考: 忽略同理心與實際體驗。
+* 沒有使用者研究，沒有需求分析: 閉門造車。
+* 沒有設計就直接施工: 邊寫邊改，架構混亂。
+* 沒有測試反饋與修正
+* 💸 **No Money** → 便宜行事；😴 **Lazy** → 知錯不改。
 
 </div>
 <div class="card-img">
@@ -535,36 +575,49 @@ style: |
 
 ## 迷思破解：系統難用只是美工不好嗎？
 
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 💭 開發者常見對話
 > **老師** ：「這個系統很難用，操作體驗很不順。」
 > **學生** ：「我又不會畫圖，我美工很差沒辦法……」
 
-<div class="card">
-
-### 系統難用只和「美工」有關嗎？
 - **絕對不是！** 美工（Visual Graphic）只負責視覺外觀與修飾。
-- 系統難用通常源於：
-  1. 資訊架構混亂（找不到功能）
-  2. 互動流程繁瑣（多餘步驟）
-  3. 狀態反饋缺失（不知道有沒有成功）
-  4. 認知模型不匹配（用語只有工程師看得懂）
 
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💡 系統難用的 4 大真正癥結
+1. **資訊架構混亂** （找不到功能）
+2. **互動流程繁瑣** （多餘與繁雜步驟）
+3. **狀態反饋缺失** （不知道系統有沒有成功）
+4. **認知模型不匹配** （用語只有工程師看得懂）
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#3) 2. UX 核心概念與實踐流程 [►](#24)' -->
 
 ## 什麼是使用者體驗 (User Experience, UX)？
 
+<div class="two-columns">
 <div class="card">
 
-### 權威定義 (ISO 9241-210 / Wikipedia)
+### ISO 9241-210
 > **The user experience (UX)** is how a user interacts with and experiences a product, system or service. It includes a person's perceptions of **utility**, **ease of use**, and **efficiency**.
 
-- **使用者體驗 (UX)** 是使用者在與產品、系統或服務互動過程中的整體體驗與內在感受。
-- 核心三要素：
-  1. **效用 (Utility)** ：能否滿足使用者需求、解決問題？
-  2. **易用性 (Ease of Use)** ：容易學習與操作嗎？
-  3. **效率 (Efficiency)** ：完成任務是否迅速流暢？
+- **使用者體驗 (UX)** 是使用者在與產品、系統或服務互動過程中的整體體驗與**內在感受**。
 
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🎯 UX 核心三要素
+* **效用 (Utility)** ：能否滿足使用者需求、解決問題？
+* **易用性 (Ease of Use)** ：容易學習與直覺操作嗎？
+* **效率 (Efficiency)** ：完成任務是否迅速流暢？
+
+</div>
 </div>
 
 ---
@@ -572,7 +625,7 @@ style: |
 ## UI (使用介面) vs. UX (使用體驗)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### UI (User Interface)
 - **外在視覺與互動介面**
@@ -580,7 +633,7 @@ style: |
 - 核心問題： **「產品看起來如何？操作元件長怎樣？」**
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### UX (User Experience)
 - **內在心理感受與整體旅程**
@@ -592,47 +645,77 @@ style: |
 
 ---
 
-![bg fit](../../img/ui_vs_ux_comparison_new.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ui_vs_ux_comparison_new.jpg)
 
 ---
 
-![bg fit](../../img/ui_vs_ux_comparison.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ui_vs_ux_comparison.jpg)
 
 ---
 
 ## 什麼是使用者體驗設計 (UX Design)？
 
-<div class="card">
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
 ### UX Design 的定義
 > **User Experience Design** is the process that design teams use to create products that provide meaningful and relevant experiences to users.
-> It involves the design of the entire process of acquiring and integrating the product, including aspects of **branding**, **design**, **usability**, and **function**.
 
-UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完整設計流程，涵蓋品牌塑造、介面設計、可用性評估及核心功能。
+- UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完整設計流程。
 
+</div>
+<div class="card" data-marpit-fragment>
+
+### 涵蓋範圍 (4 大構面)
+- 🎨 **品牌塑造 (Branding)**
+- 📐 **介面設計 (Design)**
+- ⚙️ **可用性 (Usability)**
+- 🛠️ **核心功能 (Function)**
+
+</div>
 </div>
 
 ---
 
-![bg fit](../../img/ux_core_process.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ux_core_process.jpg)
 
 ---
 
-## UX 設計的標準核心流程：步驟解析
+## UX 設計的標準核心流程：5 大步驟
 
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 前期探索與定義
 - **1. 探索 (Research)** ：研究使用者行為，理解他們「為什麼」這樣做。
 - **2. 分析 (Analyze)** ：從調研結果提煉關鍵使用者目標與核心痛點。
 - **3. 構思 (Ideate)** ：結合使用者目標、商業需求與技術規格擬定設計要求。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 後期設計與驗證
 - **4. 設計 (Design)** ：產出低/高保真原型並提出具體解決方案。
 - **5. 確認 (Test)** ：與真實使用者進行可用性測試，驗證方案是否達成目標。
+- 🔄 **迭代演進** ：根據測試反饋持續優化體驗。
+
+</div>
+</div>
 
 ---
+<!-- header: '[◄](#17) 3. 課堂檢測與討論 (CCQ & QA) [►](#28)' -->
 
 <!-- id: ux-ch01-ccq1 -->
 ## 🙋 概念核對問答 (CCQ1)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### UX 和 UI 的差異
 **[ 是 / 否 ]**
@@ -641,9 +724,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 
 請判斷上述說法是否正確，並簡述兩者的定義邊界。
 
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1)
-
-  
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq1)
 
 </div>
 <div class="card-img">
@@ -659,7 +740,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 ## 🙋 概念核對問答 (CCQ2)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### UX
 **[ 是 / 否 ]**
@@ -668,9 +749,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 
 請參考 ISO9241-11 對 UX 的定義，判斷上述說法是否正確。
 
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2)
-
-  
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq2)
 
 </div>
 <div class="card-img">
@@ -686,7 +765,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 ## 🙋 概念核對問答 (CCQ3)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### UX process
 以下哪個活動 **不算** 在 UX 的標準流程中？
@@ -697,9 +776,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 * **(D)** 開發一個雛形進行試用
 * **(E)** 對系統進行壓力測試
 
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3)
-
-  
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-ccq3)
 
 </div>
 <div class="card-img">
@@ -715,7 +792,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 ## 🙋 問答討論 (QA1)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 分享你的糟糕 UX 體驗
 請回想並描述一個你在日常生活中遇過 **UX 最糟糕的系統** （如學校系統、政府網站、點餐 App、售票系統等）：
@@ -725,9 +802,7 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 3. **這帶給你什麼心理感受？（困惑、生氣、無助）**
 4. **如果你是設計師，你第一步想如何改善它？**
 
-[線上作答](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-qa1)
-
-  
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ux-ch01-qa1)
 
 </div>
 <div class="card-img">
@@ -738,8 +813,9 @@ UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完�
 </div>
 
 ---
-
 <!-- _class: lead -->
+<!-- _header: '' -->
+
 # Thank You!
 ## 打造以人為本、流暢優雅的使用者體驗
 

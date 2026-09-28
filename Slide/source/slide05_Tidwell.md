@@ -2,10 +2,10 @@
 marp: true
 theme: default
 paginate: true
-header: 'Tidwell Interaction Design Patterns'
 footer: '薛念林 教授 | 逢甲大學資訊工程學系'
 size: 16:9
 transition: fade
+html: true
 style: |
   section {
     font-family: 'PingFang SC', 'PingFang TC', 'Noto Sans CJK TC', 'Microsoft JhengHei', sans-serif;
@@ -14,6 +14,50 @@ style: |
     background-color: #f8fafc;
     color: #1e293b;
   }
+  header {
+    position: absolute;
+    left: auto !important;
+    right: 50px !important;
+    top: 18px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  header a {
+    color: #2563eb !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    font-size: 11px;
+    line-height: 1.4;
+    transition: all 0.15s ease;
+  }
+  header a:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    text-decoration: none !important;
+  }
+  section.part-cover header, .part-cover header {
+    color: #cbd5e1;
+  }
+  section.part-cover header a, .part-cover header a {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  section.part-cover header a:hover, .part-cover header a:hover {
+    background: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+  }
+
   footer {
     font-size: 14px;
     color: #64748b;
@@ -249,82 +293,11 @@ style: |
     box-shadow: none;
   }
 
+
 ---
 
-<script>
-  // 1. 支援由首頁 index.html 控制是否啟用換頁動畫
-  const params = new URLSearchParams(window.location.search);
-  const transitionPref = params.get('transition') ?? localStorage.getItem('marp-transition');
-  if (transitionPref === 'false' || transitionPref === 'none') {
-    document.querySelectorAll('section[data-transition], section[data-transition-back]').forEach(el => {
-      el.removeAttribute('data-transition');
-      el.removeAttribute('data-transition-back');
-    });
-  }
-
-  // 2. 支援鍵盤輸入「數字 + Enter」直接跳轉至指定頁碼
-  (function() {
-    let pageBuffer = '';
-    let bufferTimer = null;
-
-    function getOrCreateIndicator() {
-      let el = document.getElementById('marp-page-jump-indicator');
-      if (!el) {
-        el = document.createElement('div');
-        el.id = 'marp-page-jump-indicator';
-        el.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: rgba(15, 23, 42, 0.9); color: white; padding: 8px 16px; border-radius: 8px; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.25); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); display: none; transition: all 0.15s ease;';
-        document.body.appendChild(el);
-      }
-      return el;
-    }
-
-    window.addEventListener('keydown', function(e) {
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
-
-      const indicator = getOrCreateIndicator();
-
-      if (e.key >= '0' && e.key <= '9') {
-        pageBuffer += e.key;
-        clearTimeout(bufferTimer);
-        indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        indicator.style.display = 'block';
-
-        bufferTimer = setTimeout(function() {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-        }, 2500);
-      } else if (e.key === 'Enter' && pageBuffer.length > 0) {
-        e.preventDefault();
-        const target = parseInt(pageBuffer, 10);
-        pageBuffer = '';
-        indicator.style.display = 'none';
-        clearTimeout(bufferTimer);
-
-        if (!isNaN(target) && target > 0) {
-          const oldHash = window.location.hash;
-          const newHash = '#' + target;
-          if (oldHash === newHash) {
-            window.dispatchEvent(new HashChangeEvent('hashchange'));
-          } else {
-            window.location.hash = newHash;
-          }
-        }
-      } else if (e.key === 'Escape' || e.key === 'Backspace') {
-        if (e.key === 'Backspace' && pageBuffer.length > 1) {
-          pageBuffer = pageBuffer.slice(0, -1);
-          indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        } else {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-          clearTimeout(bufferTimer);
-        }
-      }
-    });
-  })();
-</script>
-
-
 <!-- _class: lead -->
+<!-- _header: '' -->
 # Tidwell 經典網頁與介面設計模式
 ## Designing Interfaces: Patterns for Effective Interaction Design
 
@@ -334,11 +307,12 @@ style: |
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
+<!-- header: '[◄](#1) Tidwell UX 設計模式 9 大核心分類 [►](#3)' -->
 
 ## Tidwell UX 設計模式 9 大核心分類
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 **1. 一般性互動**
 (General Interaction)
@@ -347,7 +321,7 @@ style: |
 - 空間記憶
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 **2. 組織內容**
 (Organizing Content)
@@ -356,7 +330,7 @@ style: |
 - 精靈模式
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 **3. 到處走走：導覽**
 (Navigation)
@@ -368,7 +342,7 @@ style: |
 </div>
 
 <div class="three-columns" style="margin-top: 16px;">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 **4. 網頁元素排版**
 (Layout of Elements)
@@ -377,7 +351,7 @@ style: |
 - 模組化分頁
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 **5. 行動裝置介面**
 (Mobile Interfaces)
@@ -386,7 +360,7 @@ style: |
 - 無限清單
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 **6. 清單展示**
 (Lists)
@@ -398,12 +372,14 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#2) Chapter 1: 一般性模式 (General Patterns) [►](#7)' -->
 
 ## Chapter 1: 一般性模式 (General Patterns)
 
 <div class="two-columns">
-<div>
+<div class="card" data-marpit-fragment>
 
+### 探索與彈性模式 (Part 1)
 - **TW1.1 安全探索 (Safe Exploration)**
 - **TW1.2 立即喜悅 (Instant Gratification)**
 - **TW1.3 足夠滿足 (Satisficing)**
@@ -412,8 +388,9 @@ style: |
 - **TW1.6 漸進建構 (Incremental Construction)**
 
 </div>
-<div>
+<div class="card" data-marpit-fragment>
 
+### 習慣與效率模式 (Part 2)
 - **TW1.7 習慣就好 (Habituation)**
 - **TW1.8 零碎空檔 (Microbreaks)**
 - **TW1.9 空間記憶 (Spatial Memory)**
@@ -429,7 +406,7 @@ style: |
 ## TW1.1 ~ TW1.3：探索、即時與滿足
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.1 安全探索
 - **「讓我放心探索，不會迷路也不會搞砸」**
@@ -437,7 +414,7 @@ style: |
 - 對應 NS01, NS03, NS09。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.2 立即喜悅
 - **「我想現在立刻完成任務，而不是等很久」**
@@ -445,7 +422,7 @@ style: |
 - 對應 NS07。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.3 足夠滿足
 - **「看得懂、能用就好，不要強迫我詳讀」**
@@ -460,7 +437,7 @@ style: |
 ## TW1.4 ~ TW1.6：彈性、延遲與漸進
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.4 中途改變
 - **「我改主意了，讓我隨時調整」**
@@ -468,7 +445,7 @@ style: |
 - 對應 NS03, NS07。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.5 延遲選擇
 - **「我現在不想填這個，讓我先用」**
@@ -476,7 +453,7 @@ style: |
 - 對應 NS08。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.6 漸進建構
 - **「改一點、看一下，逐步完善」**
@@ -491,7 +468,7 @@ style: |
 ## TW1.7 ~ TW1.12：習慣、空間與鍵盤
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.7 習慣就好
 - 遵循使用者的肌肉記憶（`Ctrl+C`、儲存圖示）。
@@ -499,7 +476,7 @@ style: |
 - 對應 NS04。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.9 空間記憶
 - **「別幫我亂移桌上的東西」**
@@ -507,7 +484,7 @@ style: |
 - 對應 NS04, NS06。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW1.12 只用鍵盤
 - 專家使用者不希望手離開鍵盤。
@@ -518,12 +495,14 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#3) Chapter 2: 組織內容 (Organizing Content) [►](#18)' -->
 
 ## Chapter 2: 組織內容 (Organizing Content)
 
 <div class="two-columns">
-<div>
+<div class="card" data-marpit-fragment>
 
+### 內容發現與畫布 (Part 1)
 - **TW2.1 凸顯、搜尋與瀏覽 (Feature, Search, Browse)**
 - **TW2.2 行動裝置快速反應 (Mobile Direct Access)**
 - **TW2.3 持續及時的訊息供給 (Streams and Feeds)**
@@ -532,8 +511,9 @@ style: |
 - **TW2.6 畫布加工具盤 (Canvas plus Palette)**
 
 </div>
-<div>
+<div class="card" data-marpit-fragment>
 
+### 引導與進階管理 (Part 2)
 - **TW2.7 精靈模式 (Wizard)**
 - **TW2.8 設定編輯器 (Settings Editor)**
 - **TW2.9 備擇檢視 (Alternative Views)**
@@ -549,7 +529,7 @@ style: |
 ## TW2.1 凸顯、搜尋與瀏覽 (Feature, Search, Browse)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 現代內容發現的三大支柱
 - **凸顯 (Feature)** ：在首頁核心視覺區推薦最重要、最吸引人的焦點內容或即時活動。
@@ -557,7 +537,7 @@ style: |
 - **瀏覽 (Browse)** ：針對探索型使用者，提供圖文分類網格與清晰目錄。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：電商首頁 (Momo, Amazon)、串流影音 (Netflix)、新聞入口。
@@ -577,21 +557,21 @@ style: |
 ## 內容組織核心模式：精靈、儀表板與漸進揭露
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW2.5 儀表板 (Dashboard)
 - 以豐富圖表視覺化呈現關鍵 KPI 與即時數據。
 - 定期自動更新，支援點擊鑽取 (Drilldown)。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW2.7 精靈 (Wizard)
 - 針對複雜任務，拆解為 `Step 1 ➔ 2 ➔ 3` 的線性引導。
 - 降低使用者的認知負擔。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 漸進式揭露 (Progressive Disclosure)
 - **回應式生效 (Responsive Enabling)** ：勾選某選項後才啟用相關子欄位。
@@ -602,10 +582,28 @@ style: |
 
 ---
 
+<!-- _class: full-img -->
+
+![](../../img/tw_2_5_dashboard.jpg)
+
+---
+
+<!-- _class: full-img -->
+
+![](../../img/tw_2_7_wizard.jpg)
+
+---
+
+<!-- _class: full-img -->
+
+![](../../img/tw_2_progressive_disclosure.jpg)
+
+---
+
 ## TW2.8 設定編輯器 (Settings Editor)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 集中式參數與個人化偏好管理
 - **分類分群** ：將繁雜設定依模組分類（帳號、隱私安全、外觀、API 整合），避免單頁過長。
@@ -613,7 +611,7 @@ style: |
 - **防呆警示 (Danger Zone)** ：將敏感或破壞性操作（如刪除帳號）隔離於底部並以紅色標註二次確認。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：SaaS 控制台、系統偏好設定、VS Code 設定頁。
@@ -633,7 +631,7 @@ style: |
 ## TW2.9 備擇檢視 (Alternative Views)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 同一資料的多維度視角切換
 - **模式本質** ：底層資料模型完全相同，但在介面上提供多種呈現維度以滿足不同工作情境。
@@ -643,7 +641,7 @@ style: |
   - 📅 **行事曆 / 時間軸 (Calendar & Timeline)** ：聚焦死線與時程依賴關係。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：Notion 數據庫、Jira 專案看板、Airtable。
@@ -659,12 +657,14 @@ style: |
 ![](../../img/tw_2_9_alternative_views.jpg)
 
 ---
+<!-- header: '[◄](#7) Chapter 3: 到處走走（導航與路標） [►](#27)' -->
 
 ## Chapter 3: 到處走走（導航與路標）
 
 <div class="two-columns">
-<div>
+<div class="card" data-marpit-fragment>
 
+### 結構與進入點 (Part 1)
 - **TW3.1 清楚的進入點 (Clear Entry Points)**
 - **TW3.2 選單頁面 (Menu Page)**
 - **TW3.3 金字塔結構 (Pyramid)**
@@ -674,8 +674,9 @@ style: |
 - **TW3.7 寬選單 (Fat Menus / Mega Menus)**
 
 </div>
-<div>
+<div class="card" data-marpit-fragment>
 
+### 路標與輔助工具 (Part 2)
 - **TW3.8 網站地圖頁尾 (Sitemap Footer)**
 - **TW3.9 登入工具 (Sign-in Tools)**
 - **TW3.10 進度指示器 (Progress Indicator)**
@@ -691,14 +692,14 @@ style: |
 ## 關鍵導航模式解析：逃生門與網站地圖
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW3.6 逃生門 (Escape Hatch)
 - 清楚醒目的退出按鈕，讓使用者隨時跳出當前流程，回到首頁或安全區。
 - 如客服電話：「按 0 由專人服務」。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW3.8 網站地圖頁尾 (Sitemap Footer)
 - 在網頁最底部以分類展開完整連結目錄。
@@ -709,10 +710,16 @@ style: |
 
 ---
 
+<!-- _class: full-img -->
+
+![](../../img/tw_3_8_sitemap_footer.jpg)
+
+---
+
 ## TW3.5 深連接 (Deep Links)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 直達內容核心的精確導航
 - **模式本質** ：為特定頁面中的「特定區塊、標題、評論或項目」提供獨立可分享的專屬 URL。
@@ -722,7 +729,7 @@ style: |
   - 點擊進入時，頁面自動平滑捲動至目標位置並以高亮提示。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：Figma 畫布定位連結、Notion 區塊連結、Google Docs 評論錨點。
@@ -742,7 +749,7 @@ style: |
 ## TW3.7 寬選單 / 超級選單 (Fat Menus / Mega Menus)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 一覽無遺的二維全站架構導航
 - **突破傳統下拉限制** ：將傳統單欄長下拉選單展開為橫跨畫面的多欄二維資訊矩陣。
@@ -752,7 +759,7 @@ style: |
   - ⚡ **視覺階層** ：粗體主類別 + 易讀子連結，讓視線一秒掃描全貌。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：大型電商 (Amazon, ASOS)、企業雲端官網 (Microsoft, AWS)。
@@ -772,7 +779,7 @@ style: |
 ## TW3.11 麵包屑記號 (Breadcrumbs)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 清楚標示「身在何處」的階層路標
 - **模式本質** ：以水平文字鏈展示當前頁面在網站樹狀階層中的相對位置。
@@ -782,7 +789,7 @@ style: |
   - 每個父層級均可點擊，方便使用者一鍵回溯至上一層或根節點。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：深層電商商品頁、大型知識庫與說明文件。
@@ -798,11 +805,12 @@ style: |
 ![](../../img/tw_3_11_breadcrumbs.jpg)
 
 ---
+<!-- header: '[◄](#18) Chapter 4: 網頁元素的排版 (Layout) [►](#35)' -->
 
 ## Chapter 4: 網頁元素的排版 (Layout)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 排版模式清單
 - **TW4.1 視覺框架 (Visual Framework)**
@@ -815,7 +823,7 @@ style: |
 - **TW4.8 可移動面板 (Movable Panels)**
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 核心原則
 - **階層分明** ：利用標題、格線與負空間明確劃分資訊權重。
@@ -827,10 +835,38 @@ style: |
 
 ---
 
+## 排版模式對比：標題分區 vs 模組化分頁 vs 手風琴模式
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+
+### TW4.4 標題分區 (Titled Sections)
+- **垂直全展開** ：所有章節與內容一覽無遺，靠標題與空白區隔。
+- **適用** ：內容長度適中、需連續閱讀或整體掃描的長頁面（如產品介紹、文章）。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### TW4.5 模組化分頁 (Module Tabs)
+- **同容器互斥切換** ：多個關聯模組共用同一空間，點擊 Tab 水平切換。
+- **適用** ：平行獨立視圖、固定長度卡片，極致節省垂直空間（如設定頁、商品評價）。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### TW4.6 手風琴模式 (Accordion)
+- **垂直堆疊按需折疊** ：標題垂直排列，點擊原地向下展開/收合。
+- **適用** ：多段長度不一、使用者僅需挑選特定項目閱讀（如 FAQ、行動端篩選器）。
+
+</div>
+</div>
+
+---
+
 ## TW4.5 模組化分頁 (Module Tabs)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 在有限空間切換同一容器的內容模組
 - **模式本質** ：將同一卡片或容器內的多組關聯資料，透過頂部分頁標籤進行切換顯示。
@@ -840,7 +876,7 @@ style: |
   - **資訊計數** ：分頁標籤可附帶數字徽章（如 `錯誤 (3)`、`待審核 (12)`）。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：開發者控制台、產品規格/評價頁籤、個人檔案設定。
@@ -860,7 +896,7 @@ style: |
 ## TW4.6 手風琴模式 (Accordion)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 垂直堆疊與按需展開的折疊清單
 - **模式本質** ：垂直排列的標題面板，點擊可向下展開詳細內容；展開新項目時可選擇自動收合其餘項目。
@@ -870,7 +906,7 @@ style: |
   - 適合內容長短不一、使用者僅需挑選特定項目閱讀的情境。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：常見問答 (FAQ)、多步驟購物結帳表單、行動端篩選器。
@@ -890,7 +926,7 @@ style: |
 ## TW4.7 可折疊面板 (Collapsible Panels)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 彈性伸縮的專業工作區側邊欄
 - **模式本質** ：將輔助功能（如檔案樹、屬性檢查器、AI 助理）置於可折疊收納的側邊欄。
@@ -900,7 +936,7 @@ style: |
   - 💻 **聚焦畫布** ：需要專注時收合兩側面板，最大化中央主要工作舞台。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：VS Code / Cursor 編輯器、Figma 設計介面、Notion 側邊導航。
@@ -916,12 +952,14 @@ style: |
 ![](../../img/tw_4_7_collapsible_panels.jpg)
 
 ---
+<!-- header: '[◄](#27) Chapter 7: 清單展示模式 (Lists) [►](#43)' -->
 
 ## Chapter 7: 清單展示模式 (Lists)
 
 <div class="two-columns">
-<div>
+<div class="card" data-marpit-fragment>
 
+### 視圖與佈局模式 (Part 1)
 - **TW7.1 雙面板選擇器 (Two-Panel Selector / Split View)**
 - **TW7.2 單視窗深入 (One-Window Drilldown)**
 - **TW7.3 清單嵌板 (List Inlay，如 Google Map 路線詳情)**
@@ -929,8 +967,9 @@ style: |
 - **TW7.5 縮圖網格 (Thumbnail Grid)**
 
 </div>
-<div>
+<div class="card" data-marpit-fragment>
 
+### 導覽與控制模式 (Part 2)
 - **TW7.6 旋轉木馬 / 輪播 (Carousel)**
 - **TW7.7 分頁標註 (Pagination，長清單拆頁載入)**
 - **TW7.8 跳至項目 (Jump to Item)**
@@ -945,21 +984,21 @@ style: |
 ## 清單模式對比：雙面板 vs 卡片 vs 嵌板
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW7.1 雙面板選擇器
 - 左側為項目清單，右側為詳細內容。
 - 適合寬螢幕桌面端 (如 Email 客戶端、檔案管理器)。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW7.4 卡片 (Cards)
 - 將圖文、標籤與操作封裝在獨立矩形卡片中。
 - 響應式佈局極佳，適合手機與跨裝置呈現。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### TW7.3 清單嵌板 (List Inlay)
 - 點擊清單項目後，在原地向下展開詳細資訊。
@@ -973,7 +1012,7 @@ style: |
 ## TW7.3 清單嵌板 (List Inlay)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 清單項目原地下拉展開的上下文延續
 - **模式本質** ：點擊清單中的某一列時，直接在該列下方原地「嵌入展開」詳細資訊區塊。
@@ -983,7 +1022,7 @@ style: |
   - 📈 **階層式詳情** ：適合呈現時間軸軌跡、配送站點、訂單明細。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：Google Maps 路線轉乘詳情、物流行程追蹤、銀行交易明細。
@@ -1003,7 +1042,7 @@ style: |
 ## TW7.4 卡片化設計 (Cards)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 異質資訊的獨立模組化封裝
 - **模式本質** ：將圖片、標題、標籤、摘要、作者資訊與操作按鈕封裝在獨立的矩形卡片中。
@@ -1013,7 +1052,7 @@ style: |
   - 🖱️ **清晰邊界與懸浮反饋** ：卡片具備微陰影與 Hover 浮起動效，暗示可點擊性。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：社群動態 (Pinterest)、文章列表 (Medium)、儀表板小工具。
@@ -1033,7 +1072,7 @@ style: |
 ## TW7.6 旋轉木馬 / 輪播 (Carousel)
 
 <div class="two-columns-64">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 橫向滑動的多項目探索展示
 - **模式本質** ：在固定寬度區域內，以橫向排列卡片或橫幅，支援左右滑動切換。
@@ -1043,7 +1082,7 @@ style: |
   - 兩側邊緣卡片「稍微露出一角（Peek-a-boo）」，視覺暗示右側還有更多內容。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 設計心法與適用情境
 - **經典範例** ：Netflix 影集分類推薦、App Store 精選輪播、課程平台熱門推薦。
@@ -1059,21 +1098,146 @@ style: |
 ![](../../img/tw_7_6_carousel.jpg)
 
 ---
+<!-- header: '[◄](#35) 課堂遊戲：Tidwell 設計模式實戰闖關 [►](#51)' -->
 
-## 綜合期末演練 🏄🏻‍♀️：全面系統 UX 健檢
+## 🎮 課堂遊戲：Tidwell 介面設計模式闖關挑戰 (Game)
 
 <div class="card">
 
-### 任務：挑選一個你常用的系統進行全方位診斷
-1. **問題診斷** ：找出系統中違反 **Nielsen 10 大原則** 的 3 個具體問題。
-2. **模式套用** ：挑選 2 個 **Tidwell 設計模式** （如 Wizard、Breadcrumbs、Cards 等）來改善該流程。
-3. **AI Prompt 實踐** ：寫出一段具備工程師思維的 Prompt，要求 AI 生成符合該 UX 規範的前端組件程式碼。
+### 🏆 遊戲任務說明
+- **挑戰目標** ：快速判別 6 個經典軟體與 Web 介面情境對應的 Tidwell 互動設計模式 (Tidwell Design Patterns) 。
+- **作答規則** ：共 **6 道實戰單選題** ，限時搶答！請選出最精準適配的介面模式。
+- **涵蓋範疇** ：一般性模式 (Ch1)、內容組織 (Ch2)、導航與路標 (Ch3)、網頁排版 (Ch4) 與清單展示 (Ch7)。
 
 </div>
 
 ---
 
+### 🎮 闖關第 01 關：【高鐵購票時段彈性更換】
+
+<div class="card">
+
+**情境描述** ：
+使用者在高鐵訂票 App 查詢「台北到左營」班次後，發現想搭的車次已客滿。查詢結果頁頂部直接保留「出發地、目的地、日期與時段下拉選單」，讓使用者不需點擊「回上頁」重新填寫，即可就地切換時段。
+
+**請問這項設計最直接體現了 Tidwell 的哪一項一般性互動模式？**
+- **(A)** TW1.1 安全探索 (Safe Exploration)
+- **(B)** TW1.4 中途改變 (Changes in Midstream)
+- **(C)** TW1.7 習慣就好 (Habituation)
+- **(D)** TW1.12 只用鍵盤 (Keyboard Only)
+
+</div>
+
+---
+
+### 🎮 闖關第 02 關：【線上報稅與帳號註冊逐步引導】
+
+<div class="card">
+
+**情境描述** ：
+在線上報稅或雲端伺服器建置系統中，將包含數十個欄位的複雜流程拆解為「1. 身分驗證 ➔ 2. 所得明細確認 ➔ 3. 扣除額計算 ➔ 4. 繳退稅方式 ➔ 5. 申報完成」等 5 個線性步驟，每步均有明確的進度條與「上一步/下一步」按鈕。
+
+**請問這項設計最直接採用了哪一項 Tidwell 內容組織模式？**
+- **(A)** TW2.1 凸顯、搜尋與瀏覽 (Feature, Search, Browse)
+- **(B)** TW2.7 精靈模式 (Wizard)
+- **(C)** TW2.8 設定編輯器 (Settings Editor)
+- **(D)** TW2.9 備擇檢視 (Alternative Views)
+
+</div>
+
+---
+
+### 🎮 闖關第 03 關：【跨層級大型知識庫精確分享】
+
+<div class="card">
+
+**情境描述** ：
+在 Figma、Notion 或 Google Docs 中，使用者滑鼠懸停於特定標題或評論時，可點擊「🔗 複製段落連結」，將該專屬 URL 傳送給同事；同事點擊後，網頁會直接自動平滑捲動至該具體章節並點亮高亮提示。
+
+**請問這項設計最直接採用了哪一項 Tidwell 導覽模式？**
+- **(A)** TW3.5 深連接 (Deep Links)
+- **(B)** TW3.6 逃生門 (Escape Hatch)
+- **(C)** TW3.7 寬選單 (Fat Menus / Mega Menus)
+- **(D)** TW3.8 網站地圖頁尾 (Sitemap Footer)
+
+</div>
+
+---
+
+### 🎮 闖關第 04 關：【設定頁面垂直空間極致收納】
+
+<div class="card">
+
+**情境描述** ：
+SaaS 系統的專案設定面板包含「一般設定」、「成員權限」、「帳務發票」與「API 密鑰」4 大區塊。設計師將這 4 組內容置於同一個白色卡片容器內，並在頂部提供 4 個按鈕標籤供使用者水平切換，切換時無需重新整理頁面。
+
+**請問這項設計最直接採用了哪一項 Tidwell 排版模式？**
+- **(A)** TW4.1 視覺框架 (Visual Framework)
+- **(B)** TW4.3 同質性網格 (Grid of Equals)
+- **(C)** TW4.5 模組化分頁 (Module Tabs)
+- **(D)** TW4.6 手風琴模式 (Accordion)
+
+</div>
+
+---
+
+### 🎮 闖關第 05 關：【社群動態與多樣化卡片展示】
+
+<div class="card">
+
+**情境描述** ：
+在 Pinterest 與 Medium 首頁，每一篇推薦文章均封裝在獨立的矩形區塊內，整合了首圖、標題、作者頭像、讚數與分享按鈕，且卡片在 Hover 懸停時會微微浮起帶有柔和陰影，暗示其可點擊性。
+
+**請問這項設計最直接採用了哪一項 Tidwell 清單展示模式？**
+- **(A)** TW7.1 雙面板選擇器 (Two-Panel Selector)
+- **(B)** TW7.3 清單嵌板 (List Inlay)
+- **(C)** TW7.4 卡片化設計 (Cards)
+- **(D)** TW7.6 旋轉木馬 / 輪播 (Carousel)
+
+</div>
+
+---
+
+### 🎮 闖關第 06 關：【電商階層探索與全站導航結合】
+
+<div class="card">
+
+**情境描述** ：
+使用者在電商網站選購耳機時，商品頁頂部顯示 `首頁 > 3C 數位 > 耳機音響 > 無線降噪耳機` ，讓使用者清楚當前位置並可一鍵回溯至任一上層目錄；同時頁面最底部展開多欄完整分類連結。這項設計結合了哪兩項導覽模式？
+
+**請問這項設計結合了哪兩項 Tidwell 導覽模式？**
+- **(A)** TW3.11 麵包屑 (Breadcrumbs) 與 TW3.8 網站地圖頁尾 (Sitemap Footer)
+- **(B)** TW3.5 深連接 (Deep Links) 與 TW3.6 逃生門 (Escape Hatch)
+- **(C)** TW3.7 寬選單 (Fat Menus) 與 TW3.4 強制回應面板 (Modal Panel)
+- **(D)** TW3.2 選單頁面 (Menu Page) 與 TW3.10 進度指示器 (Progress Indicator)
+
+</div>
+
+---
+
+### 🎯 闖關挑戰 6 題完整解答與核心解析
+
+<div class="two-columns">
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
+
+- **第 01 題 (B)** ： **TW1.4 中途改變** —— 查詢結果頁保留搜尋條件，隨時調整無需重來。
+- **第 02 題 (B)** ： **TW2.7 精靈模式** —— 線性分步導引，將龐大複雜表單拆解為逐步完成。
+- **第 03 題 (A)** ： **TW3.5 深連接** —— 提供直接定位到段落/評論的 URL 錨點，團隊溝通零摩擦。
+
+</div>
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
+
+- **第 04 題 (C)** ： **TW4.5 模組化分頁** —— 同一容器頂部切換 Tab，極致收納垂直空間。
+- **第 05 題 (C)** ： **TW7.4 卡片化設計** —— 圖文、標籤與操作合一的獨立矩形封裝，響應式絕佳。
+- **第 06 題 (A)** ： **TW3.11 麵包屑 + TW3.8 頁尾** —— 樹狀階層路標與全站完整導航互補。
+
+</div>
+</div>
+
+---
+
 <!-- _class: lead -->
+<!-- _header: '' -->
 # Thank You!
 ## 打造以人為本、流暢優雅的使用者體驗
 

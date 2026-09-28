@@ -6,6 +6,7 @@ header: 'UX for AI: Human-Centered AI System Design'
 footer: '薛念林 教授 | 逢甲大學資訊工程學系'
 size: 16:9
 transition: fade
+html: true
 style: |
   section {
     font-family: 'PingFang SC', 'PingFang TC', 'Noto Sans CJK TC', 'Microsoft JhengHei', sans-serif;
@@ -14,6 +15,50 @@ style: |
     background-color: #f8fafc;
     color: #1e293b;
   }
+  header {
+    position: absolute;
+    left: auto !important;
+    right: 50px !important;
+    top: 18px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  header a {
+    color: #2563eb !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    font-size: 11px;
+    line-height: 1.4;
+    transition: all 0.15s ease;
+  }
+  header a:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    text-decoration: none !important;
+  }
+  section.part-cover header, .part-cover header {
+    color: #cbd5e1;
+  }
+  section.part-cover header a, .part-cover header a {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  section.part-cover header a:hover, .part-cover header a:hover {
+    background: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+  }
+
   footer {
     font-size: 14px;
     color: #64748b;
@@ -124,6 +169,12 @@ style: |
     border-radius: 8px;
     padding: 12px 16px;
     margin-top: 10px;
+    font-size: 21px;
+  }
+  .prompt-box h3 {
+    font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 8px;
   }
   .lead {
     display: flex;
@@ -250,82 +301,11 @@ style: |
   }
 
 
+
 ---
 
-<script>
-  // 1. 支援由首頁 index.html 控制是否啟用換頁動畫
-  const params = new URLSearchParams(window.location.search);
-  const transitionPref = params.get('transition') ?? localStorage.getItem('marp-transition');
-  if (transitionPref === 'false' || transitionPref === 'none') {
-    document.querySelectorAll('section[data-transition], section[data-transition-back]').forEach(el => {
-      el.removeAttribute('data-transition');
-      el.removeAttribute('data-transition-back');
-    });
-  }
-
-  // 2. 支援鍵盤輸入「數字 + Enter」直接跳轉至指定頁碼
-  (function() {
-    let pageBuffer = '';
-    let bufferTimer = null;
-
-    function getOrCreateIndicator() {
-      let el = document.getElementById('marp-page-jump-indicator');
-      if (!el) {
-        el = document.createElement('div');
-        el.id = 'marp-page-jump-indicator';
-        el.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: rgba(15, 23, 42, 0.9); color: white; padding: 8px 16px; border-radius: 8px; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.25); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); display: none; transition: all 0.15s ease;';
-        document.body.appendChild(el);
-      }
-      return el;
-    }
-
-    window.addEventListener('keydown', function(e) {
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
-
-      const indicator = getOrCreateIndicator();
-
-      if (e.key >= '0' && e.key <= '9') {
-        pageBuffer += e.key;
-        clearTimeout(bufferTimer);
-        indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        indicator.style.display = 'block';
-
-        bufferTimer = setTimeout(function() {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-        }, 2500);
-      } else if (e.key === 'Enter' && pageBuffer.length > 0) {
-        e.preventDefault();
-        const target = parseInt(pageBuffer, 10);
-        pageBuffer = '';
-        indicator.style.display = 'none';
-        clearTimeout(bufferTimer);
-
-        if (!isNaN(target) && target > 0) {
-          const oldHash = window.location.hash;
-          const newHash = '#' + target;
-          if (oldHash === newHash) {
-            window.dispatchEvent(new HashChangeEvent('hashchange'));
-          } else {
-            window.location.hash = newHash;
-          }
-        }
-      } else if (e.key === 'Escape' || e.key === 'Backspace') {
-        if (e.key === 'Backspace' && pageBuffer.length > 1) {
-          pageBuffer = pageBuffer.slice(0, -1);
-          indicator.textContent = '📄 跳至第 ' + pageBuffer + ' 頁 (按 Enter 確認)';
-        } else {
-          pageBuffer = '';
-          indicator.style.display = 'none';
-          clearTimeout(bufferTimer);
-        }
-      }
-    });
-  })();
-</script>
-
-
 <!-- _class: lead -->
+<!-- _header: '' -->
 # UX for AI: 以人為本的 AI 系統介面與互動設計
 ## Nielsen Heuristics in the AI Era (AI 產品的體驗設計心法)
 
@@ -335,11 +315,12 @@ style: |
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
+<!-- header: '[◄](#1) 本單元大綱 (Outline) [►](#4)' -->
 
 ## 本單元大綱 (Outline)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🌐 AI 系統與現代互動挑戰
 - 什麼是深度封裝的 AI 系統 (AI Systems)
@@ -347,7 +328,7 @@ style: |
 - AI 時代的 6 大體驗痛點 (延遲、空白框、黑盒等)
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🛠️ 10 大原則在 AI 系統的心法與 Prompt
 - NS01 ~ NS10 在 AI 時代的演進與心法
@@ -362,18 +343,19 @@ style: |
 ![bg fit](../../img/ux_for_ai_concept.png)
 
 ---
+<!-- header: '[◄](#2) AI 系統與現代互動挑戰 [►](#7)' -->
 
 ## AI 系統與應用的全面普及
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 💡 什麼是 AI 系統 (AI Systems)？
-- **非單純的大語言模型 (LLM)** ：它不是叫使用者去跟 ChatGPT/Claude 網頁版聊天，而是將 AI 能力深度封裝於工作流中的 **應用產品** 。
+- **非單純的大語言模型 (LLM)** ：它不是叫使用者去跟 ChatGPT/Claude 網頁版聊天，而是將 AI 能力深度封裝於工作流中的 ** 應用產品** 。
 - **以人為本的系統整合** ：AI 扮演背景運算、自動完成、智能建議或自主代理人 (Agent) 的角色，提供直覺且自然的互動介面。
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 🎯 AI 系統的關鍵應用範疇
 - **智慧輔助與自動完成 (Co-piloting)** ：在開發或創作中給予行內建議。
@@ -388,14 +370,14 @@ style: |
 ## 知名 AI 系統與應用案例 (Famous AI Systems)
 
 <div class="two-columns">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 - 💻 **GitHub Copilot** ：整合於 IDE 的 AI 結對程式員。透過灰色預測字元 (Ghost Text) 在行內即時推薦程式碼，極大提升開發效率。
 - 🎨 **Midjourney / DALL-E 3** ：文字生成圖像系統。將複雜的藝術創作過程簡化為 Prompt 對話，從根本改變了創意設計流程。
 - 📝 **Notion AI** ：將 AI 融入文件編輯器的右鍵/斜線選單。提供選取文字一鍵潤飾、翻譯、總結或擴寫的情境功能。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 - 🌐 **DeepL** ：基於神經網絡的 AI 機器翻譯系統。具備極強的上下文理解力，能生成自然流暢的商業與學術翻譯。
 - 🚗 **Tesla FSD (Full Self-Driving)** ：車載自動駕駛系統。採用純視覺神經網路，為車主提供端到端 (End-to-End) 的輔助駕駛體驗。
@@ -411,7 +393,7 @@ style: |
 > 面對大語言模型與生成式 AI（黑盒子、思考延遲、幻覺、輸出不確定性），如何以人為本重塑可用性原則？
 
 <div class="three-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 1. 緩解等待焦慮
 - 拒絕靜態 Loading
@@ -419,7 +401,7 @@ style: |
 - 展開式 Thinking Steps
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 2. 消除空白框恐懼
 - 拒絕單一空白對話框
@@ -427,7 +409,7 @@ style: |
 - 反白文字 AI 快捷懸浮球
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 3. 對抗不確定性
 - 隨時中斷生成 (Stop)
@@ -438,23 +420,23 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#4) AI and NS01 系統狀態能見度 [►](#10)' -->
 
 ## Slide 01: AI and NS01 (系統狀態能見度) - UX 設計心法
 
 > *“系統應在合理時間內，透過適當的反饋，隨時讓使用者掌握目前狀態。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- **緩解 AI 的「思考延遲（Latency）」：** 
-  - 避免只用靜態的「Loading...」，改用 **打字機效果（Streaming）** 即時輸出內容。
+- **緩解 AI 的「思考延遲（Latency）」： **- 避免只用靜態的「Loading...」，改用 ** 打字機效果（Streaming)** 即時輸出內容。
   - 引入 **展開式「思考步驟（Thinking Steps）」** （如 DeepSeek/O1 的 CoT 摺疊面板），讓使用者清楚 AI 正在進行「聯網搜尋」、「閱讀文件」或「執行程式碼」。
 - **多步驟 AI 工作流（Multi-Agent Workflows）：**
   - 使用狀態節點圖（Node Graph）或微步進器，向使用者顯示目前 AI 助理正在進行 5 個步驟中的第 2 步（例如：生成草稿 → 翻譯 → 校對）。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **DeepSeek-R1 / OpenAI o1** 思考摺疊面板。
@@ -471,24 +453,34 @@ style: |
 
 ## Slide 01: AI and NS01 (系統狀態能見度) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「我正在開發一個 [AI 簡報生成功能]。當使用者輸入主題後，AI 需要進行：資料檢索、大綱生成、內容撰寫、投影片排版等 4 個耗時步驟。
-> 請為我設計符合 **Visibility of System Status** 原則的 UI 反饋機制：
-> 1. 請規劃每一個步驟的狀態文案（如：正在尋找資料... 預估剩餘 10 秒）。
-> 2. 請提供前端 React 或 Vue 的狀態變數（Variables，如 `isSearching`, `progressPercent`）之設計邏輯，讓工程師能直接套用。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 產品體驗架構師。
+- **任務 (Task)**: 為多步驟長延遲的 AI 簡報生成流程設計高透明度的狀態反饋機制。
+- **約束 (Constraint)**: 必須包含打字機即時輸出 (Streaming) 與思考步驟 (CoT) 折疊面板；禁止使用單一靜態 Loading Spinner。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> 你是一位 AI 產品體驗架構師。當使用者要求生成一份 10 頁簡報時， 請為我設計 符合 NS01 系統狀態能見度 的反饋流程：
+> 1. 將後台 4 個耗時步驟（資料檢索 ➔ 大綱擬定 ➔ 投影片生成 ➔ 視覺排版）轉化為動態微步進器與白話文案。
+> 2. **禁止** 僅呈現無指示的靜態等待轉圈。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#7) AI and NS02 真實世界與系統對應 [►](#13)' -->
 
 ## Slide 02: AI and NS02 (真實世界與系統的對應) - UX 設計心法
 
 > *“系統應說使用者的日常語言，而非工程師的技術術語，並遵循真實世界的邏輯習慣。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
 - **將「模型參數」具象化：**
@@ -498,7 +490,7 @@ style: |
   - 使用「副駕駛（Copilot）」或「助理（Assistant）」的擬人化視覺隱喻，讓使用者知道它可以對話，而非面對一個冰冷的 Command Line。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Notion AI** 的「變更語氣」下拉選單。
@@ -515,33 +507,42 @@ style: |
 
 ## Slide 02: AI and NS02 (真實世界與系統的對應) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「我們正在為非技術背景的主管開發一個 [AI 行銷文案助手]。大模型後台有 `Temperature`、`Presence Penalty`、`Frequency Penalty` 等參數需要調整。
-> 請基於 **Match Between System and Real World** 原則，幫我重新設計這套設定介面：
-> 1. 請將這些參數重新命名，換成商務人士直覺、大眾化的字眼（例如：『文案創意度』等）。
-> 2. 請描述介面互動方式，並附上調整不同等級時，文字生成的模擬效果對照範例。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 系統產品經理與資深 UX Writer。
+- **任務 (Task)**: 將底層大語言模型技術參數（如 Temperature、Top_p）轉化為直覺的使用者語言與控制元件。
+- **約束 (Constraint)**: 必須遵循自然語言與物理/角色隱喻；禁止在一般商務介面直接暴露底層演算法術語。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> 你是一位 AI 系統產品經理。我們正在開發一款商務文案助理， 請為我重新設計後台的模型參數調整介面：
+> 1. 將 `Temperature`、`Top_p` 等參數轉化為大眾熟悉的「語氣滑桿」（如：嚴謹專業 ➔ 豐富創意）。
+> 2. 提供「角色隱喻」（如：行銷專家、法務顧問）。 **禁止** 直接出現冷冰冰的浮點數與演算法技術術語。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#10) AI and NS03 使用者控制與自由 [►](#16)' -->
 
 ## Slide 03: AI and NS03 (使用者控制與自由) - UX 設計心法
 
 > *“使用者常會誤觸功能，系統必須提供明確的『緊急出口』與隨時能復原的 Undo/Redo 控制權。”*
 
 <div class="two-columns-64">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- **對抗 AI 的不確定性：**
-  - 提供隨時 **「中斷生成（Stop Generating）」** 的按鈕，防止 AI 輸出過長或失控的內容。
+- 對抗 AI 的不確定性： - 提供隨時  「中斷生成（Stop Generating）」** 的按鈕，防止 AI 輸出過長或失控的內容。
   - 引入 **「版本輪播（Version Carousel）」** ：在 AI 生成的結果旁，提供 1/3 的左右切換鍵，允許使用者對比並找回前幾次生成的滿意版本。
   - **Prompt 局部編輯** ：使用者可以編輯對話歷史中的任何一則 Prompt，點擊後系統自動在該節點分支「重新生成」，不破壞原始對話。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **ChatGPT / Claude** 的「中斷生成」與「歷史版本切換」。
@@ -558,24 +559,34 @@ style: |
 
 ## Slide 03: AI and NS03 (使用者控制與自由) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「當我們的 [AI 程式碼生成器] 在輸出一段 50 行的程式碼時，使用者發現方向錯了，或者大模型陷入了無限循環。
-> 請基於 **User Control and Freedom** 原則，為我設計介面的控制流程：
-> 1. 設計一個隨時『中斷生成』的 UI 機制（包含視覺提示）。
-> 2. 當使用者發現 AI 修改了他們原本的程式碼，應如何設計『一鍵還原 (Revert)』或『顯示差異對照 (Diff View)』的選項，以降低修改錯誤的焦慮。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 互動設計師與前端工程師。
+- **任務 (Task)**: 為不確定性高、長文本輸出的 AI 系統打造緊急出口與歷史版本切換機制。
+- **約束 (Constraint)**: 必須支援隨時「一鍵中斷生成 (Stop)」與「版本輪播/差異對照 (Diff)」；禁止鎖死畫面或強迫等待。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+  > 你是一位AI 互動設計師。當 [AI 程式碼生成器] 正在持續輸出 50 行程式碼時， 請為我設計 具備 NS03 使用者控制與自由 的介面邏輯：
+> 1. 實作醒目的「■ 中斷生成 (Stop)」按鈕與鍵盤快捷鍵 (`Escape`)。
+> 2. 在回覆區旁提供「歷史版本切換 (1/3)」與「程式碼差異對照 (Diff View)」，讓使用者能一鍵還原。 **禁止** 在生成中鎖死畫面。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#13) AI and NS04 一致性與標準 [►](#19)' -->
 
 ## Slide 04: AI and NS04 (一致性與標準) - UX 設計心法
 
 > *“使用者不應懷疑不同的詞彙、操作或位置是否代表同一件事。需遵循平台既有慣例。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
 - **建立 AI 互動的「新標準」：**
@@ -586,7 +597,7 @@ style: |
 - **反饋機制的一致性：** 全站統一使用「👍 / 👎」或「星星評分」收集使用者對 AI 回覆的滿意度，不可隨意更換評分標準。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Cursor / ChatGPT** 的標準輸入框按鍵設計。
@@ -603,33 +614,42 @@ style: |
 
 ## Slide 04: AI and NS04 (一致性與標準) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「我們正在為企業內部多個不同業務系統（如：HR 系統、財務系統）設計內嵌的 [AI 對話助理]。
-> 請基於 **Consistency and Standards** 原則，幫我制定一套跨系統的 AI 互動規範（UI Style Guide）：
-> 1. 請定義 AI 輸入框的通用功能與快捷鍵規範（如發送鍵、清除鍵、歷史紀錄按鈕的位置）。
-> 2. 請統一一套收集 AI 回覆品質反饋（👍/👎 評分）以及錯誤提示的共通 UI 樣式。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI Design System 架構師。
+- **任務 (Task)**: 制定全站跨系統通用之 AI 對話輸入框與品質反饋規範 (Style Guide)。
+- **約束 (Constraint)**: 必須嚴格遵循業界通用標準（如 `Cmd+K` 喚醒、`Enter` 送出、`Shift+Enter` 換行、👍/👎 評分）；禁止自創歧異快捷鍵。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> 你是一位 AI Design System 架構師。 請為我們制定 一套跨業務系統適用的 AI 互動規範 (UI Style Guide) ：
+> 1. 規範通用快捷鍵：`Cmd/Ctrl + K` 喚醒面板、`Enter` 發送、`Shift + Enter` 換行。
+> 2. 統一代碼塊右上角的「複製」按鈕與回覆底部的「👍 / 👎 評分」與「重新生成」圖標樣式。 禁止 在不同頁面採用互相衝突的快捷鍵。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#16) AI and NS05 錯誤預防 [►](#22)' -->
 
 ## Slide 05: AI and NS05 (錯誤預防) - UX 設計心法
 
 > *“比起提供好用的錯誤訊息，更好的設計是防範錯誤於未然（預防不合理的輸入或操作）。”*
 
 <div class="two-columns-64">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- **預防「糟糕輸入導致垃圾輸出（Garbage in, Garbage out）」：**
-  - 一般使用者極度不擅長寫 Prompt。提供 **「提示詞晶片（Prompt Chips/Suggestions）」** 或模板（Templates），點擊即代入標準提示。
+- 預防「糟糕輸入導致垃圾輸出（Garbage in, Garbage out）」： - 一般使用者極度不擅長寫 Prompt。提供「提示詞晶片（Prompt Chips/Suggestions）」或模板（Templates），點擊即代入標準提示。
   - 輸入框中預設豐富的 **Placeholder 提示字** （例如：試試看輸入：『幫我把這段報告翻譯成日文...』），引導正確輸入。
 - **智慧 Prompt 預檢（Pre-flight Check）：** 當檢測到使用者上傳了不支援的檔案格式，或輸入的 Prompt 語意含混時，在發送前以「Inline Suggestion」主動提醒。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **ChatGPT / Claude** 的「提示字晶片 (Prompt Chips)」與「預設預檢」。
@@ -646,34 +666,44 @@ style: |
 
 ## Slide 05: AI and NS05 (錯誤預防) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「使用者在使用我們的 [AI 圖表分析助理] 時，常常上傳了不支援的檔案格式（例如上傳了 `.rar` 壓縮檔，但系統僅支援 `.csv` 試算表），或者直接輸入了不具實質內容的 Prompt（如『哈囉』、『幫我做圖』）。
-> 請基於 **Error Prevention** 原則，幫我設計一套防範機制的互動邏輯：
-> 1. 在使用者點選發送前，如何進行檔案與文字的智慧預檢，並給予就地提示？
-> 2. 設計一個 Prompt 引導輸入區，利用 Prompt Chips 與選單功能限制使用者的不當輸入。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 防呆與可用性專家。
+- **任務 (Task)**: 在使用者與 AI 互動前建立預防機制，避免「糟糕輸入導致垃圾輸出 (Garbage in, Garbage out)」。
+- **約束 (Constraint)**: 必須提供提示詞晶片 (Prompt Chips)、輸入前預檢 (Pre-flight Check) 與停用無效按鈕；禁止在送出後才拋出冰冷報錯。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> **你是一位 **AI 防呆專家。針對 [AI 數據分析助理]， ** 請為我設計 ** 發送前的 **NS05 錯誤預防** 機制：
+> 1. 當使用者拖曳不支援的檔案格式（如 `.rar`）時，就地即時警示並將「發送」按鈕設為 Disabled。
+> 2. 在輸入框下方常駐 3~5 個「Prompt 範本晶片」，引導使用者直接點擊套用標準格式。 **禁止** 讓使用者面對毫無指引的空白框隨意輸入。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#19) AI and NS06 易於識別而非記憶 [►](#25)' -->
 
 ## Slide 06: AI and NS06 (易於識別，而非憑空記憶) - UX 設計心法
 
 > *“讓資訊、動作與選項保持可見，降低使用者的記憶負荷。使用者不應背誦指令。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
 - **告別「萬惡的空白輸入框（Empty State Fear）」：**
   - 不要只給使用者一個空無一物的對話框，這會帶來極高的認知摩擦（Cognitive Friction）。
-  - 畫面上應常駐 **「最近使用的 Agent 助理」** 、 **「常用 Prompt 歷史紀錄」** 、或一鍵調用最近編輯的檔案。
+  - 畫面上應常駐 **「最近使用的 Agent 助理」 ** 、 ** 「常用 Prompt 歷史紀錄」** 、或一鍵調用最近編輯的檔案。
 - **情境選單（Contextual Actions）：**
   - 當使用者在網頁上反白選取一段文字時，立刻在游標旁彈出「AI 快捷懸浮球」（如：翻譯、總結、潤飾），讓使用者「看得到就能點」，不需手動複製貼上。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Notion AI** 的「文字選取 AI 懸浮選單」。
@@ -690,33 +720,42 @@ style: |
 
 ## Slide 06: AI and NS06 (易於識別，而非憑空記憶) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「我們正在重構一個 [AI 寫作助手]。目前使用者進入系統後，只有一個全黑的空白輸入框，必須自行回想所有 AI 指令（例如：/summarize, /translate）。
-> 請遵循 **Recognition Rather Than Recall** 原則：
-> 1. 設計一個在輸入框下方、可橫向滑動的常用指令卡片區。
-> 2. 當使用者在左側打字區選取特定段落時，設計一個在右側或游標旁彈出的快捷工具列（Contextual Menu），列出最適合該段落的 AI 工具選單。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 情境互動 (Contextual UX) 設計師。
+- **任務 (Task)**: 消除使用者對 AI 空白輸入框的恐懼，將可用功能外顯化於使用脈絡中。
+- **約束 (Constraint)**: 必須提供情境選單 (Contextual Actions)、最近常用 Prompt 歷史與反白快捷懸浮球；禁止依賴使用者記憶斜線指令。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> **你是一位 **AI 情境互動設計師。為了消除寫作助手的「空白框焦慮」， ** 請遵循 NS06 辨識而非記憶** 原則設計：
+> 1. 當使用者在編輯器反白選取文字時，游標旁即刻浮現「AI 快捷懸浮工具列」（提供摘要、翻譯、擴寫等選項）。
+> 2. 在首頁常駐「最近調用的 3 位 Agent 助理」卡片區。 **禁止** 強迫使用者自行背誦所有 `/` 斜線指令。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#22) AI and NS07 使用彈性與效率 [►](#28)' -->
 
 ## Slide 07: AI and NS07 (使用彈性與效率) - UX 設計心法
 
 > *“系統應能滿足新手與專家的不同需求。提供快捷操作以提高效率。”*
 
 <div class="two-columns-64">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
-- **專為高頻使用者設計的快捷路徑（Shortcuts）：**
-  - **斜線指令（Slash Commands）：** 輸入 `/` 即可快速喚起功能選單（如 Notion AI 或 Slack）。
+- **專為高頻使用者設計的快捷路徑（Shortcuts）： **-** 斜線指令（Slash Commands）：** 輸入 `/` 即可快速喚起功能選單（如 Notion AI 或 Slack）。
   - **@Mentions 跨領域調用：** 輸入 `@` 快速指派特定專長的 AI 代理人或引用外部知識庫（如 `@Designer`、`@CodingBot`）。
   - **一鍵自訂（Prompt Presets）：** 允許使用者將自己調校好、最常用的長 Prompt 存檔，設定成自訂按鈕（如：『以專業金融顧問的口吻回覆』快捷鍵）。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Cursor** 的 `@-mentions` 與 Notion AI 的 `/` 斜線指令。
@@ -733,24 +772,34 @@ style: |
 
 ## Slide 07: AI and NS07 (使用彈性與效率) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「我們需要為 [AI 智能合約審查系統] 同時設計給『新手（一般法務助理）』與『專家（資深律師）』使用的介面。
-> 請遵循 **Flexibility and Efficiency of Use** 原則，為我規劃功能：
-> 1. 針對新手，提供步驟式點選審查（精靈引導）。
-> 2. 針對專家，設計一個可通過鍵盤快捷操作的『命令控制台』（例如輸入 `/review` 快速審查、輸入 `@compliance` 調用合規知識庫），並支持自訂 Prompt 範本的快捷按鈕。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 效率與進階工作流設計師。
+- **任務 (Task)**: 為 AI 產品同時規劃適合新手的視覺化精靈與專為專家打造的高速加速器。
+- **約束 (Constraint)**: 必須支援斜線指令 (`/`)、`@` 跨實體調用、自訂 Prompt Presets 與新手步驟精靈；禁止單一單調的操作途徑。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> **你是一位 **AI 效率設計師。請為 [AI 合約審查系統] 同時設計 ** 新手與專家** 兩套互動路徑：
+> 1. **新手路徑** ：步驟式點選審查精靈（Wizard），引導逐步上傳與點選檢查項。
+> 2. **專家路徑 ** ：鍵盤快捷控制台，支援 `/review` 快速審查與 `@compliance` 調用知識庫，並允許將常用 Prompt 設為一鍵巨集。 ** 禁止** 強制專家進行繁瑣的單步點擊。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#25) AI and NS08 美學與簡約設計 [►](#31)' -->
 
 ## Slide 08: AI and NS08 (美學與簡約設計) - UX 設計心法
 
 > *“投影片與介面不應包含無關或極少需要的資訊。每一個額外的資訊都會與重要資訊競爭注意波段。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
 - **避免 AI「資訊轟炸（Information Overload）」：**
@@ -759,7 +808,7 @@ style: |
   - **善用資訊層級：** 使用粗體、高亮、標籤晶片和適度的卡片區塊區隔資訊，保持版面的整潔與高度可讀性。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Claude Artifacts** 獨立雙面板設計。
@@ -776,24 +825,34 @@ style: |
 
 ## Slide 08: AI and NS08 (美學與簡約設計) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「當我們的 [AI 商務分析師] 完成一個市場調研後，會自動生成一份包含數據表格、長篇分析、參考文獻、與 5 個圖表在內的巨大報告。目前的介面將這份報告像純文字檔一樣直接瀑布流灌入畫面，視覺非常混亂。
-> 請遵循 **Aesthetic and Minimalist Design** 原則，重新排版此報告介面：
-> 1. 請提供折疊與層級化方案，將文獻與長段落數據進行智慧收納。
-> 2. 設計一個極簡的『資訊看板（Dashboard）』，只突出 3 個關鍵數據點，其他細節隱藏在點擊互動後呈現。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 資訊架構師 (Information Architect)。
+- **任務 (Task)**: 解決 AI 生成內容過長導致的「資訊轟炸」，打造層級分明的極簡介面。
+- **約束 (Constraint)**: 必須採用預設折疊 (Show More)、獨立側邊預覽面板 (Artifacts) 與關鍵指標摘要看板；禁止將數千字無差別瀑布流灌入畫面。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> **你是一位 **AI 資訊架構師。當 [AI 市場調研助理] 生成一份包含數據、長文與圖表的巨大報告時， ** 請基於 NS08 極簡設計** 重新排版：
+> 1. 將長篇程式碼與複雜圖表拆分至右側獨立的 **Artifacts 預覽面板** 。
+> 2. 左側對話區僅呈現前 3 行精簡摘要與 3 個核心 KPI 晶片，其餘細節提供「展開查看完整推演」按鈕。 **禁止** 將數千字未經收納直接瀑布流灌入。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#28) AI and NS09 錯誤辨識與復原 [►](#34)' -->
 
 ## Slide 09: AI and NS09 (協助辨識、診斷與從錯誤中復原) - UX 設計心法
 
 > *“錯誤訊息應以清晰白話呈現，精確指出問題，並建設性地提供具體解決方案。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
 - **優雅防範 AI「幻覺（Hallucination）」與「失效」：**
@@ -803,7 +862,7 @@ style: |
   - 應白話告訴使用者：「目前 AI 連線人數眾多，您的 Prompt 檔已自動儲存，您可以[一鍵重試]。」
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Cursor** 的終端機錯誤「Fix with AI」按鈕。
@@ -820,24 +879,34 @@ style: |
 
 ## Slide 09: AI and NS09 (協助辨識、診斷與從錯誤中復原) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「當我們的 [AI 自動翻譯器] 在處理使用者上傳的 50MB 超大型 PDF 檔時，因為超時（Timeout）導致系統斷開連線。
-> 請遵循 **Help Users Recognize, Diagnose, and Recover from Errors** 原則，幫我撰寫一套 UI 錯誤彈窗（Error Dialog）的文案與互動：
-> 1. 說明原因（避免艱深程式碼）。
-> 2. 提供具體復原手段（如：建議使用者一鍵將文件自動拆分成 3 個小檔案上傳、或一鍵重試）。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: AI 系統容錯與微文案 (Microcopy) 專家。
+- **任務 (Task)**: 為 AI 服務過載、API 超時或輸出幻覺等異常狀態設計優雅降級與一鍵修復機制。
+- **約束 (Constraint)**: 必須以白話說明原因、提供「一鍵重試 / 自動分割檔案」等建設性復原步驟；禁止拋出 HTTP 狀態碼或未處理的 Exception。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> **你是一位 **AI 微文案與容錯專家。當 [AI 翻譯器] 處理 50MB 大型文件因 Timeout 斷線時， ** 請基於 NS09** 設計錯誤對話框：
+> 1. 以繁體中文白話告知：「連線超時。因文件較大，AI 處理時間超出預期，您的原檔已安全暫存。」
+> 2. 提供兩個具體動作按鈕：「[一鍵自動拆分為 3 個章節上傳]」與「[重新連線重試]」。 **禁止** 僅拋出 `HTTP 504 Gateway Timeout`。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#31) AI and NS10 說明文件與輔助 [►](#37)' -->
 
 ## Slide 10: AI and NS10 (說明文件與輔助說明) - UX 設計心法
 
 > *“雖然不需文件就能操作系統是最好的，但隨時提供易於檢索、聚焦任務且簡潔的說明文件依然不可或缺。”*
 
 <div class="two-columns-73">
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 💡 AI 產品設計心法 (UX for AI)
 - **「可解釋性 AI」（XAI, Explainable AI）即是最好的說明：**
@@ -847,7 +916,7 @@ style: |
   - 揚棄傳統的大部頭 Help PDF。在輸入框旁設計輕量化的「互動式提示指南」，引導使用者逐步學會如何精準寫出「好 Prompt」。
 
 </div>
-<div class="card" style="font-size: 21px;">
+<div class="card" style="font-size: 21px;" data-marpit-fragment>
 
 ### 🔍 真實系統應用案例
 - **Perplexity AI / ChatGPT Search** 的數字引文腳註。
@@ -864,22 +933,32 @@ style: |
 
 ## Slide 10: AI and NS10 (說明文件與輔助說明) - 建議 Prompt
 
-<div class="prompt-box" style="font-size: 19px;">
+<div class="two-columns">
+<div class="prompt-box" data-marpit-fragment>
 
-### 📝 建議 Prompt (AI for UX)
-> 「我們正在為一個 [AI 個人理財投資分析助理] 設計新手引導。
-> 請遵循 **Help and Documentation** 原則，幫我設計一套引導使用者如何對話的互動方案：
-> 1. 設計一個 interactive tooltip（互動提示框），教導使用者如何包含『投資預算、風險偏好、時間軸』三個核心要素來向 AI 提問。
-> 2. 提供 3 個新手一鍵套用的理財 Prompt 範本。」
+### 💡 Prompt 設計框架
+- **角色 (Role)**: 可解釋性 AI (XAI) 與新手引導設計師。
+- **任務 (Task)**: 為黑盒子 AI 決策提供透明的「可解釋性來源標記」，並提供情境化互動引導。
+- **約束 (Constraint)**: 必須包含數字引文來源腳註 (Citations / XAI)、即時互動 Tooltip 與任務導向範本；禁止提供傳統無聊的整本 PDF 說明書。
 
+</div>
+<div class="prompt-box" data-marpit-fragment>
+
+### 📝 提示詞範本
+> **你是一位 ** 可解釋性 AI (XAI) 設計師。 ** 請為 [AI 理財投資助理] 設計 NS10 輔助說明** 機制：
+> 1. 在 AI 生成的每項數據與建議旁標記數字腳註（如 `[1]`），點擊或懸停即浮現原始市場數據來源與推理依據。
+> 2. 在輸入框旁設計互動式 Tooltip，教導新手如何輸入「投資預算、風險偏好、時間週期」三大關鍵要素。 **禁止** 提供難以檢索的靜態手冊。
+
+</div>
 </div>
 
 ---
+<!-- header: '[◄](#34) 實用技巧與互動建議 [►](#38)' -->
 
 ## 實用講義精進技巧 (師生互動建議)
 
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 1. 「Before & After」對比法
 - **不好的傳統 AI 介面** ：
@@ -892,7 +971,7 @@ style: |
   - 友善降級與可解釋性 (XAI)
 
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 
 ### 2. 課堂即時測試與互動
 - 讓學生在課堂中拿出手機，打開主流 AI 工具（ChatGPT, Claude, Cursor, Notion AI）：
@@ -904,6 +983,7 @@ style: |
 </div>
 
 ---
+<!-- header: '[◄](#37) 課堂檢測與討論 (CCQ & QA) [►](#41)' -->
 
 <!-- id: ux-ch04-ccq1 -->
 ## 🙋 概念核對問答 (CCQ1)
@@ -912,9 +992,7 @@ style: |
 <div class="card">
 
 ### ❓ AI 信心度 (Confidence) 與防呆設計
-**[ 是 / 否 ]**
-
-> **「在 AI 輔助醫療診斷或智慧報稅系統中，為了建立使用者對 AI 的強大信任感，介面應一律以 100% 篤定的語氣呈現 AI 的分析結果，避免顯示『信心度 (Confidence Score: 68%)』或替代方案，以免引發使用者的懷疑與猶豫。」**
+**[ 是 / 否 ]** 「在 AI 輔助醫療診斷或智慧報稅系統中，為了建立使用者對 AI 的強大信任感，介面應一律以 100% 篤定的語氣呈現 AI 的分析結果，避免顯示『信心度 (Confidence Score: 68%)』或替代方案，以免引發使用者的懷疑與猶豫。」
 
 請判斷上述說法是否正確，並思考過度信任 (Over-reliance) 的風險。
 
@@ -969,7 +1047,7 @@ style: |
 ### 全面系統 UX 健檢
 請挑選一個你常用的系統進行全方位診斷與優化構想：
 
-1. **問題診斷** ：找出系統中違反 **Nielsen 10 大原則** 的 3 個具體問題。
+1. **問題診斷 ** ：找出系統中違反 **Nielsen 10 大原則** 的 3 個具體問題。
 2. **AI Prompt 實踐** ：寫出一段具備工程師思維的 Prompt，要求 AI 生成符合該 UX 規範的前端組件。
 3. **AI 產品優化** ：若將該系統升級為 AI 智慧助手，你將如何設計防呆反饋與錯誤復原機制？
 
@@ -986,8 +1064,9 @@ style: |
 </div>
 
 ---
-
 <!-- _class: lead -->
+<!-- _header: '' -->
+
 # Thank You!
 ## 打造以人為本、流暢優雅的使用者體驗
 
