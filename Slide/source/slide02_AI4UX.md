@@ -484,6 +484,7 @@ style: |
 ### 🤖 3. 從 Prompt 到 Agentic UX 實踐
 - Prompt 與 Agentic 的差異
 - 以 **Antigravity IDE** 為例：Agentic UX 實踐
+- 實作演練：BMI 系統 AI-Coding 對照
 
 ### 🙋 4. 實務練習與課堂互動
 - 系統易用性評估練習
@@ -1987,7 +1988,119 @@ description: >-
 
 ---
 
-<!-- header: '[◄](#77) 課堂遊戲：從 Prompting 到 Agent 闖關挑戰 [►](#93)' -->
+<!-- header: '[◄](#78) 實作活動：AI-Coding BMI 系統對照實驗 [►](#93)' -->
+
+## 🛠️ 實作演練：AI-Coding 學生 BMI 系統對照實驗
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🎯 實作任務與需求 Prompt
+請在終端或 AI 編輯器中輸入以下需求，建立一個學生體位分析系統：
+
+> *「建立一個 BMI 的網頁系統（採用 HTML, CSS, JavaScript）。可以連續的輸入學生的姓名，身高體重，算出每一個人的 BMI，並且進行分析（過重，過輕等）」*
+
+- **技術範疇** ：純前端 HTML5 / CSS3 / Vanilla JavaScript。
+- **核心功能** ：連續輸入、即時試算 BMI、體位判斷與班級清單。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🔬 A/B 對照實驗設計
+比較「純對話 Prompting」與「注入 agents.md 規範」的產出品質：
+
+- **對照組【 noGuide 】（無規範引導）** ：
+  - 僅提供上述需求 Prompt ，直接讓 AI 生成單頁應用。
+  - 🔗 [開啟 noGuide 實作網頁](../../demoBMI/noGuide/index.html)
+- **實驗組【 yesGuide 】（注入 agents.md 引導）** ：
+  - 在專案工作區注入包含 **尼爾森 10 大原則** 、 **Design System** 與 **極速連續輸入** 規範的 `agents.md` ，交由 AI Agent 自主實現。
+  - 🔗 [開啟 yesGuide 實作網頁](../../demoBMI/yesGuide/index.html)
+- **核心探討** ：兩者在 **易用性細節** 、 **錯誤防呆** 與 **軟體工程架構** 上有何差異？
+
+</div>
+</div>
+
+---
+
+### 📊 產出比較：noGuide vs. yesGuide 體驗落差
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🚫 noGuide （無引導：功能及格但體驗冰冷）
+- **狀態能見度 (NS01)** ：無即時試算預覽，必須點擊送出後才能在下方表格看到結果。
+- **操作效率 (NS07)** ：無鍵盤加速流，每次新增後焦點丟失，需依賴滑鼠重新點選輸入框。
+- **控制權與容錯 (NS03/05)** ：單筆刪除立即永久移除（無 Undo 復原機制）；邊界數值缺乏即時防呆。
+- **視覺與規範 (NS04/08)** ：無統整 Design Tokens，狀態顏色隨意且缺乏語意，程式碼混亂。
+
+<div style="margin-top: 14px; text-align: center;">
+<a href="../../demoBMI/noGuide/index.html" target="_blank" style="display: inline-block; padding: 6px 16px; background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px;">🖥️ 開啟 demoBMI (無引導版)</a>
+</div>
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✨ yesGuide （agents.md 引導：生產級極致體驗）
+- **即時狀態反饋 (NS01)** ：鍵入數值時呈現「即時動態試算條」；全班 Dashboard 儀表板與堆疊比例圖即時連動。
+- **極速連續輸入 (NS07)** ：支援 <kbd>Enter</kbd> 一鍵送出， **自動清空並自動聚焦姓名欄位** ，雙手不離鍵盤連打全班！
+- **容錯與反悔 (NS03/05)** ：單筆刪除提供「Toast 5 秒 Undo 撤銷按鈕」；清空全班具備防呆二階段確認。
+- **標準與美學 (NS04/08)** ：遵循衛福部 6 級標準切點與專屬語意色；點擊圖表長條可直接篩選特定體位學生。
+
+<div style="margin-top: 14px; text-align: center;">
+<a href="../../demoBMI/yesGuide/index.html" target="_blank" style="display: inline-block; padding: 6px 16px; background: #2563eb; color: #ffffff; border: 1px solid #1d4ed8; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 8px rgba(37,99,235,0.25);">✨ 開啟 demoBMI (引導版)</a>
+</div>
+
+</div>
+</div>
+
+---
+
+### 🔍 深入檢視：agents.md 如何具體落地尼爾森原則
+
+| 尼爾森啟發式原則 | ❌ noGuide （無規範引導） | ✅ yesGuide （agents.md 規範引導） |
+| :--- | :--- | :--- |
+| **NS01 系統狀態能見度** | 送出後僅靜態新增列，無動態反饋 | 即時動態試算預覽、新增 Toast 提示、即時分佈看板 |
+| **NS02 與真實世界對應** | 簡易體位文字，缺乏權威標準依據 | 遵循衛福部國健署最新成人標準、單位標示與健康建議 |
+| **NS03 使用者控制權** | 刪除單筆立即銷毀，無法撤銷挽回 | 刪除配備 **5 秒 SnackBar Undo 反悔** ，提供清空重設 |
+| **NS04 一致性與標準** | 顏色與間距無系統，各自為政 | 封裝 CSS 變數 Design System，狀態色全站語意統一 |
+| **NS05 錯誤預防** | 僅依賴瀏覽器簡易原生提示 | 嚴格數值邊界約束、清空全班二階段確認防呆彈窗 |
+| **NS06 易於識別非記憶** | 使用者需自行記憶各體位 BMI 切點 | 常駐國健署標準對照抽屜，點擊圖表長條直接即時過濾 |
+| **NS07 彈性與使用效率** | 每次送出需頻繁切換滑鼠點擊 | **鍵盤流連續輸入** ：Enter 送出且自動返回姓名焦點 |
+| **NS09 協助辨識與復原** | 阻斷式警告或無定位的錯誤字串 | 欄位就地即時繁中指引，自動聚焦錯誤欄位就地修正 |
+
+---
+
+### 💡 AI-Coding 核心啟示：Prompt 給予能力，agents.md 賦予靈魂
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🤖 從 Code Completion 到 Agentic Quality
+- **Prompt 的天花板** ：
+  - 純 Prompt 只能告訴 AI「做什麼 (What)」，AI 預設只會滿足 Happy Path，產出能動但粗糙的「玩具原型」。
+- **agents.md 的決定性力量** ：
+  - 作為常駐的「AI 心智模型與憲章」，它定義了「如何做到卓越 (How to Excel)」，引導 Agent 主動實踐邊界狀態、無障礙與人因細節。
+- **架構與軟體工程規格** ：
+  - 模組化職責分離、CSS 變數 Design Tokens、狀態管理與臺灣標準繁中軟體工程術語。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🧑‍💻 新時代軟體工程師的核心價值
+- **角色典範躍遷** ：
+  - 不再耗費大量時間「手刻每行 HTML/CSS 樣板程式碼」。
+  - 升級為 **「系統規範制定者 (Rule Maker)」** 與 **「體驗架構師 (UX Architect)」** 。
+- **AI-Coding 效能階梯** ：
+  - **Level 1 (Chat/Prompt)** ：碎片程式碼、複製貼上、無上下文。
+  - **Level 2 (Agent Autonomy)** ：自主執行但若欠缺約束易失控。
+  - **Level 3 (Agent + agents.md)** ：注入人因準則與工程規範，持續自主交付生產級卓越品質！
+
+</div>
+</div>
+
+---
+
+<!-- header: '[◄](#89) 課堂遊戲：從 Prompting 到 Agent 闖關挑戰 [►](#100)' -->
 
 <!-- id: ux-ch03-game1 -->
 ## 🙋 課堂遊戲：從 Prompting 到 Agent 典範轉移闖關挑戰 (Game02)
@@ -2116,7 +2229,7 @@ AI Agent 在完成購物車刪除防呆 Modal (NS05) 的前端程式碼改動後
 </div>
 
 ---
-<!-- header: '[◄](#86) 練習：應用尼爾森原則評估系統 [►](#95)' -->
+<!-- header: '[◄](#93) 練習：應用尼爾森原則評估系統 [►](#102)' -->
 
 ## 練習 🏄🏻‍♀️：應用尼爾森原則評估系統
 
