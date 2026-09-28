@@ -809,7 +809,7 @@ style: |
 ### UX Design 的定義
 > **User Experience Design** is the process that design teams use to create products that provide meaningful and relevant experiences to users.
 
-- UX 設計是團隊為了打造 **有意義且具高度關聯性體驗** 的完整設計流程。
+- UX 設計是團隊為了打造有意義且具高度關聯性體驗的完整 **設計流程** 。
 
 </div>
 <div class="card" data-marpit-fragment>

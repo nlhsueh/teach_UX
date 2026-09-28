@@ -2007,13 +2007,12 @@ description: >-
 <div class="card" data-marpit-fragment>
 
 ### 🔬 A/B 對照實驗設計
-比較「純對話 Prompting」與「注入 agents.md 規範」的產出品質：
 
 - **對照組【 noGuide 】（無規範引導）** ：
   - 僅提供上述需求 Prompt ，直接讓 AI 生成單頁應用。
   - 🔗 [開啟 noGuide 實作網頁](../../demoBMI/noGuide/index.html)
 - **實驗組【 yesGuide 】（注入 agents.md 引導）** ：
-  - 在專案工作區注入包含 **尼爾森 10 大原則** 、 **Design System** 與 **極速連續輸入** 規範的 `agents.md` ，交由 AI Agent 自主實現。
+  - 在專案工作區注入包含 **尼爾森原則** 規範的 `agents.md` ，交由 AI Agent 自主實現。
   - 🔗 [開啟 yesGuide 實作網頁](../../demoBMI/yesGuide/index.html)
 - **核心探討** ：兩者在 **易用性細節** 、 **錯誤防呆** 與 **軟體工程架構** 上有何差異？
 
@@ -2033,10 +2032,6 @@ description: >-
 - **控制權與容錯 (NS03/05)** ：單筆刪除立即永久移除（無 Undo 復原機制）；邊界數值缺乏即時防呆。
 - **視覺與規範 (NS04/08)** ：無統整 Design Tokens，狀態顏色隨意且缺乏語意，程式碼混亂。
 
-<div style="margin-top: 14px; text-align: center;">
-<a href="../../demoBMI/noGuide/index.html" target="_blank" style="display: inline-block; padding: 6px 16px; background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px;">🖥️ 開啟 demoBMI (無引導版)</a>
-</div>
-
 </div>
 <div class="card" data-marpit-fragment>
 
@@ -2045,10 +2040,6 @@ description: >-
 - **極速連續輸入 (NS07)** ：支援 <kbd>Enter</kbd> 一鍵送出， **自動清空並自動聚焦姓名欄位** ，雙手不離鍵盤連打全班！
 - **容錯與反悔 (NS03/05)** ：單筆刪除提供「Toast 5 秒 Undo 撤銷按鈕」；清空全班具備防呆二階段確認。
 - **標準與美學 (NS04/08)** ：遵循衛福部 6 級標準切點與專屬語意色；點擊圖表長條可直接篩選特定體位學生。
-
-<div style="margin-top: 14px; text-align: center;">
-<a href="../../demoBMI/yesGuide/index.html" target="_blank" style="display: inline-block; padding: 6px 16px; background: #2563eb; color: #ffffff; border: 1px solid #1d4ed8; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 8px rgba(37,99,235,0.25);">✨ 開啟 demoBMI (引導版)</a>
-</div>
 
 </div>
 </div>
