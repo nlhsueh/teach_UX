@@ -305,6 +305,35 @@
       border-color: #cbd5e1;
     }
 
+    .btn-disabled {
+      background-color: #f1f5f9;
+      color: #94a3b8;
+      border: 1px dashed #cbd5e1;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .module-card.disabled {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      opacity: 0.65;
+      box-shadow: none;
+    }
+
+    .module-card.disabled:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: #e2e8f0;
+    }
+
+    .module-card.disabled h2 {
+      color: #64748b;
+    }
+
+    .module-card.disabled .card-tag {
+      color: #94a3b8;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -401,6 +430,37 @@
           </a>
           <a href="Slide/pdf/slide04_Tidwell.pdf" class="btn btn-secondary" target="_blank">
             📄 下載簡報 (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- Unit 05 (Disabled) -->
+      <div class="module-card disabled">
+        <div class="card-top">
+          <div class="card-tag">Unit 05 🔒 暫未開放</div>
+          <h2>AI 驅動的系統雛形設計與前期確認</h2>
+          <p>AI 雛形生成工具深度盤點（v0, Lovable, Uizard）、1-10-100 成本法則與高保真前期走查實踐。</p>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-disabled">
+            🔒 敬請期待 (即將推出)
+          </span>
+        </div>
+      </div>
+
+      <!-- Unit 06 (Quiz & Practice) -->
+      <div class="module-card" style="border-color: #86efac; box-shadow: 0 4px 12px rgba(22, 101, 52, 0.08);">
+        <div class="card-top">
+          <div class="card-tag" style="color: #15803d;">Unit 06 🎯 全觀念自我測驗</div>
+          <h2>全課程易用性實戰練習題庫</h2>
+          <p>集結全章節 24 題實戰情境測驗（含尼爾森原則、AI-UX、Agentic 與 Tidwell 模式），附完整答案與深度解析。</p>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/slide06_quiz.html?transition=fade" class="btn btn-primary" style="background-color: #16a34a; border-color: #16a34a;" target="_blank">
+            🖥️ 開始自我測驗 (HTML 模式)
+          </a>
+          <a href="Slide/pdf/slide06_quiz.pdf" class="btn btn-secondary" target="_blank">
+            📄 下載測驗題庫 (PDF)
           </a>
         </div>
       </div>
