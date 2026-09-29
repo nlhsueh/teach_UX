@@ -495,7 +495,9 @@ style: |
 
 ---
 
-![bg fit](../../img/ai_for_ux_concept.png)
+<!-- _class: full-img -->
+
+![](../../img/ai_for_ux_concept.png)
 
 ---
 <!-- header: '[◄](#2) 1. 什麼是 AI for UX？ [►](#6)' -->
@@ -508,7 +510,7 @@ style: |
 <div class="card" data-marpit-fragment>
 
 ### 傳統 UI/UX 設計流程的痛點
-- **溝通代溝** ：工程師往往忽略邊界狀態（Loading、無資料、錯誤防呆），成品常與預期嚴重脫節。
+- **溝通代溝** ：沒有畫面與雛形，成品往往與預期嚴重脫節。
 - **繁複設計** ：手繪草圖 ➔ Wireframe ➔ 靜態 Mockup ➔ 標註交付 ➔ 前端撰寫。
 - **週期漫長** ：等看到第一個可操作版本時，已耗費數週開發時間。
 
@@ -535,18 +537,18 @@ style: |
 - 開發團隊能有更多時間專注於核心業務架構與使用者洞察。
 
 ### 📐 介面標準化與設計系統落地
-- 將專案 Design System、色彩無障礙與通用組件規格寫入 Prompt。
+- 將專案的色彩、佈局、通用組件規格寫入 Prompt。
 - 杜絕多位工程師各寫各的按鈕樣式與錯誤彈窗。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 💰 1-10-100 成本法則 (Cost of Quality)
-- **$1 (雛形階段)** ：在 AI 原型中發現可用性問題，修改僅需調整 Prompt 或幾行程式碼。
+- **$1 (雛形階段)** ：在 AI 雛形中發現可用性問題，修改僅需調整 Prompt 或幾行程式碼。
 - **$10 (開發階段)** ：進入前端與後端整合後，修改需重構邏輯與資料庫關聯。
 - **$100 (上線營運)** ：系統上線後使用者抱怨流失，修復成本高達百倍！
 
-* > **AI for UX 讓高品質的「前期確認」變得唾手可得！**
+* > **AI for UX 讓高品質的「前期確認」變得容易可行！**
 
 </div>
 </div>
@@ -576,7 +578,7 @@ style: |
 ### 3. UX 約束 (Constraints - C)
 - **主動帶入尼爾森原則作為非功能性需求** ：
  - 必須包含即時表單驗證 (NS05)
- - 需有 Skeleton 骨架屏與進度反饋 (NS01)
+ - 避免沒有進度反饋 (NS01)
  - 支援 Toast 一鍵復原 (NS03)
 
 ### 4. 輸出格式 (Format - F)
@@ -618,14 +620,14 @@ style: |
 ## NS01 清楚的系統狀態 (Visibility of System Status)
 
 > *“The system should always keep users informed about what is going on, through appropriate **feedback** within a reasonable time.”* 
-* > *「系統應始終在合理的時間內透過適當的 **反饋** ，讓使用者即時掌握正在發生的事情與當前狀態。」*
+* > *「系統應始終在合理的時間內透過適當的 **反饋** ，讓使用者即時掌握正在發生的事情與 **當前狀態** 。」*
 
 <div class="card">
 
 ### 核心概念：適時反饋、消除焦慮
 - 系統必須在 **合理的時間內** 給予適當反饋，始終讓使用者了解當前進度與狀態。
 - 凸顯重要資訊，建立使用者的情境掌控感。
-* 👍 **優良實踐** ：提供上傳進度條、按鈕點擊後立即顯示 Loading 狀態、步驟指示器（Step 2 of 4）。
+* 👍 **優良實踐** ：提供上傳進度條、按鈕點擊後立即顯示目前狀態、步驟指示器（Step 2 of 4）。
 * 👎 **不良設計** ：點擊無反應、畫面凍結、讓使用者猜測「系統是不是當機了？」。
 
 </div>
@@ -651,16 +653,18 @@ Upload 100 files
 <div class="card" data-marpit-fragment>
 
 ### 即時表單與未讀通知
-- 🔔 未讀訊息數字徽章（Badge）
+- 🔔 未讀訊息數字徽章
 - 📧 Email 格式輸入錯誤時 **即時** 紅字提示
-- 🛒 商品各尺寸之庫存即時狀態提示
+- 🛒 商品各尺寸之 **庫存即時狀態** 提示
 
 </div>
 </div>
 
 ---
 
-![bg 80%](../../img/ns01_status_feedback_examples.png)
+<!-- _class: full-img -->
+
+![](../../img/ns01_status_feedback_examples.png)
 
 ---
 
@@ -688,14 +692,16 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> 你是一個資深前端工程師。在設計匯入大型 Excel 檔案的 UI 時，請確保提供一個即時進度條（Progress Bar），包含目前處理百分比（如 45%）、已處理筆數與剩餘預估秒數。禁止在背景默默運算而不給任何進度指示。
+> 你是一個資深前端工程師。在設計匯入大型檔案的 UI 時，請確保提供一個即時進度條（Progress Bar），包含目前處理百分比（如 45%）、已處理筆數與剩餘預估秒數。禁止在背景默默運算而不給任何進度指示。
 
 </div>
 </div>
 
 ---
 
-![bg 80%](../../img/ns_ai_01.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_01.jpg)
 
 ---
 <!-- header: '[◄](#8) NS02 與真實世界的對應 (Match Real World) [►](#19)' -->
@@ -730,7 +736,7 @@ Upload 100 files
 </div>
 <div class="card" data-marpit-fragment>
 
-### 人性化文案與程式碼提示
+### 人性化提示字
 - **註冊按鈕** ：不寫生硬的 "Sign Up"，改為「是的，我想立即提升業績！」。
 - **終端機輸入** ：
  - 👎 `press -9 to stop` (工程師程式碼邏輯)
@@ -741,7 +747,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns02_mapping_gas_stove.png)
+<!-- _class: full-img -->
+
+![](../../img/ns02_mapping_gas_stove.png)
 
 ---
 
@@ -751,7 +759,7 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 💡 Prompt 設計框架
-- **角色 (Role)**: 產品經理與資深 UX Writer。
+- **角色 (Role)**: 產品經理與資深 UX 設計師。
 - **任務 (Task)**: 撰寫系統操作回饋與付款失敗提示文案。
 - **約束 (Constraint)**: 必須使用日常真實世界語言並提供下一步指引；避免拋出冷冰冰的程式技術術語（如 `NullPointerException`）。
 
@@ -759,14 +767,16 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> 你是一位專為電商平台撰寫文案的 UX Writer。當使用者付款失敗時，請寫出友好的提示。避免使用 "交易異常 403" 或 "Connection timeout" 等技術詞彙，應改用 "目前付款通道繁忙，我們無法完成扣款，請您稍候再試或更換信用卡。" 並提供直接的下一步建議。
+> 你是一位專為電商平台撰寫文案的資深 UX 設計師。當使用者付款失敗時，請寫出友好的提示。 **避免** 使用 "交易異常 403" 或 "Connection timeout" 等技術詞彙，應改用 "目前付款通道繁忙，我們無法完成扣款，請您稍候再試或更換信用卡。" 並提供直接的下一步建議。
 
 </div>
 </div>
 
 ---
 
-![bg 80%](../../img/ns_ai_02.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_02.jpg)
 
 ---
 <!-- header: '[◄](#14) NS03 使用者擁有控制權 (User Control) [►](#24)' -->
@@ -774,14 +784,14 @@ Upload 100 files
 ## NS03 使用者擁有控制權 (User Control & Freedom)
 
 > *“Users often choose system functions by mistake and will need a clearly marked ‘emergency exit’ to leave the unwanted state. Support undo and redo.”*
-* > *「使用者經常會誤觸系統功能，需要一個標示明確的『緊急出口』來離開非預期的狀態。系統應支援復原 (Undo) 與重做 (Redo)。」*
+* > *「使用者經常會誤觸系統功能，需要一個標示明確的「緊急出口」來離開 **非預期的狀態** 。系統應支援 **復原** (Undo) 與 **重做** (Redo)。」*
 
 <div class="card">
 
 ### 核心概念：提供「緊急出口」與反悔機會
 - 使用者經常手滑誤觸功能，系統必須提供顯眼的 **緊急出口** ，無需繁瑣對話框。
 - 必備按鈕：`[Back]`, `[Cancel]`, `[Close]`, `[Undo]`, `[Redo]`。
-* ⚠️ **謹慎使用 [Reset]** ：一鍵清空整個表單容易造成災難性誤刪。
+- ⚠️ **謹慎使用 [Reset]** ：一鍵清空整個表單容易造成災難性誤刪。
 
 </div>
 
@@ -815,7 +825,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ux_diagram.png)
+<!-- _class: full-img -->
+
+![](../../img/ux_diagram.png)
 
 ---
 
@@ -840,7 +852,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns_ai_03.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_03.jpg)
 
 ---
 <!-- header: '[◄](#19) NS04 一致的風格與標準 (Consistency) [►](#28)' -->
@@ -848,7 +862,7 @@ Upload 100 files
 ## NS04 一致的風格與標準 (Consistency & Standards)
 
 > *“Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions.”*
-* > *「使用者不應懷疑不同的用詞、情境或操作是否代表同一件事。系統應遵循平台與業界既定慣例。」*
+* > *「使用者不應懷疑不同的用詞、情境或操作是否代表同一件事。系統應遵循平台與業界既定 **慣例** 。」*
 
 <div class="card">
 
@@ -868,7 +882,7 @@ Upload 100 files
 ### 用詞不一致
 - 同一個操作在不同頁面寫成：
  `[提交]`、`[Submit]`、`[確認]`、`[OK]`、`[Done]`
-- --> 使用者會懷疑功能是否不同。
+* 使用者會懷疑功能是否不同。
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -876,7 +890,7 @@ Upload 100 files
 ### 空間記憶破壞 (Spatial Memory)
 - 「確認」與「取消」按鈕在不同彈窗 **忽左忽右** 。
 - 確認按鈕的顏色一下藍、一下綠、一下紅。
-- --> 使用者容易手快誤按。
+* 使用者容易手快誤按。
 
 </div>
 </div>
@@ -889,9 +903,9 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 💡 Prompt 設計框架
-- **角色 (Role)**: 設計系統 (Design System) 維護者。
+- **角色 (Role)**: UI/UX 專家。
 - **任務 (Task)**: 規範全系統之按鈕命名、色彩語意、圖示與操作手勢。
-- **約束 (Constraint)**: 必須遵循平台通用慣例與專案 Design System；避免同一動作在不同頁面使用歧異名稱。
+- **約束 (Constraint)**: 必須遵循平台通用慣例與專案設計系統；避免同一動作在不同頁面使用 **歧異名稱** 。
 
 </div>
 <div class="prompt-box" data-marpit-fragment>
@@ -904,7 +918,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns_ai_04.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_04.jpg)
 
 ---
 <!-- header: '[◄](#24) NS05 錯誤預防 (Error Prevention) [►](#34)' -->
@@ -912,7 +928,7 @@ Upload 100 files
 ## NS05 錯誤預防 (Error Prevention)
 
 > *“Even better than good error messages is a careful design which prevents a problem from occurring in the first place.”*
-* > *「比優秀的錯誤訊息更理想的，是一開始就防患於未然、防止問題發生的謹慎設計。」*
+* > *「比優秀的錯誤訊息更理想的，是一開始就防患於未然、 **防止問題發生** 的謹慎設計。」*
 
 <div class="card">
 
@@ -953,7 +969,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns05_confirmation_dialogs.png)
+<!-- _class: full-img -->
+
+![](../../img/ns05_confirmation_dialogs.png)
 
 ---
 
@@ -971,14 +989,16 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> 你是一位防呆專家。請設計一個 "刪除專案" 的安全機制。當使用者點擊刪除時，不要直接執行，而是彈出一個二次確認視窗，要求使用者手動輸入專案名稱（例如輸入 "MyProject"）才能啟用刪除按鈕。避免讓使用者因誤觸按鈕而導致資料遺失。
+> 你是一位系統防呆專家。請設計此專案的安全機制。當使用者點擊刪除時，不要直接執行，而是彈出一個二次確認視窗，要求使用者手動輸入專案名稱（例如輸入 "MyProject"）才能啟用刪除按鈕。避免讓使用者因誤觸按鈕而導致資料遺失，同時要偵測檢查可能的誤用狀況。
 
 </div>
 </div>
 
 ---
 
-![bg 80%](../../img/ns_ai_05.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_05.jpg)
 
 ---
 
@@ -1009,7 +1029,7 @@ Upload 100 files
 ## NS06 易於識別而非記憶 (Recognition Rather Than Recall)
 
 > *“Minimize the user’s memory load by making objects, actions, and options visible. Instructions should be easily retrievable.”*
-* > *「藉由讓物件、操作與選項清晰可見，最大程度減輕使用者的記憶負荷。操作說明應隨處易於檢索。」*
+* > *「藉由讓物件、操作與選項清晰可見，最大程度減輕使用者的 **記憶負荷** 。操作說明應隨處易於檢索。」*
 
 <div class="card">
 
@@ -1052,11 +1072,15 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/compare_iPad.png)
+<!-- _class: full-img -->
+
+![](../../img/compare_iPad.png)
 
 ---
 
-![bg 80%](../../img/ns06_search_keyword_retention.png)
+<!-- _class: full-img -->
+
+![](../../img/ns06_search_keyword_retention.png)
 
 ---
 
@@ -1074,14 +1098,16 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> 你是一位搜尋介面設計師。當使用者點擊搜尋框時，請顯示一個浮動視窗，列出 "最近搜尋項目" 與 "熱門推薦標籤"，讓使用者可以直接點擊。避免讓使用者必須自己去回想上一次輸入的關鍵字。
+> 你是一位介面設計師。當使用者點擊搜尋框時，請顯示一個浮動視窗，列出 "最近搜尋項目" 與 "熱門推薦標籤"，讓使用者可以直接點擊。避免讓使用者必須自己去回想上一次輸入的關鍵字。
 
 </div>
 </div>
 
 ---
 
-![bg 80%](../../img/ns_ai_06.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_06.jpg)
 
 ---
 <!-- header: '[◄](#34) NS07 彈性與使用效率 (Efficiency) [►](#45)' -->
@@ -1089,7 +1115,7 @@ Upload 100 files
 ## NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
 
 > *“Accelerators — unseen by the novice user — may often speed up the interaction for the expert user. Allow users to tailor frequent actions.”*
-* > *「新手不易察覺的『加速器』能大幅提升專家的操作效率。系統應允許使用者自訂與快捷常用操作。」*
+* > *「新手不易察覺的『加速器』能大幅提升專家的操作效率。系統應允許使用者 **自訂** 與 **快捷** 常用操作。」*
 
 <div class="card">
 
@@ -1125,7 +1151,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns07_keyboard_shortcuts_snippets.png)
+<!-- _class: full-img -->
+
+![](../../img/ns07_keyboard_shortcuts_snippets.png)
 
 ---
 
@@ -1150,7 +1178,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns_ai_07.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_07.jpg)
 
 ---
 <!-- header: '[◄](#40) NS08 優雅簡潔的設計 (Minimalist) [►](#52)' -->
@@ -1158,7 +1188,7 @@ Upload 100 files
 ## NS08 優雅簡潔的設計 (Aesthetic & Minimalist Design)
 
 > *“Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information diminishes relative visibility.”*
-* > *「對話框與介面不應包含不相關或極少需要的資訊。每一筆多餘的資訊單位，都會削弱重要資訊的相對可見度。」*
+* > *「對話框與介面不應包含 **不相關** 或 **極少需要** 的資訊。每一筆多餘的資訊單位，都會削弱 **重要資訊** 的相對可見度。」*
 
 <div class="card">
 
@@ -1193,11 +1223,15 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/aesthetic_clock.png)
+<!-- _class: full-img -->
+
+![](../../img/aesthetic_clock.png)
 
 ---
 
-![bg 80%](../../img/ns08_excessive_info_gates.png)
+<!-- _class: full-img -->
+
+![](../../img/ns08_excessive_info_gates.png)
 
 ---
 
@@ -1209,7 +1243,7 @@ Upload 100 files
 ### 💡 Prompt 設計框架
 - **角色 (Role)**: 視覺傳達與 UI 設計師。
 - **任務 (Task)**: 重新梳理儀表板介面以達成簡潔優雅的資訊架構。
-- **約束 (Constraint)**: 必須保留足夠留白並收納 80% 次要低頻數據；避免單一畫面塞入過量圖表造成 ** 視覺噪音** 。
+- **約束 (Constraint)**: 必須保留足夠留白並收納 80% 次要低頻數據；避免單一畫面塞入過量圖表造成 **視覺噪音** 。
 
 </div>
 <div class="prompt-box" data-marpit-fragment>
@@ -1222,7 +1256,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns_ai_08.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_08.jpg)
 
 ---
 
@@ -1253,7 +1289,7 @@ Upload 100 files
 ## NS09 清楚的錯誤處理 (Help Users Recover from Errors)
 
 > *“Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.”*
-* > *「錯誤訊息應以 **通俗直白 ** 的語言表達（不顯示難懂的錯誤碼），精準指出問題所在，並提出 ** 建設性** 的解決方案。」*
+* > *「錯誤訊息應以 **通俗直白** 的語言表達（不顯示難懂的錯誤碼），精準指出問題所在，並提出 **建設性** 的解決方案。」*
 
 <div class="card">
 
@@ -1291,7 +1327,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns09_error_404_recovery.png)
+<!-- _class: full-img -->
+
+![](../../img/ns09_error_404_recovery.png)
 
 ---
 
@@ -1316,7 +1354,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns_ai_09.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_09.jpg)
 
 ---
 
@@ -1349,14 +1389,14 @@ Upload 100 files
 ## NS10 說明與文件 (Help and Documentation)
 
 > *“Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. It should be easy to search and list concrete steps.”*
-* > *「雖然理想的系統最好不需說明文件即可直覺使用，但仍有必要提供說明與文件。這些文件應易於搜尋並列出具體的執行步驟。」*
+* > *「雖然理想的系統最好不需說明文件即可直覺使用，但仍有必要提供說明與文件。這些文件應易於搜尋，並列出具體的執行步驟。」*
 
 <div class="card">
 
 ### 核心概念：易於檢索、專注任務、步驟具體
 - 最理想的系統是無須說明就能直覺使用，但針對複雜業務仍需具備完善說明。
 * **被動式協助** ：使用者有疑問時可搜尋的 Help Center / FAQ。
-* **主動式協助** ：新功能 Onboarding 導覽、多樣化樣板 (Templates)。
+* **主動式協助** ：新功能/新手導覽、多樣化樣板 (Templates)。
  * ⚠️ **避免多餘的干擾導覽** （例如在極度直覺的日曆新增介面彈出長篇教學）。
 
 </div>
@@ -1385,7 +1425,9 @@ Upload 100 files
 
 ---
 
-![bg 80%](../../img/ns10_onboarding_tutorial_modes.png)
+<!-- _class: full-img -->
+
+![](../../img/ns10_onboarding_tutorial_modes.png)
 
 ---
 
@@ -1403,14 +1445,16 @@ Upload 100 files
 <div class="prompt-box" data-marpit-fragment>
 
 ### 📝 提示詞範本
-> 你是一位新手引導設計專家。請為我們的 [智慧報稅系統] 設計一個 Heuristic 10 (Help and Documentation) 的引導方案。當使用者首次進入『薪資申報』頁面時，設計一個輕量級的步驟引導 (Walkthrough Tooltip) 說明如何匯入扣繳憑單，並提供常見問答連結，避免拋出 20 頁的說明書讓使用者自己閱讀。
+> 你是一位新手引導設計專家。請為我們的 [智慧報稅系統] 設計一個系統說明的引導方案。當使用者首次進入『薪資申報』頁面時，設計一個輕量級的步驟引導 (Walkthrough Tooltip) 說明如何匯入扣繳憑單，並提供常見問答連結，避免拋出冗長的說明書讓使用者自己閱讀。
 
 </div>
 </div>
 
 ---
 
-![bg 80%](../../img/ns_ai_10.jpg)
+<!-- _class: full-img -->
+
+![](../../img/ns_ai_10.jpg)
 
 ---
 <!-- header: '[◄](#58) 尼爾森 10 大原則總結對照 [►](#68)' -->
@@ -1710,7 +1754,7 @@ Upload 100 files
 <div class="card">
 
 **情境描述** ：
-工程師撰寫提示詞：「你是一位 UI 設計師（Role），請設計電商購物車結帳頁（Task）。**【約束：載入時必須顯示骨架屏 (Skeleton Screen) 消除等待焦慮，且 API 斷線時必須以白話說明並提供重試按鈕，嚴禁僅拋出無說明的狀態碼】**（Constraints），請以 React 輸出（Format）。」
+工程師撰寫提示詞：「你是一位 UI 設計師（Role），請設計電商購物車結帳頁（Task）。 **【約束：載入時必須顯示骨架屏 (Skeleton Screen) 消除等待焦慮，且 API 斷線時必須以白話說明並提供重試按鈕，嚴禁僅拋出無說明的狀態碼】** （Constraints），請以 React 輸出（Format）。」
 
 **請問提示詞中針對 Constraints 的具體要求，最主要是為了確保 AI 生成的介面滿足哪兩項尼爾森原則？**
 - **(A)** NS02 (與真實世界對應) 與 NS04 (一致性與標準)
@@ -1745,7 +1789,9 @@ Upload 100 files
 ---
 <!-- header: '[◄](#68) 從 Prompting 到 Agent 典範轉移 [►](#86)' -->
 
-![bg fit](../../img/agent_ai_concept.png)
+<!-- _class: full-img -->
+
+![](../../img/agent_ai_concept.png)
 
 ---
 ## 從 Prompting 到 Agent：AI 體驗設計的典範轉移
@@ -1762,7 +1808,7 @@ Upload 100 files
 <div class="card" data-marpit-fragment>
 
 ### 🤖 Agentic UX Workflow (代理人工作流)
-- **具備全專案視野** ：能自主檢索目錄、閱讀 `Design System` 與規範文件。
+- **具備全專案視野** ：能自主檢索目錄、閱讀系統設計與相關文件。
 - **主動規劃與推演** ：不直接盲目寫程式碼，而是先擬定結構化實施計畫 (Plan)。
 - **多檔案自主重構** ：自動修改關聯組件、加入狀態機、執行終端機驗證。
 - **感知式工具調用** ：能啟動本機伺服器、透過瀏覽器自主走查使用者操作路徑。
@@ -1967,7 +2013,7 @@ description: >-
 <div class="card" data-marpit-fragment>
 
 ### 🤖 AI Agent 專精的範疇 (Heavy Lifting)
-- 邊界狀態（Loading、Empty、Error、Retry）的全覆蓋編碼。
+- 邊界狀態（Loading、Empty、Error、Retry）的全覆蓋程式設計。
 - 既有 Design System 的命名規範、無障礙標籤 (ARIA) 嚴格遵守。
 - 跨多個檔案同步重構與重複性程式碼撰寫。
 - 自動化指令執行與編譯除錯。

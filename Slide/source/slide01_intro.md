@@ -700,12 +700,11 @@ style: |
 <div class="card" data-marpit-fragment>
 
 ### 常見的開發盲點
-* 只有模組思考，沒有系統思考: 疊床架屋，來一個做一個。
-* 只有系統思考，沒有使用者思考: 忽略同理心與實際體驗。
-* 沒有使用者研究，沒有需求分析: 閉門造車。
-* 沒有設計就直接施工: 邊寫邊改，架構混亂。
-* 沒有測試反饋與修正
-* 💸 **No Money** → 便宜行事；😴 **Lazy** → 知錯不改。
+* 只有模組思考，沒有 **系統思考**: 疊床架屋，來一個做一個。
+* 只有系統思考，沒有 **使用者思考**: 忽略同理心與實際體驗。
+* 沒有使用者研究，沒有 **需求分析**: 閉門造車。
+* 沒有 **設計** 就直接施工: 邊寫邊改，架構混亂。
+* 沒有 **測試** 反饋與修正
 
 </div>
 <div class="card-img">
@@ -751,7 +750,7 @@ style: |
 ### ISO 9241-210
 > **The user experience (UX)** is how a user interacts with and experiences a product, system or service. It includes a person's perceptions of **utility**, **ease of use**, and **efficiency**.
 
-- **使用者體驗 (UX)** 是使用者在與產品、系統或服務互動過程中的整體體驗與**內在感受**。
+- **使用者體驗 (UX)** 是使用者在與產品、系統或服務互動過程中的整體體驗與 **內在感受** 。
 
 </div>
 <div class="card" data-marpit-fragment>
