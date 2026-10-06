@@ -1,0 +1,7 @@
+{
+  "themeSet": [
+    "./Slide/themes/ux-theme.css"
+  ],
+  "allowLocalFiles": true,
+  "html": true
+}
