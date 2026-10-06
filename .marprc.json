@@ -1,8 +1,7 @@
 {
   "themeSet": [
     "./Slide/themes/ux-theme.css",
-    "./Slide/themes/quiz-theme.css",
-    "../themes/quiz-theme.css"
+    "./Slide/themes/quiz-theme.css"
   ],
   "allowLocalFiles": true,
   "html": true
