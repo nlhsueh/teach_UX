@@ -20,7 +20,7 @@ html: true
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
-<!-- header: '[◄](#1) 本單元大綱 (Outline) [►](#4)' -->
+<!-- header: '本單元大綱 (Outline)' -->
 
 ## 本單元大綱 (Outline)
 
@@ -48,7 +48,7 @@ html: true
 ![bg fit](../../img/ux_for_ai_concept.png)
 
 ---
-<!-- header: '[◄](#2) AI 系統與現代互動挑戰 [►](#7)' -->
+<!-- header: 'AI 系統與現代互動挑戰' -->
 
 ## AI 系統與應用的全面普及
 
@@ -125,7 +125,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#4) AI and NS01 系統狀態能見度 [►](#10)' -->
+<!-- header: 'AI and NS01 系統狀態能見度' -->
 
 ## Slide 01: AI and NS01 (系統狀態能見度) - UX 設計心法
 
@@ -178,7 +178,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#7) AI and NS02 真實世界與系統對應 [►](#13)' -->
+<!-- header: 'AI and NS02 真實世界與系統對應' -->
 
 ## Slide 02: AI and NS02 (真實世界與系統的對應) - UX 設計心法
 
@@ -232,7 +232,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#10) AI and NS03 使用者控制與自由 [►](#16)' -->
+<!-- header: 'AI and NS03 使用者控制與自由' -->
 
 ## Slide 03: AI and NS03 (使用者控制與自由) - UX 設計心法
 
@@ -284,7 +284,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#13) AI and NS04 一致性與標準 [►](#19)' -->
+<!-- header: 'AI and NS04 一致性與標準' -->
 
 ## Slide 04: AI and NS04 (一致性與標準) - UX 設計心法
 
@@ -339,7 +339,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#16) AI and NS05 錯誤預防 [►](#22)' -->
+<!-- header: 'AI and NS05 錯誤預防' -->
 
 ## Slide 05: AI and NS05 (錯誤預防) - UX 設計心法
 
@@ -391,7 +391,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#19) AI and NS06 易於識別而非記憶 [►](#25)' -->
+<!-- header: 'AI and NS06 易於識別而非記憶' -->
 
 ## Slide 06: AI and NS06 (易於識別，而非憑空記憶) - UX 設計心法
 
@@ -445,7 +445,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#22) AI and NS07 使用彈性與效率 [►](#28)' -->
+<!-- header: 'AI and NS07 使用彈性與效率' -->
 
 ## Slide 07: AI and NS07 (使用彈性與效率) - UX 設計心法
 
@@ -498,7 +498,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#25) AI and NS08 美學與簡約設計 [►](#31)' -->
+<!-- header: 'AI and NS08 美學與簡約設計' -->
 
 ## Slide 08: AI and NS08 (美學與簡約設計) - UX 設計心法
 
@@ -551,7 +551,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#28) AI and NS09 錯誤辨識與復原 [►](#34)' -->
+<!-- header: 'AI and NS09 錯誤辨識與復原' -->
 
 ## Slide 09: AI and NS09 (協助辨識、診斷與從錯誤中復原) - UX 設計心法
 
@@ -605,7 +605,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#31) AI and NS10 說明文件與輔助 [►](#37)' -->
+<!-- header: 'AI and NS10 說明文件與輔助' -->
 
 ## Slide 10: AI and NS10 (說明文件與輔助說明) - UX 設計心法
 
@@ -659,7 +659,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#34) UX for AI 核心心法總結 [►](#38)' -->
+<!-- header: 'UX for AI 核心心法總結' -->
 
 ## UX for AI 核心心法與 10 大原則總結
 
@@ -689,7 +689,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#37) 課堂檢測與討論 (CCQ & QA) [►](#41)' -->
+<!-- header: '課堂檢測與討論 (CCQ & QA)' -->
 
 <!-- id: ux-ch04-ccq1 -->
 ## 🙋 概念核對問答 (CCQ1)
@@ -873,37 +873,13 @@ html: true
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = 'true';
       
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
       if (!title) return;
       
       header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = '上一章節';
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = '下一章節';
-        header.appendChild(nextLink);
-      }
     });
   }
 

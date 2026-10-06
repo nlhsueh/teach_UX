@@ -20,7 +20,7 @@ html: true
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
-<!-- header: '[◄](#1) 本單元大綱 (Outline) [►](#3)' -->
+<!-- header: '本單元大綱 (Outline)' -->
 
 ## 本單元大綱 (Outline)
 
@@ -46,7 +46,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#2) 1. 日常體驗與設計反思 [►](#16)' -->
+<!-- header: '1. 日常體驗與設計反思' -->
 
 ## 無所不在的使用體驗 (Everywhere UX)
 
@@ -291,7 +291,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#3) 2. UX 核心概念與實踐流程 [►](#23)' -->
+<!-- header: '2. UX 核心概念與實踐流程' -->
 
 ## 什麼是使用者體驗 (User Experience, UX)？
 
@@ -403,7 +403,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#16) 3. 課堂檢測與討論 (CCQ & QA) [►](#27)' -->
+<!-- header: '3. 課堂檢測與討論 (CCQ & QA)' -->
 
 <!-- id: ux-ch01-ccq1 -->
 ## 🙋 概念核對問答 (CCQ1)
@@ -610,37 +610,13 @@ html: true
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = 'true';
       
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
       if (!title) return;
       
       header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = '上一章節';
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = '下一章節';
-        header.appendChild(nextLink);
-      }
     });
   }
 

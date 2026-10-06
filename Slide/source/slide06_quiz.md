@@ -522,7 +522,7 @@ style: |
 <span style="font-size: 15px; color: #64748b; margin-top: 24px; display: block;">涵蓋 UCD 導論、尼爾森 10 大原則、AI for UX、UX for AI 與 Tidwell 設計模式</span>
 
 ---
-<!-- header: '[◄](#1) 本題庫大綱 (Outline) [►](#3)' -->
+<!-- header: '本題庫大綱 (Outline)' -->
 
 ## 本題庫大綱 (Outline)
 
@@ -549,14 +549,14 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#2) Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03) [►](#7)' -->
+<!-- header: 'Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)' -->
 
 <!-- _class: part-cover -->
 # Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)
 ## 從 UX 基礎心法到使用者中心設計 (UCD) 雙鑽石架構
 
 ---
-<!-- header: '[◄](#3) Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03) [►](#7)' -->
+<!-- header: 'Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)' -->
 
 ## ❓ 第 01 題：【UX 與 UI 的核心界線】
 
@@ -599,7 +599,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#3) Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03) [►](#7)' -->
+<!-- header: 'Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)' -->
 
 ## ❓ 第 02 題：【使用者中心設計 (UCD) 核心心法】
 
@@ -642,7 +642,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#3) Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03) [►](#7)' -->
+<!-- header: 'Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)' -->
 
 ## ❓ 第 03 題：【雙鑽石設計模型 (Double Diamond)】
 
@@ -685,14 +685,14 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#3) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 <!-- _class: part-cover -->
 # Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)
 ## 啟發式評估十準則、AI 介面防呆與約束式提示工程
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 04 題：【NS01 系統狀態能見度 (Visibility of System Status)】
 
@@ -735,7 +735,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 05 題：【NS02 真實世界與系統對應 (Match Between System and Real World)】
 
@@ -778,7 +778,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 06 題：【NS03 使用者控制與自由 (User Control and Freedom)】
 
@@ -821,7 +821,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 07 題：【NS04 一致性與標準 (Consistency and Standards)】
 
@@ -864,7 +864,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 08 題：【NS05 錯誤預防 (Error Prevention)】
 
@@ -907,7 +907,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 09 題：【NS06 易於識別而非記憶 (Recognition Rather than Recall)】
 
@@ -950,7 +950,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 10 題：【NS07 彈性與使用效率 (Flexibility and Efficiency of Use)】
 
@@ -993,7 +993,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 11 題：【NS08 美學與簡約設計 (Aesthetic and Minimalist Design)】
 
@@ -1036,7 +1036,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 12 題：【NS09 協助辨識、診斷與從錯誤中復原】
 
@@ -1079,7 +1079,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13) [►](#18)' -->
+<!-- header: 'Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)' -->
 
 ## ❓ 第 13 題：【1-10-100 法則與 RTCF 提示框架】
 
@@ -1122,14 +1122,14 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#7) Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18) [►](#24)' -->
+<!-- header: 'Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)' -->
 
 <!-- _class: part-cover -->
 # Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)
 ## 從黑盒子走向透明人機協同，Agentic 閉環與優雅降級
 
 ---
-<!-- header: '[◄](#18) Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18) [►](#24)' -->
+<!-- header: 'Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)' -->
 
 ## ❓ 第 14 題：【傳統對話型 Prompting 的上下文孤島】
 
@@ -1172,7 +1172,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#18) Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18) [►](#24)' -->
+<!-- header: 'Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)' -->
 
 ## ❓ 第 15 題：【Agent 規劃優先原則 (Planning Mode)】
 
@@ -1215,7 +1215,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#18) Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18) [►](#24)' -->
+<!-- header: 'Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)' -->
 
 ## ❓ 第 16 題：【閉環驗證與自主走查 (Feedback Loop)】
 
@@ -1258,7 +1258,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#18) Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18) [►](#24)' -->
+<!-- header: 'Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)' -->
 
 ## ❓ 第 17 題：【AI 信心度 (Confidence Score) 與防呆信任】
 
@@ -1301,7 +1301,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#18) Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18) [►](#24)' -->
+<!-- header: 'Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)' -->
 
 ## ❓ 第 18 題：【AI 服務異常的優雅降級 (Graceful Degradation)】
 
@@ -1344,14 +1344,14 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#18) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 <!-- _class: part-cover -->
 # Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)
 ## 經典 UI 模式庫：導覽架構、多步驟表單與空間收納
 
 ---
-<!-- header: '[◄](#24) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 ## ❓ 第 19 題：【Wizard 步驟精靈模式】
 
@@ -1394,7 +1394,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#24) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 ## ❓ 第 20 題：【Deep Linking 深層連結模式】
 
@@ -1437,7 +1437,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#24) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 ## ❓ 第 21 題：【Accordion 手風琴模式】
 
@@ -1480,7 +1480,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#24) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 ## ❓ 第 22 題：【Breadcrumbs 麵包屑導航】
 
@@ -1523,7 +1523,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#24) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 ## ❓ 第 23 題：【Card List 卡片清單模式】
 
@@ -1566,7 +1566,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#24) Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24) [►](#31)' -->
+<!-- header: 'Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)' -->
 
 ## ❓ 第 24 題：【Time-Slot Picker / Data Sheet 數據表格模式】
 
@@ -1609,7 +1609,7 @@ style: |
 </div>
 
 ---
-<!-- header: '[◄](#24) 題庫完成與學習成效自我檢視 [►](#1)' -->
+<!-- header: '題庫完成與學習成效自我檢視' -->
 
 ## 🎓 題庫完成與學習成效自我檢視
 
@@ -1735,37 +1735,13 @@ style: |
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = 'true';
       
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
       if (!title) return;
       
       header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = '上一章節';
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = '下一章節';
-        header.appendChild(nextLink);
-      }
     });
   }
 

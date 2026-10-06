@@ -70,17 +70,15 @@ Welcome to the `gTeachUX` project! When modifying or editing files in this works
 
 ### 4.1 頂部導覽列 (Header Navigation) 架構與互動設計
 所有 Marp 投影片之 HTML 互動模式均需具備一致且易用的頂部導覽機制：
-* **章節快速切換箭頭 (Prev/Next Arrows)**：
-  - Header 左右兩側提供 `◄` 與 `►` 箭頭連結（`.header-nav-arrow`）。
-  - 點擊直接跳轉至「上一章節」或「下一章節」之起始頁面（如 `[◄](#2) 1. 日常體驗 [►](#16)`）。
-* **章節標題與下拉目錄 (Dropdown Navigation)**：
+* **章節標題與純下拉目錄 (Pure Dropdown Navigation)**：
+  - 移除上一章與下一章箭頭，保持頂部導覽乾淨專注，以目錄選單為單一跳轉核心。
   - 標題封裝於 `.header-nav-wrapper` 與 `.header-nav-title`，並帶有指示箭頭 `▾`（`.nav-caret`）。
   - **懸停預覽 (Hover)**：滑鼠移至章節文字時，自動展開下拉式「全簡報章節目錄清單」（`.nav-dropdown`），顯示各節編號 Badge（如 `#01`）與標題。
   - **點擊釘選 (Click Pinning)**：點擊章節標題可切換 `.is-open` 釘選固定目錄面板，便於使用者從容選擇；點擊任一項目或外部任意處即自動關閉。
   - **當前位置高亮 (Active Indicator)**：目錄清單自動標記使用者當前所在之章節項目（`.active` 樣式）。
   - **防斷連橋樑設計 (Invisible Bridge)**：下拉選單頂部需加入 `::before` 透明墊片，消除標題與選單間的微小空隙，防止游標移動時選單意外消失。
 * **匯出與列印純淨化 (@media print)**：
-  - 在列印或 PDF 匯出模式下，所有互動導覽元素（箭頭、下拉選單、caret）必須一律設定 `display: none !important;`，維持 PDF 版面整潔。
+  - 在列印或 PDF 匯出模式下，所有互動導覽元素（下拉選單、caret）必須一律設定 `display: none !important;`，維持 PDF 版面整潔。
 
 ### 4.2 內容呈現與漸進式設計原則 (Progressive Disclosure / Presentation Strategy)
 * **預設原則：全貌優先與資訊完整 (Overview First)**：

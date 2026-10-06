@@ -19,7 +19,7 @@ html: true
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
-<!-- header: '[◄](#1) 本單元大綱 (Course Outline) [►](#4)' -->
+<!-- header: '本單元大綱 (Course Outline)' -->
 
 ## 本單元大綱 (Course Outline)
 
@@ -56,7 +56,7 @@ html: true
 ![](../../img/ai_for_ux_concept.png)
 
 ---
-<!-- header: '[◄](#2) 1. 什麼是 AI for UX？ [►](#6)' -->
+<!-- header: '1. 什麼是 AI for UX？' -->
 
 ## 什麼是 AI for UX？
 
@@ -110,7 +110,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#4) 2. Prompt 做法：從 RTF 到 RTCF [►](#7)' -->
+<!-- header: '2. Prompt 做法：從 RTF 到 RTCF' -->
 
 ## 使用 Prompt 的做法：角色-任務-約束-格式(RTCF)
 
@@ -144,7 +144,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#6) 尼爾森 10 大原則總覽 [►](#8)' -->
+<!-- header: '尼爾森 10 大原則總覽' -->
 
 ## 尼爾森 10 大原則總覽 (Nielsen's Heuristics)
 
@@ -171,7 +171,7 @@ html: true
 
 
 ---
-<!-- header: '[◄](#7) NS01 清楚的系統狀態 (Visibility) [►](#14)' -->
+<!-- header: 'NS01 清楚的系統狀態 (Visibility)' -->
 
 ## NS01 清楚的系統狀態 (Visibility of System Status)
 
@@ -260,7 +260,7 @@ Upload 100 files
 ![](../../img/ns_ai_01.jpg)
 
 ---
-<!-- header: '[◄](#8) NS02 與真實世界的對應 (Match Real World) [►](#19)' -->
+<!-- header: 'NS02 與真實世界的對應 (Match Real World)' -->
 
 ## NS02 與真實世界的對應 (Match System & Real World)
 
@@ -335,7 +335,7 @@ Upload 100 files
 ![](../../img/ns_ai_02.jpg)
 
 ---
-<!-- header: '[◄](#14) NS03 使用者擁有控制權 (User Control) [►](#24)' -->
+<!-- header: 'NS03 使用者擁有控制權 (User Control)' -->
 
 ## NS03 使用者擁有控制權 (User Control & Freedom)
 
@@ -413,7 +413,7 @@ Upload 100 files
 ![](../../img/ns_ai_03.jpg)
 
 ---
-<!-- header: '[◄](#19) NS04 一致的風格與標準 (Consistency) [►](#28)' -->
+<!-- header: 'NS04 一致的風格與標準 (Consistency)' -->
 
 ## NS04 一致的風格與標準 (Consistency & Standards)
 
@@ -479,7 +479,7 @@ Upload 100 files
 ![](../../img/ns_ai_04.jpg)
 
 ---
-<!-- header: '[◄](#24) NS05 錯誤預防 (Error Prevention) [►](#34)' -->
+<!-- header: 'NS05 錯誤預防 (Error Prevention)' -->
 
 ## NS05 錯誤預防 (Error Prevention)
 
@@ -580,7 +580,7 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#28) NS06 易於識別而非記憶 (Recognition) [►](#40)' -->
+<!-- header: 'NS06 易於識別而非記憶 (Recognition)' -->
 
 ## NS06 易於識別而非記憶 (Recognition Rather Than Recall)
 
@@ -666,7 +666,7 @@ Upload 100 files
 ![](../../img/ns_ai_06.jpg)
 
 ---
-<!-- header: '[◄](#34) NS07 彈性與使用效率 (Efficiency) [►](#45)' -->
+<!-- header: 'NS07 彈性與使用效率 (Efficiency)' -->
 
 ## NS07 彈性與使用效率 (Flexibility and Efficiency of Use)
 
@@ -739,7 +739,7 @@ Upload 100 files
 ![](../../img/ns_ai_07.jpg)
 
 ---
-<!-- header: '[◄](#40) NS08 優雅簡潔的設計 (Minimalist) [►](#52)' -->
+<!-- header: 'NS08 優雅簡潔的設計 (Minimalist)' -->
 
 ## NS08 優雅簡潔的設計 (Aesthetic & Minimalist Design)
 
@@ -840,7 +840,7 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#45) NS09 清楚的錯誤處理 (Recover Errors) [►](#58)' -->
+<!-- header: 'NS09 清楚的錯誤處理 (Recover Errors)' -->
 
 ## NS09 清楚的錯誤處理 (Help Users Recover from Errors)
 
@@ -940,7 +940,7 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#52) NS10 說明與文件 (Help & Docs) [►](#63)' -->
+<!-- header: 'NS10 說明與文件 (Help & Docs)' -->
 
 ## NS10 說明與文件 (Help and Documentation)
 
@@ -1013,7 +1013,7 @@ Upload 100 files
 ![](../../img/ns_ai_10.jpg)
 
 ---
-<!-- header: '[◄](#58) 尼爾森 10 大原則總結對照 [►](#68)' -->
+<!-- header: '尼爾森 10 大原則總結對照' -->
 
 ## 尼爾森 10 大可用性原則總結對照表
 
@@ -1178,7 +1178,7 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#63) 課堂遊戲：尼爾森原則闖關挑戰 [►](#77)' -->
+<!-- header: '課堂遊戲：尼爾森原則闖關挑戰' -->
 
 <!-- id: ux-ch02-game1 -->
 ## 🙋 課堂遊戲：尼爾森 10 大原則闖關大挑戰 (Game01)
@@ -1343,7 +1343,7 @@ Upload 100 files
 </div>
 
 ---
-<!-- header: '[◄](#68) 從 Prompting 到 Agent 典範轉移 [►](#86)' -->
+<!-- header: '從 Prompting 到 Agent 典範轉移' -->
 
 <!-- _class: full-img -->
 
@@ -1590,7 +1590,7 @@ description: >-
 
 ---
 
-<!-- header: '[◄](#78) 實作活動：AI-Coding BMI 系統對照實驗 [►](#93)' -->
+<!-- header: '實作活動：AI-Coding BMI 系統對照實驗' -->
 
 ## 🛠️ 實作演練：AI-Coding 學生 BMI 系統對照實驗
 
@@ -1693,7 +1693,7 @@ description: >-
 
 ---
 
-<!-- header: '[◄](#89) 課堂遊戲：從 Prompting 到 Agent 闖關挑戰 [►](#100)' -->
+<!-- header: '課堂遊戲：從 Prompting 到 Agent 闖關挑戰' -->
 
 <!-- id: ux-ch03-game1 -->
 ## 🙋 課堂遊戲：從 Prompting 到 Agent 典範轉移闖關挑戰 (Game02)
@@ -1822,7 +1822,7 @@ AI Agent 在完成購物車刪除防呆 Modal (NS05) 的前端程式碼改動後
 </div>
 
 ---
-<!-- header: '[◄](#93) 練習：應用尼爾森原則評估系統 [►](#102)' -->
+<!-- header: '練習：應用尼爾森原則評估系統' -->
 
 ## 練習 🏄🏻‍♀️：應用尼爾森原則評估系統
 
@@ -1970,37 +1970,13 @@ AI Agent 在完成購物車刪除防呆 Modal (NS05) 的前端程式碼改動後
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = 'true';
       
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
       if (!title) return;
       
       header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = '上一章節';
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = '下一章節';
-        header.appendChild(nextLink);
-      }
     });
   }
 

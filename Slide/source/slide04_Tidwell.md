@@ -19,7 +19,7 @@ html: true
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
-<!-- header: '[◄](#1) Tidwell UX 設計模式 9 大核心分類 [►](#3)' -->
+<!-- header: 'Tidwell UX 設計模式 9 大核心分類' -->
 
 ## Tidwell UX 設計模式 9 大核心分類
 
@@ -84,7 +84,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#2) Chapter 1: 一般性模式 (General Patterns) [►](#7)' -->
+<!-- header: 'Chapter 1: 一般性模式 (General Patterns)' -->
 
 ## Chapter 1: 一般性模式 (General Patterns)
 
@@ -207,7 +207,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#3) Chapter 2: 組織內容 (Organizing Content) [►](#18)' -->
+<!-- header: 'Chapter 2: 組織內容 (Organizing Content)' -->
 
 ## Chapter 2: 組織內容 (Organizing Content)
 
@@ -369,7 +369,7 @@ html: true
 ![](../../img/tw_2_9_alternative_views.jpg)
 
 ---
-<!-- header: '[◄](#7) Chapter 3: 到處走走（導航與路標） [►](#27)' -->
+<!-- header: 'Chapter 3: 到處走走（導航與路標）' -->
 
 ## Chapter 3: 到處走走（導航與路標）
 
@@ -517,7 +517,7 @@ html: true
 ![](../../img/tw_3_11_breadcrumbs.jpg)
 
 ---
-<!-- header: '[◄](#18) Chapter 4: 網頁元素的排版 (Layout) [►](#35)' -->
+<!-- header: 'Chapter 4: 網頁元素的排版 (Layout)' -->
 
 ## Chapter 4: 網頁元素的排版 (Layout)
 
@@ -664,7 +664,7 @@ html: true
 ![](../../img/tw_4_7_collapsible_panels.jpg)
 
 ---
-<!-- header: '[◄](#27) Chapter 7: 清單展示模式 (Lists) [►](#43)' -->
+<!-- header: 'Chapter 7: 清單展示模式 (Lists)' -->
 
 ## Chapter 7: 清單展示模式 (Lists)
 
@@ -810,7 +810,7 @@ html: true
 ![](../../img/tw_7_6_carousel.jpg)
 
 ---
-<!-- header: '[◄](#35) 課堂遊戲：Tidwell 設計模式實戰闖關 [►](#51)' -->
+<!-- header: '課堂遊戲：Tidwell 設計模式實戰闖關' -->
 
 ## 🎮 課堂遊戲：Tidwell 介面設計模式闖關挑戰 (Game)
 
@@ -1050,37 +1050,13 @@ SaaS 系統的專案設定面板包含「一般設定」、「成員權限」、
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = 'true';
       
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
       if (!title) return;
       
       header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = '上一章節';
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = '下一章節';
-        header.appendChild(nextLink);
-      }
     });
   }
 

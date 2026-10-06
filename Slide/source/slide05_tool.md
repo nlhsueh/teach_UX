@@ -19,7 +19,7 @@ html: true
 <span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span>
 
 ---
-<!-- header: '[◄](#1) 課程大綱與核心概念 [►](#4)' -->
+<!-- header: '課程大綱與核心概念' -->
 
 ## 課程核心概念地圖
 
@@ -75,7 +75,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#2) Part 1: 為什麼前期確認是關鍵？ [►](#17)' -->
+<!-- header: 'Part 1: 為什麼前期確認是關鍵？' -->
 
 <!-- _class: part-cover -->
 # Part 1: 為什麼前期確認是關鍵？
@@ -330,7 +330,7 @@ html: true
 | **AI 賦能最大價值 **| 自動生成架構與真實情境文案 | 自動排版、Mockup 資料與組件生成 |** 直接生成 Clean Code，原型即是產出物** |
 
 ---
-<!-- header: '[◄](#4) Part 2: 現代 AI 雛形生成工具深度盤點 [►](#26)' -->
+<!-- header: 'Part 2: 現代 AI 雛形生成工具深度盤點' -->
 
 <!-- _class: part-cover -->
 # Part 2: 現代 AI 雛形生成工具深度盤點
@@ -532,7 +532,7 @@ html: true
 | **Claude Artifacts** | 程式碼 (中/高) | Single File React | 🟢 低 | 對話即時渲染、零設定 | 單一元件互動邏輯、即興討論 |
 
 ---
-<!-- header: '[◄](#17) Part 3: AI 驅動的前期確認作業流程 [►](#33)' -->
+<!-- header: 'Part 3: AI 驅動的前期確認作業流程' -->
 
 <!-- _class: part-cover -->
 # Part 3: AI 驅動的前期確認作業流程
@@ -700,7 +700,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#26) Part 4: 實戰 Prompt 技巧與避坑指南 [►](#37)' -->
+<!-- header: 'Part 4: 實戰 Prompt 技巧與避坑指南' -->
 
 <!-- _class: part-cover -->
 # Part 4: 實戰 Prompt 技巧與避坑指南
@@ -788,7 +788,7 @@ html: true
 </div>
 
 ---
-<!-- header: '[◄](#33) Part 5: 課堂實戰演練與總結 [►](#40)' -->
+<!-- header: 'Part 5: 課堂實戰演練與總結' -->
 
 <!-- _class: part-cover -->
 # Part 5: 課堂實戰演練與總結
@@ -964,37 +964,13 @@ html: true
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = 'true';
       
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
       if (!title) return;
       
       header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = '上一章節';
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = '下一章節';
-        header.appendChild(nextLink);
-      }
     });
   }
 
